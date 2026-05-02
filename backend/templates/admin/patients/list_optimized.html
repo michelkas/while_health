@@ -1,0 +1,138 @@
+<!-- templates/admin/patients/list.html - Version optimisée -->
+
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Liste des Patients ({{ total_patients|intcomma }} total)</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form method="get" class="d-flex">
+                                <input type="text" name="q" value="{{ query }}"
+                                       class="form-control me-2"
+                                       placeholder="Rechercher par nom, email, téléphone...">
+                                <button type="submit" class="btn btn-primary">🔍</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <a href="{% url 'dashboard_patients_create' %}" class="btn btn-success">
+                                ➕ Nouveau Patient
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <!-- ✅ PERFORMANCE: Stats mises en cache -->
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">
+                                    <h5>{{ total_patients|intcomma }}</h5>
+                                    <small>Total Patients</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-warning text-white">
+                                <div class="card-body">
+                                    <h5>{{ active_count|intcomma }}</h5>
+                                    <small>Actifs</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-danger text-white">
+                                <div class="card-body">
+                                    <h5>{{ transferred_count|intcomma }}</h5>
+                                    <small>Transférés</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ✅ PERFORMANCE: Pagination avec curseurs pour gros volumes -->
+                    {% if patients %}
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Contact</th>
+                                        <th>Email</th>
+                                        <th>Sexe</th>
+                                        <th>Enregistré</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for patient in patients %}
+                                    <tr>
+                                        <td>{{ patient.id }}</td>
+                                        <td>{{ patient.first_name }} {{ patient.last_name }}</td>
+                                        <td>{{ patient.contact|default:"-" }}</td>
+                                        <td>{{ patient.email|truncatechars:25 }}</td>
+                                        <td>{{ patient.get_sexe_display }}</td>
+                                        <td>{{ patient.registered_at|date:"d/m/Y" }}</td>
+                                        <td>
+                                            <a href="{% url 'dashboard_patients_update' patient.pk %}"
+                                               class="btn btn-sm btn-outline-primary">✏️</a>
+                                            <a href="{% url 'dashboard_patients_delete' patient.pk %}"
+                                               class="btn btn-sm btn-outline-danger">🗑️</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ✅ PERFORMANCE: Pagination optimisée -->
+                        {% if page_obj.has_other_pages %}
+                        <nav aria-label="Pagination">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">
+                                        Précédent
+                                    </a>
+                                </li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == num %}
+                                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">
+                                        Suivant
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        {% endif %}
+                    {% else %}
+                        <div class="alert alert-info">
+                            Aucun patient trouvé.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

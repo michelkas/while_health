@@ -1,0 +1,237 @@
+ck{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- ── STAFF PROFILE DETAIL SECTION ─────────────────── -->
+<section class="staff-profile py-5">
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="row mb-4">
+            <div class="col-12">
+<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'data:index' %}">Accueil</a></li>
+                        {% if staff.departement %}
+                        <li class="breadcrumb-item"><a href="{% url 'staff:departement_detail' staff.departement.id %}">{{ staff.departement.name }}</a></li>
+                        {% endif %}
+                        <li class="breadcrumb-item active">{{ staff.user.get_full_name }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Profile Header -->
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
+                    <!-- Avatar -->
+                    <div class="avatar-wrapper mb-4">
+                        {% if staff.user.avatar %}
+                        <img src="{{ staff.user.avatar.url }}" alt="{{ staff.user.get_full_name }}" 
+                             class="rounded-circle img-fluid" style="width: 180px; height: 180px; object-fit: cover;">
+                        {% else %}
+                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" 
+                             style="width: 180px; height: 180px;">
+                            <i class="bi bi-person-circle text-muted" style="font-size: 5rem;"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Name & Title -->
+                    <h4>{{ staff.user.get_full_name }}</h4>
+                    
+                    {% if staff.specialty %}
+                    <p class="text-teal fw-bold">{{ staff.get_specialty_display }}</p>
+                    {% else %}
+                    <p class="text-muted">{{ staff.get_role_display }}</p>
+                    {% endif %}
+                    
+                    <!-- Status -->
+                    <div class="mb-3">
+                        <span class="badge {% if staff.is_active %}bg-success{% else %}bg-secondary{% endif %} py-2 px-3">
+                            {% if staff.is_active %}Disponible{% else %}Indisponible{% endif %}
+                        </span>
+                    </div>
+                    
+                    <!-- Experience -->
+                    <div class="text-muted mb-4">
+                        <i class="bi bi-briefcase me-2"></i>{{ staff.get_experiencie_years|default:staff.experience_years }} ans d'expérience
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'patients:appointment' %}" class="btn btn-teal-solid">
+                            <i class="bi bi-calendar-check me-2"></i>Prendre RDV
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Social Links -->
+                {% if staff.twitter or staff.facebook or staff.instagram or staff.linkedin %}
+                <div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
+                    <h6 class="mb-3">Suivez-nous</h6>
+                    <div class="d-flex gap-3 justify-content-center">
+                        {% if staff.twitter %}
+                        <a href="{{ staff.twitter }}" target="_blank" class="social-icon">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                        {% endif %}
+                        {% if staff.facebook %}
+                        <a href="{{ staff.facebook }}" target="_blank" class="social-icon">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        {% endif %}
+                        {% if staff.instagram %}
+                        <a href="{{ staff.instagram }}" target="_blank" class="social-icon">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        {% endif %}
+                        {% if staff.linkedin %}
+                        <a href="{{ staff.linkedin }}" target="_blank" class="social-icon">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Profile Details -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 p-4">
+                    <!-- Info Grid -->
+                    <div class="row g-4 mb-4">
+                        {% if staff.departement %}
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <div>
+                                    <span class="text-muted small d-block">Département</span>
+                                    <strong>{{ staff.departement.name }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="bi bi-person-badge"></i>
+                                </div>
+                                <div>
+                                    <span class="text-muted small d-block">Fonction</span>
+                                    <strong>{{ staff.get_role_display }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="text-muted small d-block">Email</span>
+                                    <strong>{{ staff.user.email|default:"Non disponible" }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-muted small d-block">Téléphone</span>
+                                    <strong>{{ staff.user.phone|default:"Non disponible" }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bio -->
+                    {% if staff.user.bio %}
+                    <div class="mb-4">
+                        <h5 class="mb-3">À propos</h5>
+                        <p>{{ staff.user.bio }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Specialties -->
+                    {% if staff.specialty %}
+                    <div class="mb-4">
+                        <h5 class="mb-3">Spécialité</h5>
+                        <span class="badge bg-teal-light text-teal py-2 px-3">
+                            {{ staff.get_specialty_display }}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Time Service -->
+                {% if staff.time_service %}
+                <div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
+                    <h5 class="mb-3">Horaire de Consultation</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Jour</th>
+                                    <th>Heure d'ouverture</th>
+                                    <th>Heure de clôture</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ts in staff.time_service.all %}
+                                <tr>
+                                    <td>{{ ts.get_service_day_display }}</td>
+                                    <td>{{ ts.open_time }}</td>
+                                    <td>{{ ts.close_time }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── RELATED SERVICES ───────────────────────── -->
+{% if related_services %}
+<section class="related-services py-5 bg-light">
+    <div class="container">
+        <div class="sec-header">
+            <h2>Services Associés</h2>
+            <div class="divider"></div>
+            <p>Services liés à ce département</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for service in related_services %}
+            <div class="col-md-6 col-lg-3">
+                <div class="svc-card">
+                    <div class="svc-icon">
+                        <i class="{{ service.icon }}"></i>
+                    </div>
+                    <h5>{{ service.title }}</h5>
+                    <p>{{ service.short_description|truncatechars:60 }}</p>
+                    <a href="{% url 'data:service_detail' service.id %}" class="link-teal">
+                        En savoir plus <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

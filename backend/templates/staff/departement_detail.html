@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- ── DEPARTEMENT DETAIL SECTION ───────────────────── -->
+<section class="departement-detail py-5">
+    <div class="container">
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'data:index' %}">Accueil</a></li>
+                        <li class="breadcrumb-item active">{{ departement.name }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Departement Info -->
+        <div class="row g-5">
+            <div class="col-lg-6">
+                {% if departement.image %}
+                <div class="dept-card-img">
+                    <img src="{{ departement.image.url }}" alt="{{ departement.name }}" class="img-fluid rounded-4 shadow">
+                </div>
+                {% else %}
+                <div class="bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 350px;">
+                    <i class="bi bi-building text-muted" style="font-size: 5rem;"></i>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="departement-content">
+                    <h1>{{ departement.name }}</h1>
+                    
+                    {% if departement.description %}
+                    <p class="lead text-muted mt-3">{{ departement.description }}</p>
+                    {% endif %}
+                    
+                    <div class="mt-4">
+                        <div class="d-flex gap-3">
+                            {% if services %}
+                            <div class="text-center">
+                                <div class="h3 mb-0">{{ services.count }}</div>
+                                <div class="small text-muted">Services</div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if staff_members %}
+                            <div class="text-center">
+                                <div class="h3 mb-0">{{ staff_members.count }}</div>
+                                <div class="small text-muted">Membres</div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'patients:appointment' %}" class="btn btn-teal-solid">
+                            <i class="bi bi-calendar-check me-2"></i>Prendre RDV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SERVICES IN DEPARTEMENT ───────────────────── -->
+{% if services %}
+<section class="services py-5 bg-light">
+    <div class="container">
+        <div class="sec-header">
+            <h2>Nos Services</h2>
+            <div class="divider"></div>
+            <p>Services disponibles dans ce département</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4">
+                <div class="svc-card">
+                    <div class="svc-icon">
+                        <i class="{{ service.icon }}"></i>
+                    </div>
+                    <h5>{{ service.title }}</h5>
+                    <p>{{ service.short_description|truncatechars:80 }}</p>
+                    <a href="{% url 'data:service_detail' service.id %}" class="link-teal">
+                        En savoir plus <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ── STAFF MEMBERS ───────────────────────────── -->
+{% if staff_members %}
+<section class="staff-section py-5">
+    <div class="container">
+        <div class="sec-header">
+            <h2>Notre Équipe</h2>
+            <div class="divider"></div>
+            <p>Les professionnels de ce département</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for member in staff_members %}
+            <div class="col-md-6 col-lg-3">
+                <div class="doctor-card">
+                    <div class="img-wrap">
+                        {% if member.user.avatar %}
+                        <img src="{{ member.user.avatar.url }}" alt="{{ member.user.get_full_name }}">
+                        {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 230px;">
+                            <i class="bi bi-person-circle text-muted" style="font-size: 4rem;"></i>
+                        </div>
+                        {% endif %}
+                        <span class="status-badge {% if member.is_active %}badge-available{% else %}badge-busy{% endif %}">
+                            {% if member.is_active %}LIBRE{% else %}INDISPONIBLE{% endif %}
+                        </span>
+                    </div>
+                    <div class="body">
+                        <h6>Dr. {{ member.user.get_full_name }}</h6>
+                        {% if member.specialty %}
+                        <div class="spec">{{ member.get_specialty_display }}</div>
+                        {% else %}
+                        <div class="spec">{{ member.get_role_display }}</div>
+                        {% endif %}
+                        <div class="exp">{{ member.experience_years }} ans d'expérience</div>
+                        <a href="{% url 'staff:staff_profile_detail' member.id %}" class="btn btn-outline-dark-custom mt-2 w-100">
+                            Voir le profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

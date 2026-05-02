@@ -1,0 +1,384 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+
+  <style>
+    .doct-f{
+      color:black;
+
+    }
+    .btn-outline-dark-custom:hover, .doct-f:hover{
+      color: white;
+    }
+  </style>
+  
+{% endblock%}
+  
+
+{% block content %}
+
+
+{% if hero or emergency or contact or departemens3%}
+
+  <section class="hero p-0 m-0" style="  background: linear-gradient(to right, rgba(5,30,35,.78) 45%, rgba(5,30,35,.30) 100%), url('{{hero.image.url}}') center/cover no-repeat;">
+    <!-- MAIN CONTENT -->
+    <div class="container  hero-content padding-tp" >
+      <div class="row">
+        <div class="col-lg-7">
+          {% if hero.title %}<span class="badge-pill"> {{hero.title|capfirst}} </span>{% endif %}
+            <h1 class="hero-title">  {% if hero.subtitle %}{{hero.subtitle}}{% endif %}</h1>
+          <p class="hero-sub">
+            
+            {% if hero.description %}
+              {{hero.description|safe}}
+            {% endif %}
+              
+          </p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="{% url 'patients:appointment' %}" class="btn btn-book"> Rendez-vous</a>
+            <a href="#services" class="btn btn-explore" >Explore Services</a>
+          </div>
+          <div class="info-row">
+            <div class="info-item">
+              
+              {% if emergency.phone %}
+              <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <p class="info-label">Ligne d'Urgence</p>
+                <p class="info-value"> {{emergency.phone}}</p>
+              </div>
+              {% endif %}
+                
+            
+            </div>
+            <div class="info-item">   
+              {% if contact.operation_days_time %}
+              <div class="info-icon"><i class="bi bi-clock-fill"></i></div>
+              <div>
+                <p class="info-label">Heure de Travail</p>
+                <p class="info-value">{{contact.operation_days_time}}</p>
+              </div> 
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPARTMENT BAR -->
+    <div class="container hero-bottom">
+      <div class="depart-bar">
+        <div class="row g-3 align-items-center">
+
+          
+          {% if departemens3 %}
+
+            
+            {% for departement in departemens3 %}
+              <div class="col-md-auto d-none d-md-block">
+                <div class="depart-divider" style="height:60px;"></div>
+              </div>
+
+<!-- Diagnostics -->
+              <div class="col-md-3">
+                <a href="{% url 'staff:departement_detail' departement.id %}" class="text-decoration-none">
+                  <div class="depart-card">
+                    <div class="depart-icon"><i class="bi bi-{{departement.icon}}"></i></div>
+                    <div>
+                      <p class="depart-title"> {{departement.name}} </p>
+                      <p class="depart-desc">{{departement.description|truncatewords:9}}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+              
+        
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+{% endif %}
+
+
+<!-- ══ ABOUT ══════════════════════════════════════════════════════════ -->
+
+
+{% if about %}
+  <section class="about" id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="about-img-wrap">
+    
+            {% if about.image %}
+                <img src="{{about.image.url}}" alt="{{about.image}}"/>
+            {% endif %}
+
+            {% if  about.year %}
+              <div class="about-badge">
+                <div class="num">{{about.year}}+</div>
+                <div class="lbl">Ans d'Excellence</div>
+              </div>  
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-content">
+
+            <h2> {{about.title|capfirst}} </h2>
+            <p class="about-lead"> {{about.subtitle|capfirst}} </p>
+            <p class="about-body"> {{about.description|truncatewords:35}} </p>
+              <div class="col-6 about-feat-item">
+                  
+                {% if about.compassionate_care %}
+                  <div class="feat-icon"><i class="bi bi-heart-pulse"></i></div>
+                  <h6>Soins Compassionnel</h6>
+                  <p> {{about.compassionate_care|truncatewords:10}} </p>
+                {% endif %}
+              
+              </div>
+              <div class="col-6 about-feat-item">
+                
+                {% if about.quality_care %}
+                  <div class="feat-icon"><i class="bi bi-star"></i></div>
+                  <h6>Qualité de soins</h6>
+                  <p>{{about.quality_care|truncatewords:10}}</p>
+                {% endif %}
+                  
+              
+              </div>
+            </div>
+<div class="d-flex gap-3 flex-wrap">
+<a href="{% url 'data:about_detail' %}" class="btn btn-teal-solid">Voir plus</a>
+              <a href="#doctors" class="doct-f"><button class="btn btn-outline-dark-custom">Rencontrez un Medecin</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<!-- ══ DEPARTMENTS ════════════════════════════════════════════════════ -->
+
+
+{% if departements %}
+
+  <section class="departments" id="departments">
+    <div class="container">
+
+      <div class="sec-header">
+        <h2>Departments Medical</h2>
+        <div class="divider"></div>
+        <p>Notre ensemble de départements médicaux regroupe des spécialités 
+          complémentaires organisées de manière cohérente afin d’offrir une 
+          prise en charge globale, efficace et personnalisée des patients.  Grâce à une collaboration étroite 
+          entre les différentes unités, nous assurons un parcours de soins fluide, 
+          adapté aux besoins spécifiques de chaque patient, tout en mettant l’accent sur 
+          l’excellence médicale, l’écoute et la compassion."</p>
+      </div>
+
+      <div class="row g-4">
+
+
+      {% for depart in departements %}
+        <div class="col-md-4">
+          <div class="dept-card">
+            <div class="img-wrap">
+              <img src="{{depart.image.url}}" alt="{{depart.image}}"/>
+            </div>
+<div class="body">
+              <h5>{{depart.name|capfirst}}</h5>
+              <p>{{depart.description|truncatewords:15}}</p>
+              <a href="{% url 'staff:departement_detail' depart.id %}" class="link-teal">Lire plus <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      </div>
+    </div>
+  </section>
+  
+{% endif %}
+  
+<!-- ══ FEATURED SERVICES ══════════════════════════════════════════════ -->
+
+
+{% if services  %}
+
+  <section class="services" id="services">
+    <div class="container">
+
+      <div class="sec-header">
+        <h2>Services Medical</h2>
+        <div class="divider"></div>
+        <p>Nos services médicaux regroupent plusieurs unités 
+          spécialisées travaillant en synergie afin d’assurer 
+          une prise en charge efficace, rapide et de qualité. <br>
+          Chaque service est dédié au bien-être du patient, avec une 
+          approche centrée sur l’écoute, la compétence et l’excellence des soins.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Cardiology Excellence -->
+        {% for serv in services %}
+          <div class="col-md-6">
+            <div class="svc-card">
+              <div class="svc-icon"><i class="bi bi-{{serv.icon}}"></i></div>
+              <h5>{{serv.title|capfirst}}</h5>
+              <p>{{serv.description|truncatewords:15}}</p>
+<ul class="svc-list">
+                
+                {% if serv.short_description %}
+                  {% for short in get_short_description %}
+                    <li>{{short}}</li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+              <a href="{% url 'data:service_detail' serv.id %}" class="link-teal">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+{% endif %}
+  
+<!-- ══ FIND A DOCTOR ══════════════════════════════════════════════════ -->
+
+{% if doctors %}
+
+<section class="find-doctor" id="doctors">
+  <div class="container">
+    <div class="sec-header">
+      <h2>  Medecins</h2>
+      <div class="divider"></div>
+      <p>Rencontrez les experts dans plusieurs domaines de la santé</p>
+    </div>
+
+    <!-- Doctor grid -->
+    <div class="row g-4">
+
+      {% for doctor in doctors %}
+        <div class="col-md-4">
+          <div class="doctor-card">
+            <div class="img-wrap">
+              <img src="{{doctor.user.avatar.url}}" alt="{{doctor.user.get_full_name}}"/>
+              <span class="status-badge {{ doctor.status_badge_class }}">{{ doctor.status_label }}</span>
+            </div>
+<div class="body">
+              <h6>Dr. {{doctor.name|capfirst}} {{doctor.first_name|capfirst}}</h6>
+              <div class="spec"> {{doctor.speciality|capfirst}} </div>
+              <div class="exp">{{doctor.get_experience_years}}+ ans d'experience</div>
+              <div class="mb-2">
+              </div>
+              <div class="d-flex gap-2">
+                <a href="{% url 'staff:staff_profile_detail' doctor.id %}" class="btn btn-view flex-fill">View Profile</a>
+                <a href="{% url 'patients:appointment' %}" class="btn btn-book flex-fill">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+  
+{% endif %}
+
+<!-- ══ EMERGENCY INFO ═════════════════════════════════════════════════ -->
+<section class="emergency" id="emergency">
+  <div class="container">
+    <div class="sec-header">
+      <h2>Emergency Info</h2>
+      <div class="divider"></div>
+      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+    <!-- Red banner -->
+    <div class="emerg-banner">
+      <div class="info">
+        <i class="bi bi-exclamation-triangle-fill icon911"></i>
+        <div>
+          <h5>Medical Emergency?</h5>
+          <p>If you are experiencing a life-threatening emergency, call 911 immediately or go to your nearest emergency room.</p>
+        </div>
+      </div>
+      <a href="tel:911" class="btn btn-911"><i class="bi bi-telephone-fill me-2"></i>Call 911</a>
+    </div>
+    <!-- Cards -->
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="emerg-card">
+          <div class="eicon"><i class="bi bi-hospital-fill"></i></div>
+          <h6>Emergency Room</h6>
+          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>+1 (555) 123-4567</div>
+          <div class="addr"><i class="bi bi-geo-alt-fill me-1"></i>1245 Healthcare Blvd, Medical City, CA 90210</div>
+          <div class="avail mt-2">Open 24/7</div>
+          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="emerg-card">
+          <div class="eicon"><i class="bi bi-clock-fill"></i></div>
+          <h6>Urgent Care</h6>
+          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>+1 (555) 987-6543</div>
+          <div class="addr"><i class="bi bi-geo-alt-fill me-1"></i>892 Wellness Ave, Health District, CA 90211</div>
+          <div class="avail mt-2">Mon–Sun: 7:00 AM – 10:00 PM</div>
+          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="emerg-card">
+          <div class="eicon"><i class="bi bi-headset"></i></div>
+          <h6>Nurse Helpline</h6>
+          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>+1 (555) 456-7890</div>
+          <div class="addr">24/7 medical advice and guidance</div>
+          <div class="avail mt-2">Available 24/7</div>
+          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="emerg-card">
+          <div class="eicon"><i class="bi bi-activity"></i></div>
+          <h6>Poison Control</h6>
+          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>1-800-222-1222</div>
+          <div class="addr">National poison control hotline</div>
+          <div class="avail mt-2">Available 24/7</div>
+          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script>
+  // Show/hide scroll-to-top
+  const btn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    btn.style.opacity = window.scrollY > 300 ? '1' : '0';
+    btn.style.pointerEvents = window.scrollY > 300 ? 'auto' : 'none';
+  });
+  btn.style.opacity = '0';
+  btn.style.transition = 'opacity .3s';
+</script>
+  
+{% endblock %}

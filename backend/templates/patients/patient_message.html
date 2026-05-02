@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Rendez-vous confirmé | MediTrust{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .confirmation-section {
+            min-height: calc(100vh - 140px);
+            padding: 3rem 0;
+            background:
+                radial-gradient(circle at top left, rgba(13, 110, 253, 0.14), transparent 35%),
+                linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .confirmation-card {
+            border: 0;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.12);
+        }
+
+        .confirmation-hero {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            color: #fff;
+        }
+
+        .confirmation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .confirmation-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.16);
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .confirmation-content {
+            background: #fff;
+        }
+
+        .confirmation-summary {
+            border: 1px solid rgba(13, 110, 253, 0.12);
+            border-radius: 1rem;
+            background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .confirmation-summary__label {
+            margin-bottom: 0.25rem;
+            color: #6c757d;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .confirmation-summary__value {
+            margin-bottom: 0;
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .confirmation-tile {
+            height: 100%;
+            border: 1px solid rgba(13, 110, 253, 0.12);
+            border-radius: 1rem;
+            background: #fff;
+            box-shadow: 0 0.5rem 1.25rem rgba(15, 23, 42, 0.04);
+        }
+
+        .confirmation-tile__icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #e7f1ff;
+            color: #0d6efd;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .confirmation-actions .btn {
+            min-width: 180px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="card confirmation-card">
+                        <div class="confirmation-hero p-4 p-md-5">
+                            <div class="d-flex flex-column flex-md-row align-items-md-center gap-3">
+                                <div class="confirmation-icon">
+                                    <i class="bi bi-check2-circle"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="confirmation-badge mb-3">
+                                        <i class="bi bi-calendar2-check"></i>
+                                        Confirmation enregistrée
+                                    </span>
+                                    <h1 class="display-6 fw-bold mb-2">Rendez-vous confirmé</h1>
+                                    <p class="mb-0 opacity-75">
+                                        Le dossier a été enregistré avec succès. Le patient peut maintenant suivre son rendez-vous
+                                        avec les informations affichées ci-dessous.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="confirmation-content p-4 p-md-5">
+                            <div class="confirmation-summary p-4 mb-4">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-md-8">
+                                        <p class="confirmation-summary__label">Patient</p>
+                                        <h2 class="h4 mb-2">
+                                            {{ patient.first_name }} {{ patient.last_name }}
+                                        </h2>
+                                        <p class="mb-0 text-muted">
+                                            Votre rendez-vous a bien été pris en compte par l’équipe médicale.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-md-end">
+                                        <span class="badge text-bg-success px-3 py-2">
+                                            <i class="bi bi-shield-check me-2"></i>Validé
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <div class="confirmation-tile p-3 p-lg-4">
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <span class="confirmation-tile__icon">
+                                                <i class="bi bi-envelope-check"></i>
+                                            </span>
+                                            <h3 class="h6 mb-0">Notification</h3>
+                                        </div>
+                                        <p class="text-muted mb-0">
+                                            Une confirmation peut être envoyée par email ou par SMS selon les informations du dossier.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="confirmation-tile p-3 p-lg-4">
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <span class="confirmation-tile__icon">
+                                                <i class="bi bi-clock-history"></i>
+                                            </span>
+                                            <h3 class="h6 mb-0">Prochaines étapes</h3>
+                                        </div>
+                                        <p class="text-muted mb-0">
+                                            Le créneau sélectionné a été enregistré. Vous pouvez créer un autre rendez-vous si nécessaire.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="confirmation-actions d-flex flex-column flex-md-row gap-3 justify-content-between align-items-md-center">
+                                <a href="{% url 'patients:appointment' %}" class="btn btn-primary btn-lg px-4">
+                                    <i class="bi bi-plus-circle me-2"></i>Prendre un autre rendez-vous
+                                </a>
+                                <div class="text-muted small">
+                                    Merci {{ patient.first_name }} {{ patient.last_name }}. Votre rendez-vous a bien été enregistré.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

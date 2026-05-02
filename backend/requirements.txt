@@ -1,0 +1,74 @@
+# ============================================
+# Django 6.0.2 - While Health Backend
+# ============================================
+
+# Core Django
+Django==6.0.2
+Pillow==10.1.0
+
+# Database
+psycopg2-binary==2.9.9
+dj-database-url==2.1.0
+
+# Environment & Configuration
+python-decouple==3.8
+
+# REST & API
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.0
+drf-spectacular==0.26.5
+django-filter==23.4
+
+# Admin Interface
+jazzmin==3.0.0
+django-admin-interface==0.26.0
+
+# Forms & Validation
+django-crispy-forms==2.1
+crispy-bootstrap5==2.0.2
+
+# Phone Numbers
+django-phonenumber-field==7.3.0
+phonenumbers==8.13.0
+
+# Caching & Performance
+django-redis==5.4.0
+redis==5.0.1
+celery==5.3.4
+
+# Static Files & Compression
+whitenoise==6.6.0
+
+# Security & Monitoring
+django-cors-headers==4.3.1
+django-ratelimit==4.1.0
+
+# Development Tools (remove in production)
+django-debug-toolbar==4.2.0
+django-extensions==3.2.3
+black==23.12.0
+flake8==6.1.0
+isort==5.13.2
+pytest==7.4.3
+pytest-django==4.7.0
+pytest-cov==4.1.0
+factory-boy==3.3.0
+faker==21.0.0
+
+# Monitoring & Logging
+sentry-sdk==1.39.1
+
+# Async Tasks
+django-celery-beat==2.5.0
+django-celery-results==2.5.1
+
+# Time Zone & Localization
+pytz==2023.3
+
+# PDF Generation (optional for reports)
+reportlab==4.0.9
+weasyprint==59.3
+
+# Data Import/Export
+django-import-export==3.3.5
+openpyxl==3.11.0

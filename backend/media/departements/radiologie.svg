@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#8b5cf6"/>
+  <circle cx="220" cy="180" r="120" fill="rgba(255,255,255,0.18)"/>
+  <circle cx="980" cy="620" r="180" fill="rgba(255,255,255,0.12)"/>
+  <text x="60" y="420" fill="#ffffff" font-size="64" font-family="Arial, sans-serif" font-weight="700">Radiologie</text>
+</svg>

@@ -1,0 +1,48 @@
+<!-- templates/base.html - Version optimisée -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{% block title %}While Health{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ✅ PERFORMANCE: Compressed static files -->
+    {% load static %}
+    {% load compress %}
+
+    <!-- ✅ PERFORMANCE: Critical CSS inlined, rest compressed -->
+    <style>
+        /* Critical CSS inlined for above-the-fold content */
+        .navbar { background: #007bff; }
+        .alert { padding: 1rem; margin-bottom: 1rem; }
+    </style>
+
+    {% compress css %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+    {% endcompress %}
+
+    <!-- ✅ PERFORMANCE: Async loading for non-critical JS -->
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <!-- ✅ PERFORMANCE: Lazy load heavy components -->
+    <script>
+        // Lazy load HTMX if needed
+        if (document.querySelector('[hx-get]')) {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/htmx.org@1.9.10';
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

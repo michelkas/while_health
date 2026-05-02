@@ -1,0 +1,71 @@
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="footer-brand"> 
+        {% if contact.name %}
+          {{contact.name}}
+        {% endif %}
+          </div>
+        <p style="font-size:.88rem;max-width:300px;">Fournissons un soins de santé émotionnellement compatissante, de classe mondiale depuis plusieurs années. <br> Votre bien-être est notre mission.</p>
+        <div class="social-icons mt-3">
+          <a href="{{contact.facebook}}"><i class="bi bi-facebook"></i></a>
+          <a href="{{contact.twitter}}"><i class="bi bi-twitter-x"></i></a>
+          <a href="{{contact.instagram}}"><i class="bi bi-instagram"></i></a>
+          <a href="{{contact.linkedin}}"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h5>Lien rapide</h5>
+        <a href="#home">Home</a>
+        <a href="#departments">Departments</a>
+        <a href="#services">Services</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#emergency">Emergency</a>
+      </div>
+<div class="col-lg-2 col-6">
+        <h5>Services</h5>
+        
+        {% for service in services %}
+           <a href="{% url 'data:service_detail' service.id %}">{{ service.title }}</a>
+        {% endfor %}
+          
+       
+       
+      </div>
+      <div class="col-lg-4">
+        <h5>Contactez-nous</h5>
+        
+        {% if contact.address %}
+           <p style="font-size:.88rem;"><i class="bi bi-geo-alt-fill me-2" style="color:var(--teal);"></i>{{contact.address}}</p>
+        {% endif %}
+
+        {% if contact.phone %}
+           <p style="font-size:.88rem;"><i class="bi bi-telephone-fill me-2" style="color:var(--teal);"></i>{{contact.phone}}</p>
+        {% endif %}
+          
+        {% if contact.email %}
+            <p style="font-size:.88rem;"><i class="bi bi-envelope-fill me-2" style="color:var(--teal);"></i>{{contact.email}}</p>
+        {% endif %}
+        
+        {% if contact.operation_days_time %}
+              <p style="font-size:.88rem;"><i class="bi bi-clock-fill me-2" style="color:var(--teal);"></i>{{contact.operation_days_time}}</p>
+        {% endif %}
+          
+       
+
+    
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="d-flex justify-content-between flex-wrap gap-2" style="font-size:.82rem;">
+      <span>© 2026 {{contact.name}} Tout droits reservé.</span>
+      <span><a href="#" style="color:rgba(255,255,255,.5);">Privacy Policy</a> · <a href="#" style="color:rgba(255,255,255,.5);">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll-to-top -->
+<a href="#home" id="scrollTop"><i class="bi bi-arrow-up"></i></a>

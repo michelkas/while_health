@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<!-- ── SERVICE DETAIL SECTION ───────────────────────── -->
+<section class="service-detail py-5">
+    <div class="container">
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'data:index' %}">Accueil</a></li>
+                        <li class="breadcrumb-item active">{{ service.title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Service Info -->
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="service-header mb-4">
+                    <div class="svc-icon mb-3" style="width: 80px; height: 80px;">
+                        <i class="{{ service.icon }}" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h1>{{ service.title }}</h1>
+                    {% if service.departement %}
+                    <p class="lead text-muted">
+                        <i class="bi bi-building me-2"></i>{{ service.departement.name }}
+                    </p>
+                    {% endif %}
+                </div>
+                
+                {% if service.description %}
+                <div class="service-description">
+                    <h4 class="mb-3">Description du Service</h4>
+                    <p>{{ service.description }}</p>
+                </div>
+                {% endif %}
+                
+                {% if service.short_description %}
+                <div class="service-highlights mt-4">
+                    <h4 class="mb-3">Points Clés</h4>
+                    <ul class="svc-list">
+                        {% for item in service.get_short_description %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm rounded-4 p-4">
+                    <h5 class="mb-3">Informations</h5>
+                    
+                    {% if service.departement %}
+                    <div class="mb-3">
+                        <span class="text-muted small d-block">Département</span>
+                        <strong>{{ service.departement.name }}</strong>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <span class="text-muted small d-block">Créé le</span>
+                        <strong>{{ service.created_at|date:"d/m/Y" }}</strong>
+                    </div>
+                    
+                    <hr>
+                    
+                    <a href="{% url 'patients:appointment' %}" class="btn btn-teal-solid w-100">
+                        <i class="bi bi-calendar-check me-2"></i>Prendre RDV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── RELATED SERVICES ───────────────────────────── -->
+{% if related_services %}
+<section class="related-services py-5 bg-light">
+    <div class="container">
+        <div class="sec-header">
+            <h2>Services Similaires</h2>
+            <div class="divider"></div>
+            <p>Autres services dans le même département</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for related in related_services %}
+            <div class="col-md-6 col-lg-3">
+                <div class="svc-card">
+                    <div class="svc-icon">
+                        <i class="{{ related.icon }}"></i>
+                    </div>
+                    <h5>{{ related.title }}</h5>
+                    <p>{{ related.short_description|truncatechars:60 }}</p>
+                    <a href="{% url 'data:service_detail' related.id %}" class="link-teal">
+                        En savoir plus <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ── STAFF IN SERVICE ───────────────────────── -->
+{% if staff_in_service %}
+<section class="staff-in-service py-5">
+    <div class="container">
+        <div class="sec-header">
+            <h2>Notre Équipe</h2>
+            <div class="divider"></div>
+            <p>Les professionnels de santé de ce service</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for staff_member in staff_in_service %}
+            <div class="col-md-6 col-lg-3">
+                <div class="doctor-card">
+                    <div class="img-wrap">
+                        {% if staff_member.user.avatar %}
+                        <img src="{{ staff_member.user.avatar.url }}" alt="{{ staff_member.user.get_full_name }}">
+                        {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 230px;">
+                            <i class="bi bi-person-circle text-muted" style="font-size: 4rem;"></i>
+                        </div>
+                        {% endif %}
+                        <span class="status-badge badge-available">
+                            {% if staff_member.is_active %}LIBRE{% else %}INDISPONIBLE{% endif %}
+                        </span>
+                    </div>
+                    <div class="body">
+                        <h6>Dr. {{ staff_member.user.get_full_name }}</h6>
+                        {% if staff_member.specialty %}
+                        <div class="spec">{{ staff_member.get_specialty_display }}</div>
+                        {% endif %}
+                        <div class="exp">{{ staff_member.experience_years }} ans d'expérience</div>
+                        <a href="{% url 'staff:staff_profile_detail' staff_member.id %}" class="btn btn-outline-dark-custom mt-2 w-100">
+                            Voir le profil
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

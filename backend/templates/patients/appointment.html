@@ -1,0 +1,785 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Prise de rendez-vous | MediTrust{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .appointment-section {
+            padding: 3rem 0;
+            background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .appointment-hero {
+            border: 0;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            box-shadow: 0 1rem 2.5rem rgba(13, 110, 253, 0.18);
+        }
+
+        .appointment-card {
+            border: 0;
+            border-radius: 1rem;
+            box-shadow: 0 0.75rem 2rem rgba(15, 23, 42, 0.08);
+        }
+
+        .appointment-section .card-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            background-color: #fff;
+        }
+
+        .appointment-form-area label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .appointment-form-area input,
+        .appointment-form-area select,
+        .appointment-form-area textarea {
+            width: 100%;
+            min-height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.5rem;
+            background-color: #fff;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .appointment-form-area textarea {
+            min-height: 110px;
+        }
+
+        .appointment-form-area input:focus,
+        .appointment-form-area select:focus,
+        .appointment-form-area textarea:focus {
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .appointment-form-area p {
+            margin-bottom: 1rem;
+        }
+
+        .appointment-form-area .helptext {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+            margin-top: 0.35rem;
+            font-size: 0.8rem;
+            line-height: 1.35;
+            color: #6c757d;
+        }
+
+        .appointment-form-area .helptext::before {
+            content: "\f430";
+            font-family: "bootstrap-icons";
+            font-size: 0.85rem;
+            color: #0d6efd;
+            line-height: 1.2;
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+        }
+
+        .appointment-form-area ul.errorlist {
+            margin: 0 0 0.5rem;
+            padding: 0;
+            list-style: none;
+            color: #dc3545;
+            font-size: 0.875rem;
+        }
+
+        .history-form {
+            padding: 1rem;
+            border: 1px solid rgba(13, 110, 253, 0.12);
+            border-radius: 0.75rem;
+            background-color: #f8fbff;
+        }
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .slot-btn {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #0d6efd;
+            border-radius: 0.75rem;
+            background-color: #fff;
+            color: #0d6efd;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .slot-btn:hover {
+            background-color: #e7f1ff;
+            transform: translateY(-1px);
+        }
+
+        .slot-btn.selected {
+            background-color: #0d6efd;
+            color: #fff;
+            box-shadow: 0 0.5rem 1.2rem rgba(13, 110, 253, 0.22);
+        }
+
+        .slot-empty-message {
+            margin-bottom: 0;
+            color: #6c757d;
+        }
+
+        .doctor-summary {
+            border: 1px solid rgba(13, 110, 253, 0.12);
+            border-radius: 0.85rem;
+            background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .doctor-schedule {
+            border: 1px solid rgba(13, 110, 253, 0.12);
+            border-radius: 0.85rem;
+            background: #fff;
+        }
+
+        .doctor-schedule__legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        .doctor-schedule__legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .doctor-schedule__legend-swatch {
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .doctor-schedule__legend-swatch--free {
+            background-color: #198754;
+        }
+
+        .doctor-schedule__legend-swatch--busy {
+            background-color: #dc3545;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.85rem;
+        }
+
+        .schedule-day-card {
+            border: 1px solid rgba(13, 110, 253, 0.12);
+            border-radius: 0.85rem;
+            background-color: #f8fbff;
+            padding: 0.85rem;
+        }
+
+        .schedule-day-card--empty {
+            background-color: #f8f9fa;
+        }
+
+        .schedule-day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .schedule-day-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #212529;
+        }
+
+        .schedule-day-meta {
+            margin: 0.2rem 0 0;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .schedule-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .schedule-slot {
+            padding: 0.35rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+
+        .schedule-slot--free {
+            background-color: #d1e7dd;
+            color: #146c43;
+            border-color: rgba(25, 135, 84, 0.2);
+        }
+
+        .schedule-slot--busy {
+            background-color: #f8d7da;
+            color: #b02a37;
+            border-color: rgba(220, 53, 69, 0.2);
+            opacity: 0.9;
+        }
+
+        .schedule-day-empty {
+            margin-bottom: 0;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="appointment-section">
+        <div class="container py-4 py-lg-5">
+            <div class="card appointment-hero text-white overflow-hidden mb-4 mb-lg-5">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-8">
+                            <span class="badge rounded-pill text-bg-light text-primary mb-3 px-3 py-2">
+                                <i class="bi bi-calendar2-check me-2"></i>Rendez-vous médical
+                            </span>
+                            <h1 class="display-6 fw-bold mb-3">Nouveau patient et prise de rendez-vous</h1>
+                            <p class="mb-0 opacity-75">
+                                Remplissez les informations du patient, ses antécédents médicaux et choisissez
+                                un créneau disponible pour finaliser la demande de consultation.
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="bg-white bg-opacity-10 rounded-4 p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-shield-check fs-3 me-3"></i>
+                                    <div>
+                                        <h2 class="h6 fw-bold mb-1">Processus sécurisé</h2>
+                                        <p class="mb-0 small opacity-75">Vos données sont saisies dans un parcours unifié.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-clock-history fs-3 me-3"></i>
+                                    <div>
+                                        <h2 class="h6 fw-bold mb-1">Créneaux en temps réel</h2>
+                                        <p class="mb-0 small opacity-75">Choisissez un horaire disponible sur les 7 prochains jours.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <form method="post" id="appointment-form" class="appointment-form-area">
+                {% csrf_token %}
+
+                <div class="row g-4">
+                    <div class="col-12 col-xl-6">
+                        <div class="card appointment-card h-100">
+                            <div class="card-header px-4 py-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge rounded-pill text-bg-primary me-3">1</span>
+                                    <div>
+                                        <h2 class="h5 mb-1">Informations du patient</h2>
+                                        <p class="text-muted small mb-0">Renseignez les données d’identité et de contact.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div id="patient-lookup-status" class="alert alert-info d-none mb-3" role="alert"></div>
+                                <p class="text-muted small mb-3">
+                                    Saisissez le numéro, l’email ou l’identité du patient pour préremplir ses informations si le dossier existe déjà.
+                                </p>
+                                {{ patient_form.non_field_errors }}
+                                {{ patient_form.as_p }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-6">
+                        <div class="card appointment-card h-100">
+                            <div class="card-header px-4 py-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge rounded-pill text-bg-info me-3">2</span>
+                                    <div>
+                                        <h2 class="h5 mb-1">Antécédents médicaux</h2>
+                                        <p class="text-muted small mb-0">Ajoutez les informations cliniques utiles au praticien.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                {{ history_formset.management_form }}
+
+                                <div class="d-grid gap-3">
+                                    {% for form in history_formset %}
+                                        <div class="history-form">
+                                            {{ form.as_p }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card appointment-card">
+                            <div class="card-header px-4 py-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge rounded-pill text-bg-success me-3">3</span>
+                                    <div>
+                                        <h2 class="h5 mb-1">Choix du rendez-vous</h2>
+                                        <p class="text-muted small mb-0">Sélectionnez un médecin puis un créneau disponible.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-4">
+                                {{ appointment_form.non_field_errors }}
+                                <div class="row g-4">
+                                    <div class="col-lg-5">
+                                        <label for="doctor-select" class="form-label">Choisir un médecin</label>
+                                        <select id="doctor-select" name="staff" class="form-select" required>
+                                            <option value="">-- Sélectionnez --</option>
+                                            {% for doc in doctors %}
+                                                <option value="{{ doc.pk }}">{{ doc.user.first_name }} ( {{ doc.get_specialty_display }} )</option>
+                                            {% endfor %}
+                                        </select>
+                                        <div class="form-text">
+                                            Le chargement des disponibilités se fait automatiquement après la sélection.
+                                        </div>
+
+                                        <div id="doctor-summary" class="doctor-summary p-3 mt-3 d-none"></div>
+                                    </div>
+
+                                    <div class="col-lg-7">
+                                        <div id="doctor-schedule-container" class="doctor-schedule p-3 p-md-4 mb-3 d-none">
+                                            <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="bi bi-calendar-week text-primary me-2"></i>
+                                                    <h3 class="h6 mb-0">Emploi du temps du médecin</h3>
+                                                </div>
+                                                <div class="doctor-schedule__legend mb-0">
+                                                    <span class="doctor-schedule__legend-item">
+                                                        <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--free"></span>
+                                                        Libre
+                                                    </span>
+                                                    <span class="doctor-schedule__legend-item">
+                                                        <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--busy"></span>
+                                                        Occupé
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div id="schedule-grid" class="schedule-grid"></div>
+                                        </div>
+
+                                        <div id="slots-container" class="border rounded-4 p-3 p-md-4 bg-light-subtle d-none">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <i class="bi bi-grid-3x3-gap-fill text-primary me-2"></i>
+                                                <h3 class="h6 mb-0">Créneaux disponibles</h3>
+                                            </div>
+                                            <p class="text-muted small mb-3">
+                                                Cliquez sur un créneau pour le sélectionner.
+                                            </p>
+                                            <div id="slot-buttons" class="slot-grid"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mt-4">
+                                    <div class="col-md-6">
+                                        {{ appointment_form.date.label_tag }}
+                                        {{ appointment_form.date }}
+                                        {% if appointment_form.date.help_text %}
+                                            <div class="form-text">{{ appointment_form.date.help_text }}</div>
+                                        {% endif %}
+                                        {% if appointment_form.date.errors %}
+                                            <div class="invalid-feedback d-block">{{ appointment_form.date.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ appointment_form.time.label_tag }}
+                                        {{ appointment_form.time }}
+                                        {% if appointment_form.time.help_text %}
+                                            <div class="form-text">{{ appointment_form.time.help_text }}</div>
+                                        {% endif %}
+                                        {% if appointment_form.time.errors %}
+                                            <div class="invalid-feedback d-block">{{ appointment_form.time.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer bg-white border-0 px-4 pb-4 pt-0">
+                                <div class="d-flex flex-column flex-md-row gap-3 justify-content-between align-items-md-center">
+                                    <p class="text-muted small mb-0">
+                                        Vérifiez les informations avant de confirmer le rendez-vous.
+                                    </p>
+                                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                                        <i class="bi bi-check2-circle me-2"></i>Valider le rendez-vous
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        const doctorSelect = document.getElementById('doctor-select');
+        const slotsContainer = document.getElementById('slots-container');
+        const slotButtonsDiv = document.getElementById('slot-buttons');
+        const doctorScheduleContainer = document.getElementById('doctor-schedule-container');
+        const scheduleGrid = document.getElementById('schedule-grid');
+        const doctorSummary = document.getElementById('doctor-summary');
+        const appointmentForm = document.getElementById('appointment-form');
+        const patientLookupStatus = document.getElementById('patient-lookup-status');
+        const patientLookupUrl = "{% url 'patients:patient_lookup' %}";
+        const availableSlotsUrl = "{% url 'patients:get_available_slots' %}";
+        const dateInput = document.getElementById('{{ appointment_form.date.id_for_label }}');
+        const timeInput = document.getElementById('{{ appointment_form.time.id_for_label }}');
+
+        const patientFields = {
+            contact: document.getElementById('{{ patient_form.contact.id_for_label }}'),
+            email: document.getElementById('{{ patient_form.email.id_for_label }}'),
+            name: document.getElementById('{{ patient_form.name.id_for_label }}'),
+            first_name: document.getElementById('{{ patient_form.first_name.id_for_label }}'),
+            last_name: document.getElementById('{{ patient_form.last_name.id_for_label }}'),
+            adress: document.getElementById('{{ patient_form.adress.id_for_label }}'),
+            sexe: document.getElementById('{{ patient_form.sexe.id_for_label }}'),
+            tutor: document.getElementById('{{ patient_form.tutor.id_for_label }}'),
+            tutor_contact: document.getElementById('{{ patient_form.tutor_contact.id_for_label }}'),
+            tutor_adress: document.getElementById('{{ patient_form.tutor_adress.id_for_label }}'),
+        };
+
+        let lookupTimer = null;
+        let lookupRequestId = 0;
+        let lastMatchedPatientId = null;
+
+        function setPatientStatus(type, message) {
+            if (!patientLookupStatus) {
+                return;
+            }
+
+            if (!message) {
+                patientLookupStatus.className = 'alert alert-info d-none mb-3';
+                patientLookupStatus.textContent = '';
+                return;
+            }
+
+            patientLookupStatus.className = `alert alert-${type} mb-3`;
+            patientLookupStatus.textContent = message;
+        }
+
+        function fillPatientFields(patient) {
+            if (patientFields.contact) patientFields.contact.value = patient.contact || '';
+            if (patientFields.email) patientFields.email.value = patient.email || '';
+            if (patientFields.name) patientFields.name.value = patient.name || '';
+            if (patientFields.first_name) patientFields.first_name.value = patient.first_name || '';
+            if (patientFields.last_name) patientFields.last_name.value = patient.last_name || '';
+            if (patientFields.adress) patientFields.adress.value = patient.adress || '';
+            if (patientFields.sexe) patientFields.sexe.value = patient.sexe || '';
+            if (patientFields.tutor) patientFields.tutor.value = patient.tutor || '';
+            if (patientFields.tutor_contact) patientFields.tutor_contact.value = patient.tutor_contact || '';
+            if (patientFields.tutor_adress) patientFields.tutor_adress.value = patient.tutor_adress || '';
+        }
+
+        function clearAutoFilledPatientFields() {
+            if (patientFields.adress) patientFields.adress.value = '';
+            if (patientFields.sexe) patientFields.sexe.value = '';
+            if (patientFields.tutor) patientFields.tutor.value = '';
+            if (patientFields.tutor_contact) patientFields.tutor_contact.value = '';
+            if (patientFields.tutor_adress) patientFields.tutor_adress.value = '';
+        }
+
+        function canLookupPatient() {
+            const contact = patientFields.contact ? patientFields.contact.value.trim() : '';
+            const email = patientFields.email ? patientFields.email.value.trim() : '';
+            const name = patientFields.name ? patientFields.name.value.trim() : '';
+            const firstName = patientFields.first_name ? patientFields.first_name.value.trim() : '';
+            const lastName = patientFields.last_name ? patientFields.last_name.value.trim() : '';
+
+            return Boolean(
+                contact ||
+                email ||
+                (name && firstName && lastName) ||
+                (name && firstName)
+            );
+        }
+
+        function clearDoctorDisplay() {
+            if (doctorSummary) {
+                doctorSummary.classList.add('d-none');
+                doctorSummary.innerHTML = '';
+            }
+
+            if (doctorScheduleContainer) {
+                doctorScheduleContainer.classList.add('d-none');
+            }
+
+            if (scheduleGrid) {
+                scheduleGrid.innerHTML = '';
+            }
+
+            if (slotsContainer) {
+                slotsContainer.classList.add('d-none');
+            }
+
+            if (slotButtonsDiv) {
+                slotButtonsDiv.innerHTML = '';
+            }
+
+            dateInput.value = '';
+            timeInput.value = '';
+        }
+
+        function formatDoctorName(doctor) {
+            if (!doctor) {
+                return '';
+            }
+
+            const parts = [doctor.name, doctor.specialty].filter(Boolean);
+            return parts.length ? parts.join(' — ') : 'Médecin sélectionné';
+        }
+
+        function formatScheduleDate(dateValue) {
+            try {
+                return new Date(`${dateValue}T00:00:00`).toLocaleDateString('fr-FR', {
+                    weekday: 'long',
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                });
+            } catch (error) {
+                return dateValue;
+            }
+        }
+
+        function renderDoctorSummary(doctor) {
+            if (!doctorSummary) {
+                return;
+            }
+
+            if (!doctor) {
+                doctorSummary.classList.add('d-none');
+                doctorSummary.innerHTML = '';
+                return;
+            }
+
+            doctorSummary.classList.remove('d-none');
+            doctorSummary.innerHTML = `
+                <div class="d-flex align-items-start gap-3">
+                    <div class="flex-shrink-0 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center"
+                         style="width: 2.5rem; height: 2.5rem;">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    <div>
+                        <p class="mb-1 fw-semibold text-primary">Médecin sélectionné</p>
+                        <h4 class="h6 mb-1">${formatDoctorName(doctor)}</h4>
+                        <p class="mb-0 small text-muted">Le planning et les créneaux libres sont affichés ci-dessous.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSchedule(scheduleDays) {
+            if (!scheduleGrid || !doctorScheduleContainer) {
+                return;
+            }
+
+            scheduleGrid.innerHTML = '';
+
+            if (!scheduleDays || !scheduleDays.length) {
+                doctorScheduleContainer.classList.add('d-none');
+                return;
+            }
+
+            scheduleDays.forEach((day) => {
+                const card = document.createElement('div');
+                card.className = `schedule-day-card ${day.has_service ? '' : 'schedule-day-card--empty'}`;
+
+                const slotsMarkup = day.slots && day.slots.length
+                    ? day.slots.map((slot) => `
+                        <span class="schedule-slot ${slot.available ? 'schedule-slot--free' : 'schedule-slot--busy'}">
+                            ${slot.time}
+                        </span>
+                    `).join('')
+                    : '<p class="schedule-day-empty">Aucun créneau défini ce jour.</p>';
+
+                const serviceInfo = day.services && day.services.length
+                    ? day.services.map((service) => `${service.open_time} - ${service.close_time}`).join(' • ')
+                    : 'Pas de service';
+
+                card.innerHTML = `
+                    <div class="schedule-day-header">
+                        <div>
+                            <h4 class="schedule-day-title">${day.day}</h4>
+                            <p class="schedule-day-meta">${formatScheduleDate(day.date)}</p>
+                        </div>
+                        <span class="badge ${day.has_service ? 'text-bg-primary' : 'text-bg-secondary'}">
+                            ${day.has_service ? 'Service' : 'Repos'}
+                        </span>
+                    </div>
+                    <p class="schedule-day-meta mb-2">${serviceInfo}</p>
+                    <div class="schedule-slots">
+                        ${slotsMarkup}
+                    </div>
+                `;
+
+                scheduleGrid.appendChild(card);
+            });
+
+            doctorScheduleContainer.classList.remove('d-none');
+        }
+
+        async function lookupPatient() {
+            if (!canLookupPatient()) {
+                setPatientStatus(null, '');
+                return;
+            }
+
+            const params = new URLSearchParams();
+            if (patientFields.contact && patientFields.contact.value.trim()) params.append('contact', patientFields.contact.value.trim());
+            if (patientFields.email && patientFields.email.value.trim()) params.append('email', patientFields.email.value.trim());
+            if (patientFields.name && patientFields.name.value.trim()) params.append('name', patientFields.name.value.trim());
+            if (patientFields.first_name && patientFields.first_name.value.trim()) params.append('first_name', patientFields.first_name.value.trim());
+            if (patientFields.last_name && patientFields.last_name.value.trim()) params.append('last_name', patientFields.last_name.value.trim());
+
+            const currentRequestId = ++lookupRequestId;
+
+            try {
+                const response = await fetch(`${patientLookupUrl}?${params.toString()}`, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                });
+
+                const data = await response.json();
+
+                if (currentRequestId !== lookupRequestId) {
+                    return;
+                }
+
+                if (data.found && data.patient) {
+                    lastMatchedPatientId = data.patient.id;
+                    fillPatientFields(data.patient);
+                    setPatientStatus('success', 'Patient existant trouvé. Les informations ont été préremplies.');
+                } else {
+                    if (lastMatchedPatientId !== null) {
+                        clearAutoFilledPatientFields();
+                    }
+                    lastMatchedPatientId = null;
+                    setPatientStatus('info', 'Aucun patient trouvé. Complétez le formulaire pour un nouveau dossier.');
+                }
+            } catch (error) {
+                if (currentRequestId !== lookupRequestId) {
+                    return;
+                }
+
+                console.error('Erreur patient lookup:', error);
+                setPatientStatus('warning', 'Impossible de vérifier le dossier patient pour le moment.');
+            }
+        }
+
+        function schedulePatientLookup() {
+            clearTimeout(lookupTimer);
+            lookupTimer = window.setTimeout(lookupPatient, 450);
+        }
+
+        ['contact', 'email', 'name', 'first_name', 'last_name'].forEach((fieldName) => {
+            const field = patientFields[fieldName];
+            if (field) {
+                field.addEventListener('input', schedulePatientLookup);
+                field.addEventListener('blur', lookupPatient);
+            }
+        });
+
+        doctorSelect.addEventListener('change', function() {
+            const staffId = this.value;
+            if (!staffId) {
+                clearDoctorDisplay();
+                return;
+            }
+
+            const today = new Date();
+            const startDate = today.toISOString().split('T')[0];
+            const end = new Date(today);
+            end.setDate(today.getDate() + 7);
+            const endDate = end.toISOString().split('T')[0];
+
+            fetch(`${availableSlotsUrl}?staff_id=${staffId}&start_date=${startDate}&end_date=${endDate}`)
+                .then(response => response.json())
+                .then(data => {
+                    slotButtonsDiv.innerHTML = '';
+                    dateInput.value = '';
+                    timeInput.value = '';
+
+                    renderDoctorSummary(data.doctor || null);
+                    renderSchedule(data.schedule || []);
+
+                    if (data.slots && data.slots.length > 0) {
+                        data.slots.forEach(slot => {
+                            const btn = document.createElement('button');
+                            btn.type = 'button';
+                            btn.classList.add('slot-btn');
+                            btn.textContent = `${slot.date} à ${slot.time}`;
+                            btn.dataset.date = slot.date;
+                            btn.dataset.time = slot.time;
+
+                            btn.addEventListener('click', function() {
+                                document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+                                this.classList.add('selected');
+                                dateInput.value = this.dataset.date;
+                                timeInput.value = this.dataset.time;
+                            });
+
+                            slotButtonsDiv.appendChild(btn);
+                        });
+                    } else {
+                        slotButtonsDiv.innerHTML = '<p class="slot-empty-message">Aucun créneau libre pour ce médecin sur les 7 prochains jours.</p>';
+                    }
+
+                    slotsContainer.classList.remove('d-none');
+                    if (!data.schedule || !data.schedule.length) {
+                        doctorScheduleContainer.classList.add('d-none');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    renderDoctorSummary(null);
+                    if (scheduleGrid) {
+                        scheduleGrid.innerHTML = '<p class="schedule-day-empty">Erreur lors du chargement de l’emploi du temps.</p>';
+                    }
+                    doctorScheduleContainer.classList.remove('d-none');
+                    slotButtonsDiv.innerHTML = '<p class="slot-empty-message text-danger">Erreur lors du chargement des disponibilités.</p>';
+                    slotsContainer.classList.remove('d-none');
+                });
+        });
+
+        appointmentForm.addEventListener('submit', function(e) {
+            if (!dateInput.value || !timeInput.value) {
+                e.preventDefault();
+                alert('Veuillez sélectionner un créneau horaire.');
+            }
+        });
+    </script>
+{% endblock %}

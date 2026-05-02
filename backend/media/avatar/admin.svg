@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" rx="36" fill="#0f766e"/>
+  <circle cx="200" cy="150" r="72" fill="rgba(255,255,255,0.92)"/>
+  <path d="M90 338c18-62 68-98 110-98s92 36 110 98" fill="rgba(255,255,255,0.92)"/>
+  <text x="200" y="380" text-anchor="middle" fill="#ffffff" font-size="36" font-family="Arial, sans-serif" font-weight="700">AD</text>
+</svg>
