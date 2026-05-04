@@ -743,10 +743,27 @@
                     button.className = 'slot-btn';
                     button.dataset.date = String(slot.date);
                     button.dataset.time = String(slot.time);
+                    button.dataset.available = slot.available !== false;
                     button.textContent = slot.date + ' ' + slot.time;
+                    
+                    // ⚡ Désactiver les slots occupés
+                    if (slot.available === false) {
+                        button.classList.add('disabled');
+                        button.disabled = true;
+                        button.title = 'Ce créneau est déjà pris';
+                        button.style.opacity = '0.5';
+                        button.style.cursor = 'not-allowed';
+                    }
 
                     const clickHandler = function (e) {
                         e.preventDefault();
+                        
+                        // ⚡ Double vérification: ne pas permettre la sélection de slots occupés
+                        if (button.dataset.available === 'false' || button.disabled) {
+                            console.warn('Tentative de sélection d\'un créneau occupé');
+                            return;
+                        }
+                        
                         if (elements.appointmentDate) elements.appointmentDate.value = String(slot.date);
                         if (elements.appointmentTime) elements.appointmentTime.value = String(slot.time);
                         if (elements.selectedSlotText) {
@@ -763,8 +780,12 @@
                         button.classList.add('selected');
                     };
 
-                    button.addEventListener('click', clickHandler);
-                    state.slotEventListeners.set(button, clickHandler);
+                    // ⚡ N'ajouter l'écouteur que pour les slots disponibles
+                    if (button.dataset.available !== 'false') {
+                        button.addEventListener('click', clickHandler);
+                        state.slotEventListeners.set(button, clickHandler);
+                    }
+                    
                     fragment.appendChild(button);
                 });
 

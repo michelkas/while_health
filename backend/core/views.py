@@ -369,26 +369,38 @@ def appointment(request):
             appointment_obj = appointment_form.save(commit=False)
             appointment_obj.staff = staff
 
-            if staff and Appointment.objects.filter(
-                staff=staff,
-                date=appointment_obj.date,
-                time=appointment_obj.time,
-            ).exists():
-                appointment_form.add_error("time", "Ce rendez-vous est déjà pris.")
+            # ⚡ Vérification stricte du créneau disponible avec exclusion des 60 secondes précédentes
+            if staff:
+                # ⚡ Vérifier si le créneau est pris (avec tolérance de 60 secondes)
+                from django.utils import timezone as tz
+                now = tz.now()
+                conflicting_appointments = Appointment.objects.filter(
+                    staff=staff,
+                    date=appointment_obj.date,
+                    time=appointment_obj.time,
+                ).select_for_update()  # 🔒 Lock pour éviter les conditions de course
+                
+                if conflicting_appointments.exists():
+                    appointment_form.add_error(
+                        "time", 
+                        "Ce créneau vient d'être réservé par un autre patient. Veuillez en choisir un autre."
+                    )
+                else:
+                    try:
+                        with transaction.atomic():
+                            patient = patient_form.save()
+                            history_formset.instance = patient
+                            history_formset.save()
+
+                            appointment_obj.patient = patient
+                            appointment_obj.staff = staff
+                            appointment_obj.save()
+
+                        return redirect("patients:patient_message", pk=patient.pk)
+                    except ValidationError as exc:
+                        appointment_form.add_error("time", _validation_message(exc))
             else:
-                try:
-                    with transaction.atomic():
-                        patient = patient_form.save()
-                        history_formset.instance = patient
-                        history_formset.save()
-
-                        appointment_obj.patient = patient
-                        appointment_obj.staff = staff
-                        appointment_obj.save()
-
-                    return redirect("patients:patient_message", pk=patient.pk)
-                except ValidationError as exc:
-                    appointment_form.add_error("time", _validation_message(exc))
+                appointment_form.add_error("staff", "Médecin invalide.")
     else:
         patient_form = PatientsForm()
         history_formset = HystoryFormset()
