@@ -25,7 +25,10 @@ def staff_profile_detail(request, staff_id):
     """
     Vue de détail pour le profil d'un membre du personnel.
     Affiche toutes les informations sur un membre du personnel médical ou administratif.
+    Automatically displays schedule for appointment booking (public - no login required).
     """
+    from django.urls import reverse
+    
     staff = get_object_or_404(Staff, pk=staff_id)
     
     # Récupérer les services liés au département du staff
@@ -39,6 +42,7 @@ def staff_profile_detail(request, staff_id):
         "staff": staff,
         "related_services": related_services,
         "page_title": f"Dr. {staff.user.get_full_name()} - While Health",
+        "available_slots_url": reverse("patients:get_available_slots"),
     }
     return render(request, 'staff/staff_profile_detail.html', context)
 

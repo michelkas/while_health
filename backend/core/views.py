@@ -10,7 +10,8 @@ from django.db.models import Q, Count, F
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.csrf import csrf_protect
 from django.core.cache import cache
 
 from appointment.forms import AppointmentForm
@@ -46,7 +47,6 @@ def _validation_message(error):
 def _find_existing_patient(data):
     contact = _normalize(data.get("contact"))
     email = _normalize(data.get("email"))
-    name = _normalize(data.get("name"))
     first_name = _normalize(data.get("first_name"))
     last_name = _normalize(data.get("last_name"))
 
@@ -60,19 +60,10 @@ def _find_existing_patient(data):
         if patient:
             return patient
 
-    if name and first_name and last_name:
+    if first_name and last_name:
         patient = Patients.objects.filter(
-            name__iexact=name,
             first_name__iexact=first_name,
             last_name__iexact=last_name,
-        ).first()
-        if patient:
-            return patient
-
-    if name and first_name:
-        patient = Patients.objects.filter(
-            name__iexact=name,
-            first_name__iexact=first_name,
         ).first()
         if patient:
             return patient
@@ -83,7 +74,6 @@ def _find_existing_patient(data):
 def _serialize_patient(patient):
     return {
         "id": patient.pk,
-        "name": patient.name or "",
         "first_name": patient.first_name or "",
         "last_name": patient.last_name or "",
         "contact": str(patient.contact or ""),
@@ -114,7 +104,7 @@ def register(request):
             user = form.save()
             auth_login(request, user)
             messages.success(request, f"Bienvenue {user.username} ! Votre compte a été créé avec succès.")
-            return redirect("profile")
+            return redirect("admin:index")
     else:
         form = RegistrationForm()
 
@@ -131,7 +121,7 @@ def login(request):
             user = form.get_user()
             auth_login(request, user)
             messages.success(request, f"Bon retour {user.username} !")
-            return redirect("profile")
+            return redirect("admin:index")
         messages.error(request, "Nom d'utilisateur ou mot de passe incorrect.")
     else:
         form = LoginForm()
@@ -414,31 +404,31 @@ def appointment(request):
     return render(request, "patients/appointment.html", context)
 
 
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_protect
-
-
-
-
 @csrf_protect
+@require_POST
 def patient_lookup(request):
-    """✅ SECURED: POST only + CSRF protection + login required"""
-    patient = _find_existing_patient(request.POST)
+    """✅ SECURED: POST only + CSRF protection"""
+    data = request.POST.dict()
+    if request.content_type == "application/json":
+        try:
+            import json
+            data = json.loads(request.body.decode("utf-8")) if request.body else {}
+        except Exception:
+            data = {}
+
+    patient = _find_existing_patient(data)
 
     if not patient:
         return JsonResponse({"found": False})
 
-    # ✅ SECURITY: Return only minimal safe data (no email, address, etc.)
     return JsonResponse({
         "found": True,
-        "patient": _serialize_patient_minimal(patient),
+        "patient": _serialize_patient(patient),
     })
 
 
-
-
 def get_available_slots(request):
-    """✅ SECURED: Login required. PERFORMANCE: select_related for staff + user"""
+    """✅ SECURED: Login required. PERFORMANCE: Optimized slot generation + extended cache"""
     staff_id = request.GET.get("staff_id")
     start_date_str = request.GET.get("start_date")
     end_date_str = request.GET.get("end_date")
@@ -453,38 +443,62 @@ def get_available_slots(request):
         return JsonResponse({"error": "Medecin introuvable."}, status=404)
 
     if start_date_str and end_date_str:
-        start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
-        end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+        try:
+            start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
+            end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+        except ValueError:
+            return JsonResponse({"error": "Format de date invalide."}, status=400)
     else:
         start_date = datetime.now().date()
+        end_date = start_date + timedelta(days=7)  # ⚡ Limiter à 7 jours max
+
+    # ⚡ Limiter la plage de dates
+    if (end_date - start_date).days > 7:
         end_date = start_date + timedelta(days=7)
 
-    # ✅ PERFORMANCE: Optimize query with only() to fetch fewer columns
-    time_service = TimeService.objects.filter(staff=staff).only(
-        'id', 'staff_id', 'service_day', 'open_time', 'close_time'
-    ).order_by("service_day", "open_time")
+    # Cache key
+    cache_key = f"available_slots_{staff_id}_{start_date}_{end_date}"
+    cached_data = cache.get(cache_key)
+    if cached_data:
+        return JsonResponse(cached_data)
 
+    # ✅ PERFORMANCE: Optimize query with only() to fetch fewer columns
+    time_service = list(TimeService.objects.filter(staff=staff).only(
+        'id', 'staff_id', 'service_day', 'open_time', 'close_time'
+    ).order_by("service_day", "open_time"))
+
+    # ✅ PERFORMANCE: Single query for appointments
     existing_appointments = Appointment.objects.filter(
         staff=staff,
         date__range=[start_date, end_date],
     ).values_list("date", "time")
 
-    busy_slots = set()
-    for appointment_date, appointment_time in existing_appointments:
-        busy_slots.add((appointment_date.isoformat(), appointment_time.strftime("%H:%M")))
+    busy_slots = {(str(app_date), str(app_time)) for app_date, app_time in existing_appointments}
 
     available_slots = []
     schedule_days = []
     current_date = start_date
 
+    # ⚡ Pre-compute slot times per service
+    def generate_slot_times(open_time, close_time):
+        """⚡ Optimized slot generation"""
+        slots = []
+        current = datetime.combine(datetime.now().date(), open_time)
+        end = datetime.combine(datetime.now().date(), close_time)
+        while current < end:
+            slots.append(current.time())
+            current += timedelta(minutes=30)
+        return slots
+
     while current_date <= end_date:
         day_name = get_french_weekday(current_date)
-        day_services = list(time_service.filter(service_day=day_name).order_by("open_time"))
+        day_services = [s for s in time_service if s.service_day == day_name]
         day_slots = []
 
         for ts in day_services:
-            slot_time = ts.open_time
-            while slot_time < ts.close_time:
+            # ⚡ Pre-compute slots
+            slot_times = generate_slot_times(ts.open_time, ts.close_time)
+            for slot_time in slot_times:
                 slot_time_str = slot_time.strftime("%H:%M")
                 slot_key = (current_date.isoformat(), slot_time_str)
                 is_available = slot_key not in busy_slots
@@ -502,8 +516,6 @@ def get_available_slots(request):
                         "time": slot_time_str,
                     })
 
-                slot_time = (datetime.combine(current_date, slot_time) + timedelta(minutes=30)).time()
-
         schedule_days.append({
             "day": day_name,
             "date": current_date.isoformat(),
@@ -520,15 +532,20 @@ def get_available_slots(request):
 
         current_date += timedelta(days=1)
 
-    return JsonResponse({
+    data = {
         "doctor": {
             "id": staff.pk,
             "name": staff.user.get_full_name(),
             "specialty": staff.get_specialty_display() if staff.specialty else "",
         },
-        "slots": available_slots,
+        "slots": available_slots[:100],  # ⚡ Limiter à 100 slots
         "schedule": schedule_days,
-    })
+    }
+
+    # ⚡ Cache pour 1 heure (3600s) au lieu de 5 minutes
+    cache.set(cache_key, data, 3600)
+
+    return JsonResponse(data)
 
 
 from django.db.models import Prefetch

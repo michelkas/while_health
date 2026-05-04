@@ -3657,3 +3657,1184 @@ INFO 2026-05-02 10:40:34,009 log 19651 123182581282496 "GET /register/ HTTP/1.1"
 INFO 2026-05-02 10:40:59,705 log 19651 123182581282496 "GET /register/ HTTP/1.1" 200 10038
 INFO 2026-05-02 10:41:01,294 log 19651 123182581282496 "GET /register/ HTTP/1.1" 200 10038
 INFO 2026-05-02 10:41:02,105 log 19651 123182581282496 "GET /register/ HTTP/1.1" 200 10038
+INFO 2026-05-02 10:57:44,359 autoreload 28861 124812214982464 Watching for file changes with StatReloader
+INFO 2026-05-02 10:57:53,152 autoreload 28917 133624737855296 Watching for file changes with StatReloader
+INFO 2026-05-02 10:57:59,173 log 28917 133624544360128 "GET / HTTP/1.1" 200 23480
+INFO 2026-05-02 10:57:59,268 log 28917 133624544360128 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 10:57:59,274 log 28917 133624510789312 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 10:57:59,278 log 28917 133624535967424 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 10:57:59,280 log 28917 133624502396608 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 10:57:59,283 log 28917 133624519182016 "GET /static/css/style.css HTTP/1.1" 200 20187
+INFO 2026-05-02 10:57:59,284 log 28917 133624150095552 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 10:57:59,301 log 28917 133624502396608 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:57:59,303 log 28917 133624150095552 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 10:57:59,308 log 28917 133624519182016 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 10:57:59,310 log 28917 133624535967424 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 10:57:59,311 log 28917 133624510789312 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 10:57:59,318 log 28917 133624544360128 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+WARNING 2026-05-02 10:57:59,513 log 28917 133624510789312 "GET /favicon.ico HTTP/1.1" 404 7499
+INFO 2026-05-02 10:58:12,473 log 28917 133624510789312 "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-05-02 10:58:12,503 log 28917 133624510789312 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3199
+INFO 2026-05-02 10:58:12,593 log 28917 133624519182016 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:12,595 log 28917 133624510789312 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:12,597 log 28917 133624150095552 "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:12,598 log 28917 133624502396608 "GET /static/logo.jpg HTTP/1.1" 200 36022
+INFO 2026-05-02 10:58:12,598 log 28917 133624544360128 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:12,603 log 28917 133624535967424 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 200 232244
+INFO 2026-05-02 10:58:12,610 log 28917 133624544360128 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:12,611 log 28917 133624150095552 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:12,717 log 28917 133624150095552 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:28,091 log 28917 133624150095552 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-05-02 10:58:28,167 log 28917 133624150095552 "GET /admin/ HTTP/1.1" 200 43505
+INFO 2026-05-02 10:58:28,211 log 28917 133624150095552 "GET /static/logo.jpg HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:28,212 log 28917 133624544360128 "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:58:28,265 log 28917 133624150095552 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,807 log 28917 133624150095552 "GET /admin/ HTTP/1.1" 200 43505
+INFO 2026-05-02 10:59:23,874 log 28917 133624544360128 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,875 log 28917 133624535967424 "GET /static/logo.jpg HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,877 log 28917 133624519182016 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,877 log 28917 133624510789312 "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,882 log 28917 133624150095552 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,883 log 28917 133624502396608 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:23,898 log 28917 133624502396608 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+INFO 2026-05-02 10:59:36,373 autoreload 28917 133624737855296 /code/projets/while_health/backend/config/settings.py changed, reloading.
+INFO 2026-05-02 10:59:38,277 autoreload 29580 130672101746496 Watching for file changes with StatReloader
+INFO 2026-05-02 11:00:11,690 autoreload 29580 130672101746496 /code/projets/while_health/backend/config/settings.py changed, reloading.
+INFO 2026-05-02 11:00:13,253 autoreload 29886 126945785677632 Watching for file changes with StatReloader
+INFO 2026-05-02 11:00:16,374 log 29886 126945593390784 "GET /admin/ HTTP/1.1" 200 44347
+INFO 2026-05-02 11:00:16,437 log 29886 126945568212672 "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:16,437 log 29886 126945584998080 "GET /static/logo.jpg HTTP/1.1" 304 0
+WARNING 2026-05-02 11:00:16,439 log 29886 126945593390784 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:18,326 log 29886 126945584998080 "GET /admin/ HTTP/1.1" 200 44347
+WARNING 2026-05-02 11:00:18,380 log 29886 126945584998080 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:19,106 log 29886 126945568212672 "GET /admin/ HTTP/1.1" 200 44347
+WARNING 2026-05-02 11:00:19,164 log 29886 126945568212672 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:19,338 log 29886 126945584998080 "GET /admin/ HTTP/1.1" 200 44347
+WARNING 2026-05-02 11:00:19,389 log 29886 126945584998080 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:19,515 log 29886 126945568212672 "GET /admin/ HTTP/1.1" 200 44347
+WARNING 2026-05-02 11:00:19,562 log 29886 126945568212672 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:25,995 log 29886 126945584998080 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2026-05-02 11:00:26,022 log 29886 126945584998080 "GET /login/ HTTP/1.1" 200 5080
+WARNING 2026-05-02 11:00:26,114 log 29886 126945584998080 "GET /css/adminlte.css HTTP/1.1" 404 7514
+WARNING 2026-05-02 11:00:26,150 log 29886 126945584998080 "GET /css/adminlte.css HTTP/1.1" 404 7514
+INFO 2026-05-02 11:00:32,503 log 29886 126945584998080 "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-05-02 11:00:32,529 log 29886 126945584998080 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4049
+INFO 2026-05-02 11:00:32,586 log 29886 126945584998080 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:32,590 log 29886 126945568212672 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:32,645 log 29886 126945584998080 "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+WARNING 2026-05-02 11:00:32,669 log 29886 126945568212672 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:32,687 log 29886 126945593390784 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:32,688 log 29886 126945568212672 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:32,698 log 29886 126945568212672 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:32,815 log 29886 126945568212672 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+INFO 2026-05-02 11:00:49,871 log 29886 126945568212672 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4049
+INFO 2026-05-02 11:00:49,953 log 29886 126945559819968 "GET /static/jazzmin/css/main.css HTTP/1.1" 200 14372
+WARNING 2026-05-02 11:00:49,958 log 29886 126945207514816 "GET /static/%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.sidebar-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 3357
+INFO 2026-05-02 11:00:49,968 log 29886 126945559819968 "GET /static/logo.jpg HTTP/1.1" 200 36022
+INFO 2026-05-02 11:00:49,976 log 29886 126945568212672 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103010
+INFO 2026-05-02 11:00:49,985 log 29886 126945584998080 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 200 232244
+INFO 2026-05-02 11:00:49,990 log 29886 126945568212672 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 18270
+INFO 2026-05-02 11:00:49,991 log 29886 126945207514816 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 80721
+INFO 2026-05-02 11:00:49,996 log 29886 126945593390784 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 298755
+INFO 2026-05-02 11:00:49,999 log 29886 126945199122112 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-05-02 11:00:50,488 log 29886 126945593390784 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+INFO 2026-05-02 11:02:51,635 autoreload 29886 126945785677632 /code/projets/while_health/backend/config/settings.py changed, reloading.
+INFO 2026-05-02 11:02:53,709 autoreload 31041 136514837804864 Watching for file changes with StatReloader
+INFO 2026-05-02 11:03:46,757 autoreload 31536 137583190513472 Watching for file changes with StatReloader
+INFO 2026-05-02 11:03:51,756 autoreload 31041 136514837804864 /code/projets/while_health/backend/config/settings.py changed, reloading.
+INFO 2026-05-02 11:03:53,288 autoreload 31614 131186301835072 Watching for file changes with StatReloader
+INFO 2026-05-02 11:04:53,330 autoreload 32193 129287901296448 Watching for file changes with StatReloader
+INFO 2026-05-02 11:05:27,072 log 32193 129287709521600 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+INFO 2026-05-02 11:05:27,118 log 32193 129287701128896 "GET /static/logo.jpg HTTP/1.1" 304 0
+WARNING 2026-05-02 11:05:27,132 log 32193 129287709521600 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:28,104 log 32193 129287701128896 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:28,156 log 32193 129287701128896 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:28,337 log 32193 129287709521600 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:28,386 log 32193 129287709521600 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:28,746 log 32193 129287701128896 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:28,802 log 32193 129287701128896 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:29,020 log 32193 129287709521600 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:29,067 log 32193 129287709521600 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:29,453 log 32193 129287701128896 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:29,508 log 32193 129287701128896 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:30,184 log 32193 129287709521600 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:30,225 log 32193 129287709521600 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:30,719 log 32193 129287701128896 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:30,768 log 32193 129287701128896 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:31,007 log 32193 129287709521600 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4955
+WARNING 2026-05-02 11:05:31,056 log 32193 129287709521600 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:05:36,643 log 32193 129287701128896 "GET / HTTP/1.1" 200 23480
+INFO 2026-05-02 11:05:36,734 log 32193 129287675950784 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:05:36,736 log 32193 129287659165376 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:05:36,737 log 32193 129287667558080 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:05:36,740 log 32193 129287709521600 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:05:36,742 log 32193 129287684343488 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:05:36,743 log 32193 129287701128896 "GET /static/css/style.css HTTP/1.1" 200 20187
+INFO 2026-05-02 11:05:36,764 log 32193 129287659165376 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:05:36,766 log 32193 129287667558080 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:05:36,768 log 32193 129287684343488 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:05:36,772 log 32193 129287709521600 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:05:36,774 log 32193 129287675950784 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:05:37,184 log 32193 129287675950784 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 11:05:39,479 log 32193 129287675950784 "GET /login/ HTTP/1.1" 200 5080
+WARNING 2026-05-02 11:05:39,528 log 32193 129287675950784 "GET /css/adminlte.css HTTP/1.1" 404 7514
+INFO 2026-05-02 11:05:51,361 log 32193 129287675950784 "POST /login/ HTTP/1.1" 302 0
+ERROR 2026-05-02 11:05:51,605 log 32193 129287675950784 Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 168, in profile
+    return render(request, "core/profile.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/profile.html
+ERROR 2026-05-02 11:05:51,616 log 32193 129287675950784 "GET /profile/ HTTP/1.1" 500 124798
+INFO 2026-05-02 11:20:05,379 autoreload 32193 129287901296448 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-02 11:20:07,136 autoreload 37830 136870980486976 Watching for file changes with StatReloader
+ERROR 2026-05-02 11:20:20,261 log 37830 136870788855488 Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 168, in profile
+    return render(request, "core/profile.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/profile.html
+ERROR 2026-05-02 11:20:20,267 log 37830 136870788855488 "GET /profile/ HTTP/1.1" 500 124798
+INFO 2026-05-02 11:20:21,941 log 37830 136870788855488 "GET /login/ HTTP/1.1" 302 0
+INFO 2026-05-02 11:20:22,796 log 37830 136870788855488 "GET / HTTP/1.1" 200 23485
+ERROR 2026-05-02 11:20:25,408 log 37830 136870788855488 Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 168, in profile
+    return render(request, "core/profile.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/profile.html
+ERROR 2026-05-02 11:20:25,411 log 37830 136870788855488 "GET /profile/ HTTP/1.1" 500 124655
+INFO 2026-05-02 11:21:07,355 autoreload 37830 136870980486976 /code/projets/while_health/backend/core/urls.py changed, reloading.
+INFO 2026-05-02 11:21:08,981 autoreload 38325 137026464507712 Watching for file changes with StatReloader
+INFO 2026-05-02 11:21:39,327 autoreload 38325 137026464507712 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-02 11:21:40,659 autoreload 38576 132482201728832 Watching for file changes with StatReloader
+INFO 2026-05-02 11:21:52,906 log 38576 132482011756224 "GET /admin/ HTTP/1.1" 200 45698
+WARNING 2026-05-02 11:21:52,960 log 38576 132482011756224 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:21:52,966 log 38576 132482011756224 "GET /static/logo.jpg HTTP/1.1" 304 0
+INFO 2026-05-02 11:21:52,991 log 38576 132482011756224 "GET /static/jazzmin/js/main.js HTTP/1.1" 200 4542
+INFO 2026-05-02 11:21:53,158 log 38576 132482011756224 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+INFO 2026-05-02 11:22:02,264 log 38576 132482011756224 "POST /admin/logout/ HTTP/1.1" 302 0
+ERROR 2026-05-02 11:22:02,457 log 38576 132482011756224 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 139, in login
+    return render(request, "core/login.html", {"form": form})
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2026-05-02 11:22:02,470 log 38576 132482011756224 "GET /login/ HTTP/1.1" 500 155052
+INFO 2026-05-02 11:22:42,948 autoreload 38576 132482201728832 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-02 11:22:44,460 autoreload 39084 140046228965184 Watching for file changes with StatReloader
+INFO 2026-05-02 11:23:45,011 log 39084 140046040561344 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-02 11:23:45,070 log 39084 140046040561344 "GET /css/adminlte.css HTTP/1.1" 404 7255
+WARNING 2026-05-02 11:23:45,154 log 39084 140046040561344 "GET /css/adminlte.css HTTP/1.1" 404 7255
+ERROR 2026-05-02 11:23:55,175 log 39084 140046040561344 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 134, in login
+    return redirect("admin:index")
+           ^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '' not found. '' is not a valid view function or pattern name.
+ERROR 2026-05-02 11:23:55,184 log 39084 140046040561344 "POST /login/ HTTP/1.1" 500 108284
+INFO 2026-05-02 11:26:24,874 autoreload 39084 140046228965184 /code/projets/while_health/backend/core/urls.py changed, reloading.
+INFO 2026-05-02 11:26:26,343 autoreload 40606 137187197740864 Watching for file changes with StatReloader
+INFO 2026-05-02 11:26:29,969 autoreload 40606 137187197740864 /code/projets/while_health/backend/core/urls.py changed, reloading.
+INFO 2026-05-02 11:26:31,399 autoreload 40669 138083421026112 Watching for file changes with StatReloader
+ERROR 2026-05-02 11:27:54,878 log 40669 138083232118464 Internal Server Error: /
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/data/views.py", line 55, in index
+    return render(request, 'index.html',context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2026-05-02 11:27:54,886 log 40669 138083232118464 "GET / HTTP/1.1" 500 240904
+INFO 2026-05-02 11:29:13,930 autoreload 40669 138083421026112 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-02 11:29:15,312 autoreload 41710 125399664924480 Watching for file changes with StatReloader
+INFO 2026-05-02 11:30:28,317 log 41710 125399476467392 "GET / HTTP/1.1" 200 23393
+INFO 2026-05-02 11:30:31,313 log 41710 125399476467392 "GET /login/ HTTP/1.1" 200 5361
+WARNING 2026-05-02 11:30:31,369 log 41710 125399476467392 "GET /css/adminlte.css HTTP/1.1" 404 5814
+WARNING 2026-05-02 11:30:31,408 log 41710 125399476467392 "GET /css/adminlte.css HTTP/1.1" 404 5814
+ERROR 2026-05-02 11:30:43,331 log 41710 125399476467392 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 134, in login
+    return redirect("admin")
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin' not found. 'admin' is not a valid view function or pattern name.
+ERROR 2026-05-02 11:30:43,337 log 41710 125399476467392 "POST /login/ HTTP/1.1" 500 108378
+INFO 2026-05-02 11:30:55,706 autoreload 41710 125399664924480 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-02 11:30:57,106 autoreload 42514 135159140403008 Watching for file changes with StatReloader
+WARNING 2026-05-02 11:31:13,180 log 42514 135158950786752 Forbidden (CSRF token from POST incorrect.): /login/
+WARNING 2026-05-02 11:31:13,182 log 42514 135158950786752 "POST /login/ HTTP/1.1" 403 2526
+INFO 2026-05-02 11:31:27,344 log 42514 135158950786752 "GET / HTTP/1.1" 200 23393
+INFO 2026-05-02 11:31:29,092 log 42514 135158950786752 "GET /login/ HTTP/1.1" 200 5361
+WARNING 2026-05-02 11:31:29,149 log 42514 135158950786752 "GET /css/adminlte.css HTTP/1.1" 404 5814
+WARNING 2026-05-02 11:31:29,173 log 42514 135158950786752 "GET /css/adminlte.css HTTP/1.1" 404 5814
+INFO 2026-05-02 11:31:35,715 log 42514 135158950786752 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-05-02 11:31:35,772 log 42514 135158950786752 "GET /admin/ HTTP/1.1" 200 45698
+WARNING 2026-05-02 11:31:35,870 log 42514 135158950786752 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:31:35,881 log 42514 135158942394048 "GET /static/logo.jpg HTTP/1.1" 304 0
+INFO 2026-05-02 11:31:51,709 log 42514 135158942394048 "GET /admin/core/user/ HTTP/1.1" 200 37597
+WARNING 2026-05-02 11:31:51,797 log 42514 135158942394048 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:31:51,814 log 42514 135158845920960 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2026-05-02 11:31:51,821 log 42514 135158829135552 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2026-05-02 11:31:51,821 log 42514 135158837528256 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2026-05-02 11:31:51,825 log 42514 135158950786752 "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 200 16264
+INFO 2026-05-02 11:31:51,840 log 42514 135158845920960 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2026-05-02 11:31:51,842 log 42514 135158837528256 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2026-05-02 11:31:51,843 log 42514 135158820742848 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2026-05-02 11:31:51,843 log 42514 135158829135552 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 558
+INFO 2026-05-02 11:31:51,862 log 42514 135158820742848 "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+INFO 2026-05-02 11:31:51,866 log 42514 135158854313664 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-02 11:31:51,870 log 42514 135158950786752 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2026-05-02 11:31:51,896 log 42514 135158829135552 "GET /static/jazzmin/js/change_list.js HTTP/1.1" 200 2205
+INFO 2026-05-02 11:31:51,928 log 42514 135158820742848 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 645
+INFO 2026-05-02 11:31:55,308 log 42514 135158820742848 "GET /admin/core/user/add/ HTTP/1.1" 200 45033
+WARNING 2026-05-02 11:31:55,373 log 42514 135158820742848 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:31:55,382 log 42514 135158837528256 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2026-05-02 11:31:55,386 log 42514 135158845920960 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2026-05-02 11:31:55,391 log 42514 135158829135552 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-02 11:31:55,402 log 42514 135158845920960 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+INFO 2026-05-02 11:31:55,403 log 42514 135158829135552 "GET /static/jazzmin/js/change_form.js HTTP/1.1" 200 6045
+INFO 2026-05-02 11:32:24,346 log 42514 135158829135552 "GET / HTTP/1.1" 200 23478
+WARNING 2026-05-02 11:32:55,195 log 42514 135158829135552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+ERROR 2026-05-02 11:37:48,972 log 42514 135158829135552 Internal Server Error: /
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/data/views.py", line 55, in index
+    return render(request, 'index.html',context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+ERROR 2026-05-02 11:37:48,980 log 42514 135158829135552 "GET / HTTP/1.1" 500 224130
+WARNING 2026-05-02 11:37:49,041 log 42514 135158829135552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:41:16,636 log 42514 135158829135552 "GET / HTTP/1.1" 200 23879
+WARNING 2026-05-02 11:41:16,695 log 42514 135158829135552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:41:59,469 log 42514 135158829135552 "GET / HTTP/1.1" 200 23889
+WARNING 2026-05-02 11:41:59,520 log 42514 135158829135552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:42:08,918 log 42514 135158829135552 "GET / HTTP/1.1" 200 23889
+WARNING 2026-05-02 11:42:08,966 log 42514 135158829135552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:42:15,139 log 42514 135158829135552 "GET / HTTP/1.1" 200 23889
+INFO 2026-05-02 11:42:16,138 log 42514 135158829135552 "GET / HTTP/1.1" 200 23889
+INFO 2026-05-02 11:42:40,854 log 42514 135158829135552 "GET / HTTP/1.1" 200 23893
+INFO 2026-05-02 11:42:42,181 log 42514 135158829135552 "GET / HTTP/1.1" 200 23893
+INFO 2026-05-02 11:42:42,689 log 42514 135158829135552 "GET / HTTP/1.1" 200 23893
+INFO 2026-05-02 11:42:42,917 log 42514 135158829135552 "GET / HTTP/1.1" 200 23893
+INFO 2026-05-02 11:42:55,098 log 42514 135158829135552 "GET / HTTP/1.1" 200 23707
+INFO 2026-05-02 11:42:55,170 log 42514 135158854313664 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:42:55,171 log 42514 135158942394048 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:42:55,172 log 42514 135158845920960 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:42:55,174 log 42514 135158837528256 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:42:55,174 log 42514 135158829135552 "GET /static/css/style.css HTTP/1.1" 200 20187
+INFO 2026-05-02 11:42:55,190 log 42514 135158837528256 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:42:55,195 log 42514 135158942394048 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:42:55,196 log 42514 135158950786752 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:42:55,199 log 42514 135158854313664 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:42:55,201 log 42514 135158845920960 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:42:55,201 log 42514 135158829135552 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:42:55,872 log 42514 135158845920960 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 11:43:01,526 log 42514 135158845920960 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-02 11:43:01,577 log 42514 135158845920960 "GET /css/adminlte.css HTTP/1.1" 404 5814
+WARNING 2026-05-02 11:43:01,616 log 42514 135158845920960 "GET /css/adminlte.css HTTP/1.1" 404 5814
+INFO 2026-05-02 11:43:09,795 log 42514 135158845920960 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-05-02 11:43:09,854 log 42514 135158845920960 "GET /admin/ HTTP/1.1" 200 45698
+WARNING 2026-05-02 11:43:09,959 log 42514 135158837528256 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 11:43:09,963 log 42514 135158942394048 "GET /static/jazzmin/css/main.css HTTP/1.1" 200 14372
+INFO 2026-05-02 11:43:09,965 log 42514 135158950786752 "GET /static/logo.jpg HTTP/1.1" 200 36022
+INFO 2026-05-02 11:43:09,968 log 42514 135158845920960 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103010
+INFO 2026-05-02 11:43:09,980 log 42514 135158950786752 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 18270
+INFO 2026-05-02 11:43:09,982 log 42514 135158829135552 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 298755
+INFO 2026-05-02 11:43:09,984 log 42514 135158942394048 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 80721
+INFO 2026-05-02 11:43:09,990 log 42514 135158854313664 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 200 232244
+INFO 2026-05-02 11:43:09,991 log 42514 135158829135552 "GET /static/jazzmin/js/main.js HTTP/1.1" 200 4542
+INFO 2026-05-02 11:43:09,995 log 42514 135158837528256 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-05-02 11:43:10,320 log 42514 135158942394048 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+INFO 2026-05-02 11:43:10,322 log 42514 135158829135552 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+INFO 2026-05-02 11:43:17,589 log 42514 135158829135552 "GET / HTTP/1.1" 200 23893
+INFO 2026-05-02 11:46:32,867 log 42514 135158829135552 "GET / HTTP/1.1" 200 23893
+INFO 2026-05-02 11:48:30,721 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:31,601 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:31,763 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:31,970 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:32,164 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:32,729 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:50,849 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:51,748 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:51,927 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:48:52,206 log 42514 135158942394048 "GET / HTTP/1.1" 200 23901
+INFO 2026-05-02 11:49:13,883 log 42514 135158942394048 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:49:13,932 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20187
+INFO 2026-05-02 11:49:14,748 log 42514 135158942394048 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:49:14,748 log 42514 135158837528256 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:49:14,763 log 42514 135158837528256 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:49:14,764 log 42514 135158942394048 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:49:14,830 log 42514 135158942394048 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:49:14,831 log 42514 135158837528256 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:49:14,832 log 42514 135158845920960 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:49:14,834 log 42514 135158950786752 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:49:14,846 log 42514 135158845920960 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:49:14,847 log 42514 135158854313664 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:49:14,862 log 42514 135158854313664 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 11:50:31,890 log 42514 135158854313664 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:50:31,947 log 42514 135158854313664 "GET /static/css/style.css HTTP/1.1" 200 20229
+INFO 2026-05-02 11:50:33,135 log 42514 135158854313664 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:50:33,177 log 42514 135158854313664 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:50:33,355 log 42514 135158854313664 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:50:41,028 log 42514 135158854313664 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:50:41,098 log 42514 135158829135552 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:50:41,098 log 42514 135158845920960 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:50:41,099 log 42514 135158837528256 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:50:41,099 log 42514 135158942394048 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:50:41,099 log 42514 135158950786752 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:50:41,102 log 42514 135158854313664 "GET /static/css/style.css HTTP/1.1" 200 20229
+INFO 2026-05-02 11:50:41,117 log 42514 135158950786752 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:50:41,122 log 42514 135158829135552 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:50:41,123 log 42514 135158942394048 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:50:41,124 log 42514 135158845920960 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:50:41,125 log 42514 135158837528256 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:50:41,350 log 42514 135158845920960 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 11:50:44,074 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:50:44,112 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:09,528 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:09,574 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20290
+INFO 2026-05-02 11:51:10,648 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:10,689 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:10,855 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:10,889 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:11,033 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:11,073 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:11,220 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:11,398 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:47,087 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:47,134 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20290
+INFO 2026-05-02 11:51:48,341 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:48,379 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:48,517 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:48,558 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:48,696 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:48,737 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:51:58,373 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:51:58,436 log 42514 135158829135552 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:51:58,438 log 42514 135158942394048 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:51:58,438 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20290
+INFO 2026-05-02 11:51:58,439 log 42514 135158950786752 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:51:58,439 log 42514 135158854313664 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:51:58,440 log 42514 135158837528256 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:51:58,470 log 42514 135158829135552 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:51:58,474 log 42514 135158942394048 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:51:58,474 log 42514 135158950786752 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:51:58,474 log 42514 135158854313664 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:51:58,476 log 42514 135158837528256 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:51:58,832 log 42514 135158837528256 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 11:52:00,640 log 42514 135158837528256 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:52:00,676 log 42514 135158837528256 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:52:41,073 log 42514 135158837528256 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:52:41,122 log 42514 135158837528256 "GET /static/css/style.css HTTP/1.1" 200 20290
+INFO 2026-05-02 11:52:42,418 log 42514 135158837528256 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:52:42,459 log 42514 135158837528256 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:52:52,635 log 42514 135158837528256 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:52:52,694 log 42514 135158950786752 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:52:52,695 log 42514 135158854313664 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:52:52,696 log 42514 135158829135552 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:52:52,699 log 42514 135158942394048 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:52:52,700 log 42514 135158845920960 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:52:52,701 log 42514 135158837528256 "GET /static/css/style.css HTTP/1.1" 200 20290
+INFO 2026-05-02 11:52:52,720 log 42514 135158829135552 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:52:52,721 log 42514 135158942394048 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:52:52,724 log 42514 135158845920960 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:52:52,724 log 42514 135158950786752 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:52:52,725 log 42514 135158854313664 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:52:53,081 log 42514 135158845920960 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 11:52:56,310 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:52:56,351 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:54:18,828 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:54:18,871 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20287
+INFO 2026-05-02 11:55:21,268 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:55:21,319 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20323
+INFO 2026-05-02 11:55:22,509 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:55:22,549 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:55:22,918 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:55:22,958 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:55:23,206 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:55:23,244 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:56:01,373 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:56:01,425 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20321
+INFO 2026-05-02 11:56:02,549 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:56:02,594 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:56:03,014 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:56:03,046 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:56:03,273 log 42514 135158845920960 "GET / HTTP/1.1" 200 23715
+INFO 2026-05-02 11:56:53,701 log 42514 135158845920960 "GET / HTTP/1.1" 200 23711
+INFO 2026-05-02 11:56:53,746 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:56:56,101 log 42514 135158845920960 "GET / HTTP/1.1" 200 23711
+INFO 2026-05-02 11:56:56,639 log 42514 135158845920960 "GET / HTTP/1.1" 200 23711
+INFO 2026-05-02 11:56:56,856 log 42514 135158845920960 "GET / HTTP/1.1" 200 23711
+INFO 2026-05-02 11:56:57,046 log 42514 135158845920960 "GET / HTTP/1.1" 200 23711
+INFO 2026-05-02 11:56:57,255 log 42514 135158845920960 "GET / HTTP/1.1" 200 23711
+INFO 2026-05-02 11:57:19,668 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:19,708 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:57:21,000 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:21,250 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:21,419 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:21,590 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:21,770 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:32,274 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:57:32,322 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 200 20321
+INFO 2026-05-02 11:57:32,487 log 42514 135158845920960 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:57:32,489 log 42514 135158942394048 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:57:32,505 log 42514 135158845920960 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:57:32,506 log 42514 135158942394048 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:57:32,555 log 42514 135158845920960 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:57:32,603 log 42514 135158845920960 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:57:32,654 log 42514 135158845920960 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:57:32,704 log 42514 135158845920960 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:57:32,753 log 42514 135158845920960 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:57:32,800 log 42514 135158845920960 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:57:32,849 log 42514 135158845920960 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+WARNING 2026-05-02 11:57:39,890 log 42514 135158845920960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:58:33,638 log 42514 135158845920960 "GET / HTTP/1.1" 200 23706
+WARNING 2026-05-02 11:58:33,697 log 42514 135158845920960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:58:33,702 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20351
+INFO 2026-05-02 11:58:36,521 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+WARNING 2026-05-02 11:58:36,575 log 42514 135158942394048 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5910
+INFO 2026-05-02 11:58:36,577 log 42514 135158845920960 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:58:41,638 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:58:41,696 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:58:58,915 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:58:58,978 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20305
+INFO 2026-05-02 11:59:00,189 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:00,229 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:22,281 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:22,342 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 11:59:24,077 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:24,131 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:24,557 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:24,604 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:24,729 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:24,781 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:25,073 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:25,101 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:25,474 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:25,650 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:25,692 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:25,986 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:26,030 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 11:59:26,178 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:26,379 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:41,633 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:41,673 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 11:59:50,951 log 42514 135158942394048 "GET / HTTP/1.1" 200 23706
+INFO 2026-05-02 11:59:51,023 log 42514 135158950786752 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:59:51,036 log 42514 135158829135552 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 11:59:51,038 log 42514 135158950786752 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 11:59:51,039 log 42514 135158845920960 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 11:59:51,039 log 42514 135158854313664 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 11:59:51,040 log 42514 135158837528256 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 11:59:51,043 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 11:59:51,059 log 42514 135158845920960 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:59:51,063 log 42514 135158837528256 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:59:51,068 log 42514 135158829135552 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:59:51,069 log 42514 135158942394048 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 11:59:51,298 log 42514 135158942394048 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 12:00:30,906 log 42514 135158942394048 "GET / HTTP/1.1" 200 23714
+INFO 2026-05-02 12:00:30,960 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:00:32,086 log 42514 135158942394048 "GET / HTTP/1.1" 200 23714
+INFO 2026-05-02 12:00:49,769 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:49,810 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:00:51,197 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:51,424 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:51,580 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:51,741 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:51,910 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:52,081 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:52,252 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:59,297 log 42514 135158942394048 "GET / HTTP/1.1" 200 23720
+INFO 2026-05-02 12:00:59,357 log 42514 135158829135552 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 12:00:59,358 log 42514 135158837528256 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 12:00:59,359 log 42514 135158950786752 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 12:00:59,360 log 42514 135158854313664 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 12:00:59,362 log 42514 135158845920960 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 12:00:59,363 log 42514 135158942394048 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 12:00:59,392 log 42514 135158950786752 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:00:59,393 log 42514 135158942394048 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:00:59,394 log 42514 135158854313664 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:00:59,395 log 42514 135158829135552 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 12:00:59,395 log 42514 135158845920960 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:00:59,626 log 42514 135158854313664 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 12:01:14,183 log 42514 135158854313664 "GET /about/ HTTP/1.1" 200 10203
+INFO 2026-05-02 12:01:14,242 log 42514 135158854313664 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:02:54,158 autoreload 42514 135159140403008 /code/projets/while_health/backend/data/urls.py changed, reloading.
+INFO 2026-05-02 12:02:56,264 autoreload 58236 137044788393792 Watching for file changes with StatReloader
+WARNING 2026-05-02 12:02:58,517 log 58236 137044600813248 "GET /about/ HTTP/1.1" 404 5524
+INFO 2026-05-02 12:03:02,220 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:03:02,257 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:04:02,361 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:04:02,410 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20314
+INFO 2026-05-02 12:04:03,694 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:04:03,733 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:04:03,898 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:04:03,938 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:04:37,817 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:04:37,862 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20314
+INFO 2026-05-02 12:04:40,867 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:04:40,910 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:04:53,827 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:04:53,864 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20314
+INFO 2026-05-02 12:05:25,781 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:05:25,836 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 12:05:45,682 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:05:45,722 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 12:05:47,030 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:05:47,068 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:05:47,365 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:10,139 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:10,185 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20318
+INFO 2026-05-02 12:06:11,360 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:11,393 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:06:11,594 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:11,634 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:06:11,784 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:11,828 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:06:11,976 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:12,012 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:06:19,445 log 58236 137044600813248 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:19,512 log 58236 137044574586560 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 12:06:19,514 log 58236 137044566193856 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 12:06:19,519 log 58236 137044600813248 "GET /static/css/style.css HTTP/1.1" 200 20318
+INFO 2026-05-02 12:06:19,519 log 58236 137044219131584 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 12:06:19,520 log 58236 137044592420544 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 12:06:19,525 log 58236 137044210738880 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 12:06:19,525 log 58236 137044566193856 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-02 12:06:19,533 log 58236 137044574586560 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:06:19,539 log 58236 137044592420544 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:06:19,540 log 58236 137044210738880 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:06:19,541 log 58236 137044219131584 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:06:20,349 log 58236 137044219131584 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 12:06:52,655 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:06:52,712 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20320
+INFO 2026-05-02 12:07:05,969 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:07:06,012 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20316
+INFO 2026-05-02 12:07:43,863 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:07:43,893 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20309
+INFO 2026-05-02 12:09:05,718 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:09:05,766 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20366
+INFO 2026-05-02 12:10:14,179 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:10:14,217 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20421
+INFO 2026-05-02 12:10:45,759 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:10:45,804 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20423
+INFO 2026-05-02 12:11:13,793 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:11:13,835 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20424
+INFO 2026-05-02 12:11:28,335 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:11:28,376 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20424
+INFO 2026-05-02 12:11:42,926 log 58236 137044219131584 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:11:42,964 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 200 20424
+INFO 2026-05-02 12:12:59,016 log 58236 137044219131584 "GET /appointment/ HTTP/1.1" 200 45093
+INFO 2026-05-02 12:12:59,066 log 58236 137044219131584 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 12:15:06,009 autoreload 65413 126923180812096 Watching for file changes with StatReloader
+INFO 2026-05-02 12:15:16,643 log 65413 126922986092224 "GET /appointment/ HTTP/1.1" 200 45093
+INFO 2026-05-02 12:15:16,717 log 65413 126922986092224 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-02 12:15:46,950 log 65413 126920761308864 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:15:47,272 log 65413 126920761308864 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+INFO 2026-05-02 12:23:15,703 autoreload 2920 139034342815552 Watching for file changes with StatReloader
+INFO 2026-05-02 12:23:22,586 log 2920 139034152138432 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:23:22,686 log 2920 139034152138432 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-02 12:23:23,089 log 2920 139034152138432 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-02 12:23:25,099 log 2920 139034152138432 "GET /appointment/ HTTP/1.1" 200 45093
+WARNING 2026-05-02 12:23:47,817 log 2920 139031363565248 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:23:48,318 log 2920 139031363565248 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:24:00,343 log 2920 139031363565248 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+INFO 2026-05-02 12:25:14,297 autoreload 3890 123911476696896 Watching for file changes with StatReloader
+WARNING 2026-05-02 12:25:15,604 log 3890 123911282882240 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+INFO 2026-05-02 12:25:26,933 log 3890 123911282882240 "GET /appointment/ HTTP/1.1" 200 45093
+INFO 2026-05-02 12:25:27,009 log 3890 123911282882240 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-02 12:26:17,977 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:26:18,461 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:26:24,631 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:27:51,455 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:27:52,689 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:27:58,116 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:27:58,801 log 3890 123908383360704 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+INFO 2026-05-02 12:31:10,274 autoreload 2880 135988638721856 Watching for file changes with StatReloader
+INFO 2026-05-02 12:31:38,373 log 2880 135988445705920 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:31:38,522 log 2880 135988428920512 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-02 12:31:38,527 log 2880 135988445705920 "GET /static/css/style.css HTTP/1.1" 200 20424
+INFO 2026-05-02 12:31:39,264 log 2880 135988428920512 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-02 12:31:39,269 log 2880 135988445705920 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 12:31:39,275 log 2880 135988059829952 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-02 12:31:39,277 log 2880 135988412135104 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:31:39,282 log 2880 135988420527808 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-02 12:31:39,291 log 2880 135988428920512 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:31:39,292 log 2880 135988059829952 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:31:39,294 log 2880 135988051437248 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-02 12:31:39,296 log 2880 135988445705920 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-02 12:31:39,300 log 2880 135988412135104 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-02 12:31:49,254 log 2880 135988445705920 "GET /appointment/ HTTP/1.1" 200 45093
+INFO 2026-05-02 12:32:01,961 log 2880 135988412135104 "GET /appointment/ HTTP/1.1" 200 45093
+INFO 2026-05-02 12:53:19,589 autoreload 2873 131777492449088 Watching for file changes with StatReloader
+INFO 2026-05-02 12:53:38,456 log 2873 131777297381056 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 12:53:38,643 log 2873 131777297381056 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-02 12:53:39,208 log 2873 131777288988352 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-02 12:53:40,989 log 2873 131777288988352 "GET /appointment/ HTTP/1.1" 200 45093
+WARNING 2026-05-02 12:53:43,901 log 2873 131777288988352 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+WARNING 2026-05-02 12:53:44,343 log 2873 131777288988352 "GET /patient-lookup/?email=kasangamichel1%40gmail.com&first_name=kasanga&last_name=michel HTTP/1.1" 405 0
+INFO 2026-05-02 13:00:26,410 autoreload 7277 139293301045056 Watching for file changes with StatReloader
+INFO 2026-05-02 13:00:34,200 log 7277 139293104273088 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-02 13:00:34,313 log 7277 139293104273088 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-02 13:00:34,683 log 7277 139293095880384 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-02 13:00:36,368 log 7277 139293095880384 "GET /appointment/ HTTP/1.1" 200 45927
+INFO 2026-05-02 13:00:41,762 log 7277 139293095880384 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:00:42,200 log 7277 139293095880384 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:00:58,919 log 7277 139293095880384 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:01:16,878 log 7277 139291045525184 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:01:16,959 log 7277 139291035035328 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:01:20,628 log 7277 139291035035328 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:01:20,947 log 7277 139291035035328 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:01:30,374 log 7277 139291035035328 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:01:40,664 log 7277 139291035035328 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-02 13:01:40,957 log 7277 139291035035328 "GET /css/adminlte.css HTTP/1.1" 404 5554
+INFO 2026-05-02 13:01:51,433 log 7277 139291045525184 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-05-02 13:01:53,347 log 7277 139291045525184 "GET /admin/ HTTP/1.1" 200 45698
+INFO 2026-05-02 13:01:54,162 log 7277 139291045525184 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103010
+INFO 2026-05-02 13:01:54,312 log 7277 139291045525184 "GET /static/jazzmin/css/main.css HTTP/1.1" 200 14372
+WARNING 2026-05-02 13:01:54,424 log 7277 139291045525184 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 13:01:54,928 log 7277 139287326422720 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 200 232244
+INFO 2026-05-02 13:01:55,079 log 7277 139287326422720 "GET /static/logo.jpg HTTP/1.1" 200 36022
+INFO 2026-05-02 13:01:55,378 log 7277 139287866963648 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 298755
+INFO 2026-05-02 13:01:55,606 log 7277 139287866963648 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 18270
+INFO 2026-05-02 13:01:55,698 log 7277 139287326422720 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 80721
+INFO 2026-05-02 13:01:55,940 log 7277 139291045525184 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-05-02 13:01:56,074 log 7277 139287326422720 "GET /static/jazzmin/js/main.js HTTP/1.1" 200 4542
+INFO 2026-05-02 13:48:23,756 autoreload 12602 133033022863168 Watching for file changes with StatReloader
+INFO 2026-05-02 13:48:28,840 log 12602 133032820336320 "GET / HTTP/1.1" 200 23672
+INFO 2026-05-02 13:48:28,990 log 12602 133032820336320 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:28,991 log 12602 133032803550912 "GET /media/departements/cardiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:28,992 log 12602 133032811943616 "GET /media/about/about-test.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,115 log 12602 133032820336320 "GET /media/departements/radiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,116 log 12602 133032811943616 "GET /media/departements/chirurgie.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,116 log 12602 133032803550912 "GET /media/departements/pediatrie.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,126 log 12602 133032585459392 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,138 log 12602 133032811943616 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,152 log 12602 133032585459392 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,153 log 12602 133032803550912 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 304 0
+INFO 2026-05-02 13:48:29,266 log 12602 133032803550912 "GET /media/hero/hero-test.svg HTTP/1.1" 304 0
+WARNING 2026-05-02 13:48:29,646 log 12602 133032803550912 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-02 13:48:32,995 log 12602 133032803550912 "GET /appointment/ HTTP/1.1" 200 46113
+INFO 2026-05-02 13:48:36,977 log 12602 133032803550912 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:48:37,418 log 12602 133032803550912 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:48:40,785 log 12602 133032803550912 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-02 13:48:46,998 log 12602 133032811943616 "GET /appointment/ HTTP/1.1" 200 46113
+INFO 2026-05-02 13:53:35,535 autoreload 15686 127980138403648 Watching for file changes with StatReloader
+INFO 2026-05-02 13:53:44,554 log 15686 127979946505920 "GET /appointment/ HTTP/1.1" 200 46113
+INFO 2026-05-02 13:53:46,847 log 15686 127979946505920 "GET /admin/ HTTP/1.1" 200 45253
+INFO 2026-05-02 13:53:46,907 log 15686 127979938113216 "GET /static/logo.jpg HTTP/1.1" 304 0
+WARNING 2026-05-02 13:53:46,919 log 15686 127979946505920 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-02 13:53:47,104 log 15686 127979946505920 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+INFO 2026-05-02 13:53:47,108 log 15686 127979938113216 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+INFO 2026-05-02 14:10:07,367 autoreload 23034 135335289964352 Watching for file changes with StatReloader
+INFO 2026-05-02 14:10:11,176 log 23034 135335090583232 "GET /appointment/ HTTP/1.1" 200 46113
+INFO 2026-05-02 14:10:11,226 log 23034 135335090583232 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-04 08:23:08,359 autoreload 10947 129414035609408 Watching for file changes with StatReloader
+INFO 2026-05-04 08:25:37,676 autoreload 12211 134165297702720 Watching for file changes with StatReloader
+WARNING 2026-05-04 08:26:49,054 log 12211 134165106259648 "GET /patients/get-available-slots/?staff_id=1&start_date=2026-05-04&end_date=2026-05-11 HTTP/1.1" 404 5654
+INFO 2026-05-04 08:28:13,945 autoreload 12211 134165297702720 /code/projets/while_health/backend/patients/views.py changed, reloading.
+INFO 2026-05-04 08:28:17,046 autoreload 13320 130033572108096 Watching for file changes with StatReloader
+INFO 2026-05-04 08:28:55,943 autoreload 13649 127609668716352 Watching for file changes with StatReloader
+INFO 2026-05-04 08:29:08,804 autoreload 13725 137500829542208 Watching for file changes with StatReloader
+INFO 2026-05-04 08:29:12,726 log 13725 137500706207424 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-04 08:29:12,852 log 13725 137500706207424 "GET /static/css/style.css HTTP/1.1" 200 20424
+INFO 2026-05-04 08:29:12,879 log 13725 137500706207424 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-04 08:29:12,882 log 13725 137500626515648 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-04 08:29:12,914 log 13725 137500626515648 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-04 08:29:12,917 log 13725 137500601337536 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-04 08:29:12,918 log 13725 137500592944832 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-04 08:29:12,921 log 13725 137500609730240 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-04 08:29:12,924 log 13725 137500584552128 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-04 08:29:12,949 log 13725 137500609730240 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-04 08:29:12,952 log 13725 137500592944832 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-04 08:29:12,953 log 13725 137500584552128 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-04 08:29:13,053 log 13725 137500584552128 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+WARNING 2026-05-04 08:29:13,378 log 13725 137500584552128 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 08:29:15,605 log 13725 137500584552128 "GET /appointment/ HTTP/1.1" 200 49751
+INFO 2026-05-04 08:50:25,026 autoreload 9505 137438006662976 Watching for file changes with StatReloader
+INFO 2026-05-04 08:52:30,305 autoreload 10343 124078829135680 Watching for file changes with StatReloader
+INFO 2026-05-04 08:54:24,554 autoreload 11250 132744730150720 Watching for file changes with StatReloader
+INFO 2026-05-04 08:54:42,092 autoreload 11342 126582731593536 Watching for file changes with StatReloader
+INFO 2026-05-04 08:54:47,743 log 11342 126582538630848 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 08:54:48,441 log 11342 126582538630848 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 08:54:50,349 log 11342 126582538630848 "GET /appointment/ HTTP/1.1" 200 42530
+INFO 2026-05-04 08:54:53,170 log 11342 126582530238144 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 08:54:56,234 log 11342 126582530238144 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:14:51,113 autoreload 10416 133350023145280 Watching for file changes with StatReloader
+INFO 2026-05-04 09:14:55,945 log 10416 133349830031040 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-04 09:14:56,056 log 10416 133349830031040 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,095 log 10416 133349830031040 "GET /media/about/about-test.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,100 log 10416 133349821638336 "GET /media/departements/cardiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,109 log 10416 133349733557952 "GET /media/departements/pediatrie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,125 log 10416 133349725165248 "GET /media/departements/chirurgie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,132 log 10416 133349725165248 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,132 log 10416 133349716772544 "GET /media/departements/radiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,139 log 10416 133349821638336 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,141 log 10416 133349733557952 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,144 log 10416 133349708379840 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 304 0
+INFO 2026-05-04 09:14:56,237 log 10416 133349821638336 "GET /media/hero/hero-test.svg HTTP/1.1" 304 0
+WARNING 2026-05-04 09:14:56,505 log 10416 133349708379840 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 09:14:58,162 log 10416 133349708379840 "GET /appointment/ HTTP/1.1" 200 44338
+INFO 2026-05-04 09:15:01,527 log 10416 133349708379840 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:15:05,868 log 10416 133349708379840 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:15:57,730 autoreload 11173 126193376507712 Watching for file changes with StatReloader
+INFO 2026-05-04 09:16:01,280 log 11173 126193181390528 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 09:16:01,847 log 11173 126193181390528 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 09:16:05,019 log 11173 126193181390528 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-04 09:16:05,066 log 11173 126193181390528 "GET /css/adminlte.css HTTP/1.1" 404 5554
+INFO 2026-05-04 09:16:16,605 log 11173 126193181390528 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-05-04 09:16:16,683 log 11173 126193181390528 "GET /admin/ HTTP/1.1" 200 45698
+INFO 2026-05-04 09:16:16,786 log 11173 126193181390528 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,787 log 11173 126193172997824 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,805 log 11173 126193147819712 "GET /static/jazzmin/css/main.css HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,816 log 11173 126193156212416 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,816 log 11173 126193172997824 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,818 log 11173 126193147819712 "GET /static/logo.jpg HTTP/1.1" 304 0
+WARNING 2026-05-04 09:16:16,819 log 11173 126193139427008 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:16:16,831 log 11173 126193181390528 "GET /static/jazzmin/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,832 log 11173 126193156212416 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,983 log 11173 126193181390528 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:16,984 log 11173 126193156212416 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 0
+INFO 2026-05-04 09:16:45,581 log 11173 126193156212416 "GET /admin/appointment/appointment/ HTTP/1.1" 200 37004
+WARNING 2026-05-04 09:16:45,617 log 11173 126193156212416 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:16:45,657 log 11173 126193139427008 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2026-05-04 09:16:45,661 log 11173 126193147819712 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2026-05-04 09:16:45,662 log 11173 126193181390528 "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 200 16264
+INFO 2026-05-04 09:16:45,664 log 11173 126193131034304 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2026-05-04 09:16:45,665 log 11173 126192648713920 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2026-05-04 09:16:45,676 log 11173 126193139427008 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2026-05-04 09:16:45,680 log 11173 126193172997824 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-04 09:16:45,685 log 11173 126193147819712 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2026-05-04 09:16:45,688 log 11173 126193181390528 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2026-05-04 09:16:45,702 log 11173 126193172997824 "GET /static/jazzmin/js/change_list.js HTTP/1.1" 200 2205
+INFO 2026-05-04 09:16:45,704 log 11173 126193181390528 "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+INFO 2026-05-04 09:17:00,168 log 11173 126193181390528 "GET /admin/appointment/appointment/?accept__exact=0&q= HTTP/1.1" 200 30217
+WARNING 2026-05-04 09:17:00,217 log 11173 126193181390528 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:17:00,220 log 11173 126193172997824 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-04 09:17:04,510 log 11173 126193172997824 "GET /admin/appointment/appointment/ HTTP/1.1" 200 37004
+WARNING 2026-05-04 09:17:04,553 log 11173 126193172997824 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:17:04,563 log 11173 126193147819712 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-04 09:17:28,841 log 11173 126193147819712 "GET /admin/staff/timeservice/ HTTP/1.1" 200 36973
+WARNING 2026-05-04 09:17:28,874 log 11173 126193147819712 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:17:28,889 log 11173 126193139427008 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-04 09:17:44,452 log 11173 126193139427008 "GET /admin/staff/timeservice/1/change/ HTTP/1.1" 200 32037
+WARNING 2026-05-04 09:17:44,506 log 11173 126193139427008 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:17:44,511 log 11173 126192648713920 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2026-05-04 09:17:44,513 log 11173 126193147819712 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2026-05-04 09:17:44,519 log 11173 126193131034304 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-04 09:17:44,520 log 11173 126193147819712 "GET /static/jazzmin/js/change_form.js HTTP/1.1" 200 6045
+INFO 2026-05-04 09:17:44,531 log 11173 126193131034304 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 978
+INFO 2026-05-04 09:17:44,549 log 11173 126192648713920 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+INFO 2026-05-04 09:17:44,550 log 11173 126193172997824 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 928
+INFO 2026-05-04 09:18:01,477 log 11173 126192648713920 "POST /admin/staff/timeservice/1/change/ HTTP/1.1" 302 0
+INFO 2026-05-04 09:18:01,548 log 11173 126192648713920 "GET /admin/staff/timeservice/ HTTP/1.1" 200 37554
+WARNING 2026-05-04 09:18:01,654 log 11173 126192648713920 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 5229
+INFO 2026-05-04 09:18:01,655 log 11173 126193131034304 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-04 09:18:10,709 log 11173 126193131034304 "GET / HTTP/1.1" 200 23672
+INFO 2026-05-04 09:18:13,299 log 11173 126193131034304 "GET /appointment/ HTTP/1.1" 200 44524
+INFO 2026-05-04 09:22:40,904 autoreload 13862 138772034910016 Watching for file changes with StatReloader
+INFO 2026-05-04 09:22:46,756 log 13862 138771840366272 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 09:22:47,232 log 13862 138771840366272 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 09:22:48,704 log 13862 138771831973568 "GET /appointment/ HTTP/1.1" 200 46038
+INFO 2026-05-04 09:23:08,932 log 13862 138771840366272 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:25:17,923 autoreload 15105 135769451763520 Watching for file changes with StatReloader
+INFO 2026-05-04 09:25:21,897 log 15105 135769259767488 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 09:25:22,354 log 15105 135769259767488 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 09:25:23,894 log 15105 135769259767488 "GET /appointment/ HTTP/1.1" 200 46759
+INFO 2026-05-04 09:25:30,583 log 15105 135769251374784 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:25:33,709 log 15105 135769251374784 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:33:10,921 autoreload 3282 131271563294528 Watching for file changes with StatReloader
+INFO 2026-05-04 09:33:16,410 log 3282 131271367849664 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 09:33:17,074 log 3282 131271367849664 "GET /favicon.ico HTTP/1.1" 404 5539
+INFO 2026-05-04 09:33:27,476 log 3282 131271367849664 "GET /appointment/ HTTP/1.1" 200 47708
+INFO 2026-05-04 09:33:31,272 log 3282 131271367849664 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 09:33:35,620 log 3282 131271367849664 "GET /appointment/ HTTP/1.1" 200 47708
+INFO 2026-05-04 09:33:37,203 log 3282 131271367849664 "GET /appointment/ HTTP/1.1" 200 47708
+WARNING 2026-05-04 09:33:49,555 log 3282 131271367849664 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5650
+WARNING 2026-05-04 09:34:06,302 log 3282 131271367849664 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5650
+INFO 2026-05-04 09:40:57,119 autoreload 7400 139181440952128 Watching for file changes with StatReloader
+INFO 2026-05-04 09:41:06,031 log 7400 139181317682880 "GET /appointment/ HTTP/1.1" 200 47980
+WARNING 2026-05-04 09:41:06,189 log 7400 139181317682880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5650
+INFO 2026-05-04 09:41:15,603 log 7400 139181317682880 "GET /appointment/ HTTP/1.1" 200 47980
+WARNING 2026-05-04 09:41:15,668 log 7400 139181317682880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5650
+INFO 2026-05-04 15:19:59,602 autoreload 13336 133166959339328 Watching for file changes with StatReloader
+INFO 2026-05-04 15:20:05,579 log 13336 133166765438656 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-04 15:20:05,694 log 13336 133166765438656 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,707 log 13336 133166765438656 "GET /media/about/about-test.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,709 log 13336 133166757045952 "GET /media/departements/cardiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,721 log 13336 133166757045952 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,723 log 13336 133166534751936 "GET /media/departements/pediatrie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,723 log 13336 133166526359232 "GET /media/departements/chirurgie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,740 log 13336 133166534751936 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,741 log 13336 133166526359232 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,741 log 13336 133166517966528 "GET /media/departements/radiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,743 log 13336 133166509573824 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,758 log 13336 133166509573824 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 304 0
+INFO 2026-05-04 15:20:05,765 log 13336 133166757045952 "GET /media/hero/hero-test.svg HTTP/1.1" 304 0
+WARNING 2026-05-04 15:20:06,102 log 13336 133166509573824 "GET /favicon.ico HTTP/1.1" 404 5535
+INFO 2026-05-04 15:20:37,047 log 13336 133166509573824 "GET /appointment/ HTTP/1.1" 200 42698
+INFO 2026-05-04 15:20:42,947 log 13336 133166509573824 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 16:03:43,696 autoreload 17661 129481507739456 Watching for file changes with StatReloader
+INFO 2026-05-04 16:05:04,330 autoreload 17661 129481507739456 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-04 16:05:05,881 autoreload 18213 127416618596160 Watching for file changes with StatReloader
+INFO 2026-05-04 16:11:55,139 autoreload 20962 132509498345280 Watching for file changes with StatReloader
+INFO 2026-05-04 16:12:03,574 autoreload 21020 131119630784320 Watching for file changes with StatReloader
+INFO 2026-05-04 16:12:07,513 log 21020 131119437575872 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-04 16:12:07,601 log 21020 131119437575872 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,630 log 21020 131119437575872 "GET /media/about/about-test.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,634 log 21020 131119429183168 "GET /media/departements/cardiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,652 log 21020 131119429183168 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,654 log 21020 131119404005056 "GET /media/departements/chirurgie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,678 log 21020 131119404005056 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,680 log 21020 131119412397760 "GET /media/departements/pediatrie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,681 log 21020 131119395612352 "GET /media/departements/radiologie.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,683 log 21020 131119043311296 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,684 log 21020 131119437575872 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 304 0
+INFO 2026-05-04 16:12:07,745 log 21020 131119437575872 "GET /media/hero/hero-test.svg HTTP/1.1" 304 0
+WARNING 2026-05-04 16:12:08,061 log 21020 131119437575872 "GET /favicon.ico HTTP/1.1" 404 5535
+INFO 2026-05-04 16:12:28,017 log 21020 131119437575872 "GET /appointment/ HTTP/1.1" 200 43859
+INFO 2026-05-04 16:12:31,838 log 21020 131119412397760 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 16:25:29,913 autoreload 8151 128648858052416 Watching for file changes with StatReloader
+INFO 2026-05-04 16:25:35,273 log 8151 128648665364160 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 16:25:35,957 log 8151 128648665364160 "GET /favicon.ico HTTP/1.1" 404 5535
+INFO 2026-05-04 16:25:38,478 log 8151 128648665364160 "GET /appointment/ HTTP/1.1" 200 52997
+INFO 2026-05-04 16:31:10,461 autoreload 11116 127770541070144 Watching for file changes with StatReloader
+INFO 2026-05-04 16:31:18,524 log 11116 127770348746432 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-04 16:31:19,073 log 11116 127770348746432 "GET /favicon.ico HTTP/1.1" 404 5535
+INFO 2026-05-04 16:31:33,890 log 11116 127770348746432 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-04 16:31:33,938 log 11116 127770348746432 "GET /static/css/style.css HTTP/1.1" 200 20424
+INFO 2026-05-04 16:31:34,624 log 11116 127770340353728 "GET /media/departements/cardiologie.svg HTTP/1.1" 200 379
+INFO 2026-05-04 16:31:34,625 log 11116 127770348746432 "GET /media/about/about-test.svg HTTP/1.1" 200 376
+INFO 2026-05-04 16:31:34,638 log 11116 127770348746432 "GET /media/departements/pediatrie.svg HTTP/1.1" 200 377
+INFO 2026-05-04 16:31:34,639 log 11116 127770340353728 "GET /media/departements/chirurgie.svg HTTP/1.1" 200 377
+INFO 2026-05-04 16:31:34,687 log 11116 127770348746432 "GET /media/departements/radiologie.svg HTTP/1.1" 200 378
+INFO 2026-05-04 16:31:34,737 log 11116 127770348746432 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-04 16:31:34,789 log 11116 127770348746432 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 200 413
+INFO 2026-05-04 16:31:34,837 log 11116 127770348746432 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 200 413
+INFO 2026-05-04 16:31:34,889 log 11116 127770348746432 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 200 413
+INFO 2026-05-04 16:31:34,906 log 11116 127770340353728 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 200 413
+INFO 2026-05-04 16:31:34,930 log 11116 127770340353728 "GET /media/hero/hero-test.svg HTTP/1.1" 200 382
+INFO 2026-05-04 16:31:38,657 log 11116 127770340353728 "GET /appointment/ HTTP/1.1" 200 52995
+INFO 2026-05-04 16:31:41,318 log 11116 127770340353728 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 16:31:45,697 log 11116 127770340353728 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 20192
+WARNING 2026-05-04 16:31:59,479 log 11116 127770340353728 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5646
+INFO 2026-05-04 16:32:53,940 autoreload 11116 127770541070144 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-04 16:32:55,490 autoreload 12041 139525259269952 Watching for file changes with StatReloader
+INFO 2026-05-04 16:33:04,159 autoreload 12041 139525259269952 /code/projets/while_health/backend/core/views.py changed, reloading.
+INFO 2026-05-04 16:33:05,878 autoreload 12153 140097597904704 Watching for file changes with StatReloader
+INFO 2026-05-04 16:33:10,134 log 12153 140097404008128 "GET /appointment/ HTTP/1.1" 200 52994
+WARNING 2026-05-04 16:33:10,186 log 12153 140097404008128 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5646
+INFO 2026-05-04 16:33:31,646 log 12153 140097404008128 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 13701
+INFO 2026-05-04 16:34:41,251 autoreload 12729 130252293236544 Watching for file changes with StatReloader
+INFO 2026-05-04 16:34:45,994 log 12729 130252097451712 "GET /appointment/ HTTP/1.1" 200 52994
+INFO 2026-05-04 16:34:57,334 log 12729 130252097451712 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 16:35:02,777 log 12729 130252097451712 "POST /patient-lookup/ HTTP/1.1" 200 16
+INFO 2026-05-04 16:35:26,071 log 12729 130252097451712 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 13701
+INFO 2026-05-04 16:36:11,624 log 12729 130252097451712 "POST /appointment/ HTTP/1.1" 302 0
+ERROR 2026-05-04 16:36:11,934 log 12729 130252097451712 Internal Server Error: /patient-message/7/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 177, in patient_message
+    patient = get_object_or_404(
+        Patients.objects.prefetch_related(vitals_prefetch, consultations_prefetch),
+        pk=pk
+    )
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 635, in get
+    num = len(clone)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 372, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 2002, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 1369, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 2451, in prefetch_related_objects
+    obj_list, additional_lookups = prefetch_one_level(
+                                   ~~~~~~~~~~~~~~~~~~^
+        obj_to_fetch,
+        ^^^^^^^^^^^^^
+    ...<2 lines>...
+        level,
+        ^^^^^^
+    )
+    ^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 2675, in prefetch_one_level
+    qs = manager._apply_rel_filters(lookup.queryset)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 707, in _apply_rel_filters
+    queryset = queryset.filter(**self.core_filters)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/db/models/query.py", line 1554, in _filter_or_exclude
+    raise TypeError("Cannot filter a query once a slice has been taken.")
+TypeError: Cannot filter a query once a slice has been taken.
+ERROR 2026-05-04 16:36:11,941 log 12729 130252097451712 "GET /patient-message/7/ HTTP/1.1" 500 134896
+INFO 2026-05-04 16:37:16,729 autoreload 12729 130252293236544 /code/projets/while_health/backend/patients/views.py changed, reloading.
+INFO 2026-05-04 16:37:18,294 autoreload 13715 127654699804480 Watching for file changes with StatReloader
+INFO 2026-05-04 16:38:09,099 autoreload 13715 127654699804480 /code/projets/while_health/backend/patients/views.py changed, reloading.
+INFO 2026-05-04 16:38:10,705 autoreload 14166 131227386488640 Watching for file changes with StatReloader
+INFO 2026-05-04 16:38:13,947 log 14166 131227193439936 "GET /patient-message/7/ HTTP/1.1" 200 13840
+INFO 2026-05-04 16:39:21,279 log 14166 131227193439936 "GET /appointment/ HTTP/1.1" 200 52994
+INFO 2026-05-04 16:39:25,650 log 14166 131227193439936 "POST /patient-lookup/ HTTP/1.1" 200 270
+INFO 2026-05-04 16:39:34,417 log 14166 131227193439936 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 13701
+INFO 2026-05-04 16:40:22,427 log 14166 131227193439936 "POST /appointment/ HTTP/1.1" 302 0
+INFO 2026-05-04 16:40:22,454 log 14166 131227193439936 "GET /patient-message/7/ HTTP/1.1" 200 13840
+INFO 2026-05-04 16:40:24,937 log 14166 131227193439936 "GET /appointment/ HTTP/1.1" 200 52994
+INFO 2026-05-04 16:40:27,705 log 14166 131227193439936 "POST /patient-lookup/ HTTP/1.1" 200 270
+INFO 2026-05-04 16:40:31,743 log 14166 131227193439936 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 13701
+INFO 2026-05-04 16:40:52,664 log 14166 131227193439936 "POST /appointment/ HTTP/1.1" 200 53438

@@ -340,7 +340,9 @@ JAZZMIN_SETTINGS = {
     'site_title': 'While Health',
     'site_header': 'While Health Administration',
     'site_brand': 'While Health',
-    'site_logo': 'media/logo/logo.jpg',
+    'site_logo': 'logo.jpg',
+    'site_logo_classes': 'img-circle',
+    'site_logo_alt': 'While Health Logo',
     'welcome_sign': 'Bienvenue à While Health',
     'copyright': 'While Health © 2024',
     'show_sidebar': True,
@@ -348,6 +350,36 @@ JAZZMIN_SETTINGS = {
     'sidebar_fixed': True,
     'show_ui_builder': False,
     'changeform_format': 'horizontal_tabs',
+    'custom_css': '''
+        /* Logo sur la page de connexion */
+        .login-box .login-logo img,
+        .login-logo img {
+            width: 80px !important;
+            height: 80px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+            margin: 0 auto !important;
+            display: block !important;
+        }
+
+        /* Logo dans la sidebar */
+        .main-sidebar .brand-image,
+        .brand-image img {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+        }
+
+        /* Logo dans le header */
+        .main-header .logo img,
+        .navbar-brand img {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+        }
+    ''',
 }
 
 JAZZMIN_UI_TWEAKS = {

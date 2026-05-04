@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+from django.core.cache import cache
 from django.core.exceptions import ValidationError, PermissionDenied
 from django.core.paginator import Paginator
 from django.db import transaction
@@ -66,8 +67,8 @@ def _serialize_patient_minimal(patient):
     }
 
 
-def _serialize_patient_full(patient):
-    """✅ Full data for authenticated users"""
+def _serialize_patient_for_form(patient):
+    """Full patient data for pre-filling appointment form"""
     return {
         "id": patient.pk,
         "first_name": patient.first_name or "",
@@ -80,6 +81,15 @@ def _serialize_patient_full(patient):
         "tutor_contact": str(patient.tutor_contact or ""),
         "tutor_adress": patient.tutor_adress or "",
     }
+
+
+def _invalidate_staff_cache(staff_id):
+    """Invalidate cache for staff availability slots"""
+    from datetime import datetime, timedelta
+    start_date = datetime.now().date()
+    end_date = start_date + timedelta(days=7)
+    cache_key = f"available_slots_{staff_id}_{start_date}_{end_date}"
+    cache.delete(cache_key)
 
 
 
@@ -128,6 +138,10 @@ def appointment(request):
                         appointment_obj.staff = staff
                         appointment_obj.save()
 
+                        # Invalidate cache for staff slots
+                        if staff:
+                            _invalidate_staff_cache(staff.pk)
+
                     return redirect("patients:patient_message", pk=patient.pk)
                 except ValidationError as exc:
                     appointment_form.add_error("time", _validation_message(exc))
@@ -146,146 +160,30 @@ def appointment(request):
     return render(request, "patients/appointment.html", context)
 
 
-@require_POST
-@csrf_protect
-def patient_lookup(request):
-    """✅ SECURITY: POST only + CSRF protection + public minimal patient lookup + rate limiting"""
-    try:
-        from django_ratelimit.decorators import ratelimit
-    except ImportError:
-        def ratelimit(*args, **kwargs):
-            def decorator(func):
-                return func
-            return decorator
-
-    @ratelimit(key='user', rate='10/m', method='POST', block=True)
-    def _patient_lookup(request):
-        patient = _find_existing_patient(request.POST)
-
-        if not patient:
-            return JsonResponse({"found": False})
-
-        # ✅ SECURITY: Return only minimal safe data to support anonymous appointment lookup
-        return JsonResponse({
-            "found": True,
-            "patient": _serialize_patient_minimal(patient),
-        })
-    
-    return _patient_lookup(request)
-
-
-
-def get_available_slots(request):
-    """✅ SECURITY: Login required. PERFORMANCE: select_related for staff + user"""
-    staff_id = request.GET.get("staff_id")
-    start_date_str = request.GET.get("start_date")
-    end_date_str = request.GET.get("end_date")
-
-    if not staff_id:
-        return JsonResponse({"error": "Staff_ID manquant."}, status=400)
-
-    try:
-        # ✅ PERFORMANCE: select_related to avoid N+1
-        staff = Staff.objects.select_related("user").get(pk=staff_id)
-    except Staff.DoesNotExist:
-        return JsonResponse({"error": "Medecin introuvable."}, status=404)
-
-    if start_date_str and end_date_str:
-        start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
-        end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
-    else:
-        start_date = datetime.now().date()
-        end_date = start_date + timedelta(days=7)
-
-    # ✅ PERFORMANCE: Optimize query with only() to fetch fewer columns
-    time_service = TimeService.objects.filter(staff=staff).only(
-        'id', 'staff_id', 'service_day', 'open_time', 'close_time'
-    ).order_by("service_day", "open_time")
-
-    existing_appointments = Appointment.objects.filter(
-        staff=staff,
-        date__range=[start_date, end_date],
-    ).values_list("date", "time")
-
-    busy_slots = set()
-    for appointment_date, appointment_time in existing_appointments:
-        busy_slots.add((appointment_date.isoformat(), appointment_time.strftime("%H:%M")))
-
-    available_slots = []
-    schedule_days = []
-    current_date = start_date
-
-    while current_date <= end_date:
-        day_name = get_french_weekday(current_date)
-        day_services = list(time_service.filter(service_day=day_name).order_by("open_time"))
-        day_slots = []
-
-        for ts in day_services:
-            slot_time = ts.open_time
-            while slot_time < ts.close_time:
-                slot_time_str = slot_time.strftime("%H:%M")
-                slot_key = (current_date.isoformat(), slot_time_str)
-                is_available = slot_key not in busy_slots
-
-                slot_payload = {
-                    "date": current_date.isoformat(),
-                    "time": slot_time_str,
-                    "available": is_available,
-                }
-                day_slots.append(slot_payload)
-
-                if is_available:
-                    available_slots.append({
-                        "date": current_date.isoformat(),
-                        "time": slot_time_str,
-                    })
-
-                slot_time = (datetime.combine(current_date, slot_time) + timedelta(minutes=30)).time()
-
-        schedule_days.append({
-            "day": day_name,
-            "date": current_date.isoformat(),
-            "has_service": bool(day_services),
-            "services": [
-                {
-                    "open_time": service.open_time.strftime("%H:%M"),
-                    "close_time": service.close_time.strftime("%H:%M"),
-                }
-                for service in day_services
-            ],
-            "slots": day_slots,
-        })
-
-        current_date += timedelta(days=1)
-
-    return JsonResponse({
-        "doctor": {
-            "id": staff.pk,
-            "name": staff.user.get_full_name(),
-            "specialty": staff.get_specialty_display() if staff.specialty else "",
-        },
-        "slots": available_slots,
-        "schedule": schedule_days,
-    })
-
 
 
 def patient_message(request, pk):
     """✅ SECURITY: Login required. PERFORMANCE: prefetch_related for related data"""
     # ✅ PERFORMANCE: prefetch_related to avoid N+1 on vitals and consultations
+    # Note: Slicing must be done AFTER prefetch, not inside Prefetch querysets
     vitals_prefetch = Prefetch(
         'vital_signs',
-        VitalSign.objects.all().order_by('-date_recorded')[:5]
+        VitalSign.objects.all().order_by('-date_recorded')
     )
     consultations_prefetch = Prefetch(
         'consultations',
-        Consultation.objects.select_related('doctor__user').order_by('-date_recorded')[:5]
+        Consultation.objects.select_related('doctor__user').order_by('-date_recorded')
     )
     
     patient = get_object_or_404(
         Patients.objects.prefetch_related(vitals_prefetch, consultations_prefetch),
         pk=pk
     )
+    
+    # ⚡ Slice the related objects after fetch (in Python, not in queryset)
+    patient.vital_signs_limited = list(patient.vital_signs.all())[:5]
+    patient.consultations_limited = list(patient.consultations.all())[:5]
+    
     context = {
         "patient": patient,
     }

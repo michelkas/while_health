@@ -227,9 +227,9 @@
         }
 
         .schedule-slot--free {
-            background-color: #d1e7dd;
-            color: #146c43;
-            border-color: rgba(25, 135, 84, 0.2);
+            background-color: #cce5ff;
+            color: #004085;
+            border-color: rgba(0, 123, 255, 0.2);
         }
 
         .schedule-slot--busy {
@@ -355,9 +355,9 @@
                                     <div class="col-lg-5">
                                         <label for="doctor-select" class="form-label">Choisir un médecin</label>
                                         <select id="doctor-select" name="staff" class="form-select" required>
-                                            <option value="">-- Sélectionnez --</option>
+                                            <option value="">-- Sélectionnez un médecin --</option>
                                             {% for doc in doctors %}
-                                                <option value="{{ doc.pk }}">{{ doc.user.first_name }} ( {{ doc.get_specialty_display }} )</option>
+                                                <option value="{{ doc.pk }}">{{ doc.user.get_full_name }} - {{ doc.get_specialty_display }}</option>
                                             {% endfor %}
                                         </select>
                                         <div class="form-text">
@@ -385,6 +385,13 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <div id="schedule-loading" class="text-center py-4 d-none">
+                                                <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                                    <span class="visually-hidden">Chargement...</span>
+                                                </div>
+                                                <p class="text-muted small mt-2">Chargement de l'emploi du temps...</p>
+                                            </div>
+                                            <div id="schedule-error-message" class="alert alert-danger d-none" role="alert"></div>
                                             <div id="schedule-grid" class="schedule-grid"></div>
                                         </div>
 
@@ -396,12 +403,15 @@
                                             <p class="text-muted small mb-3">
                                                 Cliquez sur un créneau pour le sélectionner.
                                             </p>
+                                            <div id="selected-slot-display" class="alert alert-primary d-none mb-3" role="alert">
+                                                <strong>Créneau sélectionné:</strong> <span id="selected-slot-text"></span>
+                                            </div>
                                             <div id="slot-buttons" class="slot-grid"></div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row g-3 mt-4">
+                                <div class="row g-4 mt-3">
                                     <div class="col-md-6">
                                         {{ appointment_form.date.label_tag }}
                                         {{ appointment_form.date }}
@@ -445,341 +455,507 @@
 
 {% block extra_js %}
     <script>
-        const doctorSelect = document.getElementById('doctor-select');
-        const slotsContainer = document.getElementById('slots-container');
-        const slotButtonsDiv = document.getElementById('slot-buttons');
-        const doctorScheduleContainer = document.getElementById('doctor-schedule-container');
-        const scheduleGrid = document.getElementById('schedule-grid');
-        const doctorSummary = document.getElementById('doctor-summary');
-        const appointmentForm = document.getElementById('appointment-form');
-        const patientLookupStatus = document.getElementById('patient-lookup-status');
-        const patientLookupUrl = "{% url 'patients:patient_lookup' %}";
-        const availableSlotsUrl = "{% url 'patients:get_available_slots' %}";
-        const dateInput = document.getElementById('{{ appointment_form.date.id_for_label }}');
-        const timeInput = document.getElementById('{{ appointment_form.time.id_for_label }}');
+        (function () {
+            'use strict';
 
-        const patientFields = {
-            contact: document.getElementById('{{ patient_form.contact.id_for_label }}'),
-            email: document.getElementById('{{ patient_form.email.id_for_label }}'),
-            name: document.getElementById('{{ patient_form.name.id_for_label }}'),
-            first_name: document.getElementById('{{ patient_form.first_name.id_for_label }}'),
-            last_name: document.getElementById('{{ patient_form.last_name.id_for_label }}'),
-            adress: document.getElementById('{{ patient_form.adress.id_for_label }}'),
-            sexe: document.getElementById('{{ patient_form.sexe.id_for_label }}'),
-            tutor: document.getElementById('{{ patient_form.tutor.id_for_label }}'),
-            tutor_contact: document.getElementById('{{ patient_form.tutor_contact.id_for_label }}'),
-            tutor_adress: document.getElementById('{{ patient_form.tutor_adress.id_for_label }}'),
-        };
+            // Constantes
+            const MAX_SCHEDULE_DAYS = 7;
+            const MAX_SLOTS_PER_DAY = 48;
+            const LOOKUP_TIMEOUT = 2000;
+            const SCHEDULE_TIMEOUT = 2000;
+            const DEBOUNCE_DELAY = 300;
 
-        let lookupTimer = null;
-        let lookupRequestId = 0;
-        let lastMatchedPatientId = null;
+            // État global
+            const state = {
+                lookupController: null,
+                scheduleController: null,
+                lookupTimeoutId: null,
+                scheduleTimeoutId: null,
+                slotEventListeners: new Map(),
+            };
 
-        function setPatientStatus(type, message) {
-            if (!patientLookupStatus) {
-                return;
-            }
-
-            if (!message) {
-                patientLookupStatus.className = 'alert alert-info d-none mb-3';
-                patientLookupStatus.textContent = '';
-                return;
-            }
-
-            patientLookupStatus.className = `alert alert-${type} mb-3`;
-            patientLookupStatus.textContent = message;
-        }
-
-        function fillPatientFields(patient) {
-            if (patientFields.contact) patientFields.contact.value = patient.contact || '';
-            if (patientFields.email) patientFields.email.value = patient.email || '';
-            if (patientFields.name) patientFields.name.value = patient.name || '';
-            if (patientFields.first_name) patientFields.first_name.value = patient.first_name || '';
-            if (patientFields.last_name) patientFields.last_name.value = patient.last_name || '';
-            if (patientFields.adress) patientFields.adress.value = patient.adress || '';
-            if (patientFields.sexe) patientFields.sexe.value = patient.sexe || '';
-            if (patientFields.tutor) patientFields.tutor.value = patient.tutor || '';
-            if (patientFields.tutor_contact) patientFields.tutor_contact.value = patient.tutor_contact || '';
-            if (patientFields.tutor_adress) patientFields.tutor_adress.value = patient.tutor_adress || '';
-        }
-
-        function clearAutoFilledPatientFields() {
-            if (patientFields.adress) patientFields.adress.value = '';
-            if (patientFields.sexe) patientFields.sexe.value = '';
-            if (patientFields.tutor) patientFields.tutor.value = '';
-            if (patientFields.tutor_contact) patientFields.tutor_contact.value = '';
-            if (patientFields.tutor_adress) patientFields.tutor_adress.value = '';
-        }
-
-        function canLookupPatient() {
-            const contact = patientFields.contact ? patientFields.contact.value.trim() : '';
-            const email = patientFields.email ? patientFields.email.value.trim() : '';
-            const name = patientFields.name ? patientFields.name.value.trim() : '';
-            const firstName = patientFields.first_name ? patientFields.first_name.value.trim() : '';
-            const lastName = patientFields.last_name ? patientFields.last_name.value.trim() : '';
-
-            return Boolean(
-                contact ||
-                email ||
-                (name && firstName && lastName) ||
-                (name && firstName)
-            );
-        }
-
-        function clearDoctorDisplay() {
-            if (doctorSummary) {
-                doctorSummary.classList.add('d-none');
-                doctorSummary.innerHTML = '';
-            }
-
-            if (doctorScheduleContainer) {
-                doctorScheduleContainer.classList.add('d-none');
-            }
-
-            if (scheduleGrid) {
-                scheduleGrid.innerHTML = '';
-            }
-
-            if (slotsContainer) {
-                slotsContainer.classList.add('d-none');
-            }
-
-            if (slotButtonsDiv) {
-                slotButtonsDiv.innerHTML = '';
-            }
-
-            dateInput.value = '';
-            timeInput.value = '';
-        }
-
-        function formatDoctorName(doctor) {
-            if (!doctor) {
-                return '';
-            }
-
-            const parts = [doctor.name, doctor.specialty].filter(Boolean);
-            return parts.length ? parts.join(' — ') : 'Médecin sélectionné';
-        }
-
-        function formatScheduleDate(dateValue) {
-            try {
-                return new Date(`${dateValue}T00:00:00`).toLocaleDateString('fr-FR', {
-                    weekday: 'long',
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                });
-            } catch (error) {
-                return dateValue;
-            }
-        }
-
-        function renderDoctorSummary(doctor) {
-            if (!doctorSummary) {
-                return;
-            }
-
-            if (!doctor) {
-                doctorSummary.classList.add('d-none');
-                doctorSummary.innerHTML = '';
-                return;
-            }
-
-            doctorSummary.classList.remove('d-none');
-            doctorSummary.innerHTML = `
-                <div class="d-flex align-items-start gap-3">
-                    <div class="flex-shrink-0 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center"
-                         style="width: 2.5rem; height: 2.5rem;">
-                        <i class="bi bi-person-badge"></i>
-                    </div>
-                    <div>
-                        <p class="mb-1 fw-semibold text-primary">Médecin sélectionné</p>
-                        <h4 class="h6 mb-1">${formatDoctorName(doctor)}</h4>
-                        <p class="mb-0 small text-muted">Le planning et les créneaux libres sont affichés ci-dessous.</p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderSchedule(scheduleDays) {
-            if (!scheduleGrid || !doctorScheduleContainer) {
-                return;
-            }
-
-            scheduleGrid.innerHTML = '';
-
-            if (!scheduleDays || !scheduleDays.length) {
-                doctorScheduleContainer.classList.add('d-none');
-                return;
-            }
-
-            scheduleDays.forEach((day) => {
-                const card = document.createElement('div');
-                card.className = `schedule-day-card ${day.has_service ? '' : 'schedule-day-card--empty'}`;
-
-                const slotsMarkup = day.slots && day.slots.length
-                    ? day.slots.map((slot) => `
-                        <span class="schedule-slot ${slot.available ? 'schedule-slot--free' : 'schedule-slot--busy'}">
-                            ${slot.time}
-                        </span>
-                    `).join('')
-                    : '<p class="schedule-day-empty">Aucun créneau défini ce jour.</p>';
-
-                const serviceInfo = day.services && day.services.length
-                    ? day.services.map((service) => `${service.open_time} - ${service.close_time}`).join(' • ')
-                    : 'Pas de service';
-
-                card.innerHTML = `
-                    <div class="schedule-day-header">
-                        <div>
-                            <h4 class="schedule-day-title">${day.day}</h4>
-                            <p class="schedule-day-meta">${formatScheduleDate(day.date)}</p>
-                        </div>
-                        <span class="badge ${day.has_service ? 'text-bg-primary' : 'text-bg-secondary'}">
-                            ${day.has_service ? 'Service' : 'Repos'}
-                        </span>
-                    </div>
-                    <p class="schedule-day-meta mb-2">${serviceInfo}</p>
-                    <div class="schedule-slots">
-                        ${slotsMarkup}
-                    </div>
-                `;
-
-                scheduleGrid.appendChild(card);
-            });
-
-            doctorScheduleContainer.classList.remove('d-none');
-        }
-
-        async function lookupPatient() {
-            if (!canLookupPatient()) {
-                setPatientStatus(null, '');
-                return;
-            }
-
-            const params = new URLSearchParams();
-            if (patientFields.contact && patientFields.contact.value.trim()) params.append('contact', patientFields.contact.value.trim());
-            if (patientFields.email && patientFields.email.value.trim()) params.append('email', patientFields.email.value.trim());
-            if (patientFields.name && patientFields.name.value.trim()) params.append('name', patientFields.name.value.trim());
-            if (patientFields.first_name && patientFields.first_name.value.trim()) params.append('first_name', patientFields.first_name.value.trim());
-            if (patientFields.last_name && patientFields.last_name.value.trim()) params.append('last_name', patientFields.last_name.value.trim());
-
-            const currentRequestId = ++lookupRequestId;
-
-            try {
-                const response = await fetch(`${patientLookupUrl}?${params.toString()}`, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                    },
-                });
-
-                const data = await response.json();
-
-                if (currentRequestId !== lookupRequestId) {
-                    return;
+            // Éléments DOM avec vérifications de sécurité
+            const elements = (() => {
+                const csrfElement = document.querySelector('[name="csrfmiddlewaretoken"]');
+                if (!csrfElement) {
+                    console.error('CSRF token not found');
+                    return null;
                 }
 
-                if (data.found && data.patient) {
-                    lastMatchedPatientId = data.patient.id;
-                    fillPatientFields(data.patient);
-                    setPatientStatus('success', 'Patient existant trouvé. Les informations ont été préremplies.');
-                } else {
-                    if (lastMatchedPatientId !== null) {
-                        clearAutoFilledPatientFields();
+                const requiredElements = {
+                    csrfToken: csrfElement.value,
+                    appointmentDate: document.querySelector('input[name="date"]'),
+                    appointmentTime: document.querySelector('input[name="time"]'),
+                    lookupStatus: document.getElementById('patient-lookup-status'),
+                    doctorSelect: document.getElementById('doctor-select'),
+                    doctorSummary: document.getElementById('doctor-summary'),
+                    scheduleContainer: document.getElementById('doctor-schedule-container'),
+                    scheduleGrid: document.getElementById('schedule-grid'),
+                    scheduleLoading: document.getElementById('schedule-loading'),
+                    scheduleError: document.getElementById('schedule-error-message'),
+                    slotsContainer: document.getElementById('slots-container'),
+                    slotButtons: document.getElementById('slot-buttons'),
+                    selectedSlotDisplay: document.getElementById('selected-slot-display'),
+                    selectedSlotText: document.getElementById('selected-slot-text'),
+                };
+
+                // Vérifier tous les éléments requis
+                for (const [key, element] of Object.entries(requiredElements)) {
+                    if (!element) {
+                        console.warn(`Element ${key} not found`);
                     }
-                    lastMatchedPatientId = null;
-                    setPatientStatus('info', 'Aucun patient trouvé. Complétez le formulaire pour un nouveau dossier.');
-                }
-            } catch (error) {
-                if (currentRequestId !== lookupRequestId) {
-                    return;
                 }
 
-                console.error('Erreur patient lookup:', error);
-                setPatientStatus('warning', 'Impossible de vérifier le dossier patient pour le moment.');
-            }
-        }
+                return requiredElements;
+            })();
 
-        function schedulePatientLookup() {
-            clearTimeout(lookupTimer);
-            lookupTimer = window.setTimeout(lookupPatient, 450);
-        }
-
-        ['contact', 'email', 'name', 'first_name', 'last_name'].forEach((fieldName) => {
-            const field = patientFields[fieldName];
-            if (field) {
-                field.addEventListener('input', schedulePatientLookup);
-                field.addEventListener('blur', lookupPatient);
-            }
-        });
-
-        doctorSelect.addEventListener('change', function() {
-            const staffId = this.value;
-            if (!staffId) {
-                clearDoctorDisplay();
+            // Vérifier si tous les éléments sont présents
+            if (!elements) {
+                console.error('Application initialization failed: missing CSRF token');
                 return;
             }
 
-            const today = new Date();
-            const startDate = today.toISOString().split('T')[0];
-            const end = new Date(today);
-            end.setDate(today.getDate() + 7);
-            const endDate = end.toISOString().split('T')[0];
+            const fields = {
+                contact: document.querySelector('input[name="contact"]'),
+                email: document.querySelector('input[name="email"]'),
+                first_name: document.querySelector('input[name="first_name"]'),
+                last_name: document.querySelector('input[name="last_name"]'),
+                adress: document.querySelector('input[name="adress"]'),
+                sexe: document.querySelector('select[name="sexe"]'),
+                tutor: document.querySelector('input[name="tutor"]'),
+                tutor_contact: document.querySelector('input[name="tutor_contact"]'),
+                tutor_adress: document.querySelector('input[name="tutor_adress"]'),
+            };
 
-            fetch(`${availableSlotsUrl}?staff_id=${staffId}&start_date=${startDate}&end_date=${endDate}`)
-                .then(response => response.json())
-                .then(data => {
-                    slotButtonsDiv.innerHTML = '';
-                    dateInput.value = '';
-                    timeInput.value = '';
+            const urls = {
+                lookupUrl: "{% url 'patient_lookup' %}",
+                slotsUrl: "{% url 'get_available_slots' %}",
+            };
 
-                    renderDoctorSummary(data.doctor || null);
-                    renderSchedule(data.schedule || []);
+            // Utilitaires
+            function debounce(fn, delay) {
+                let timer = null;
+                return function () {
+                    const context = this;
+                    const args = arguments;
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        fn.apply(context, args);
+                    }, delay);
+                };
+            }
 
-                    if (data.slots && data.slots.length > 0) {
-                        data.slots.forEach(slot => {
-                            const btn = document.createElement('button');
-                            btn.type = 'button';
-                            btn.classList.add('slot-btn');
-                            btn.textContent = `${slot.date} à ${slot.time}`;
-                            btn.dataset.date = slot.date;
-                            btn.dataset.time = slot.time;
+            function setLookupMessage(message, type) {
+                if (!elements.lookupStatus) return;
+                elements.lookupStatus.textContent = message;
+                elements.lookupStatus.classList.remove('d-none', 'alert-danger', 'alert-success', 'alert-info');
+                elements.lookupStatus.classList.add('alert-' + type);
+            }
 
-                            btn.addEventListener('click', function() {
-                                document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
-                                this.classList.add('selected');
-                                dateInput.value = this.dataset.date;
-                                timeInput.value = this.dataset.time;
-                            });
+            function clearLookupMessage() {
+                if (!elements.lookupStatus) return;
+                elements.lookupStatus.classList.add('d-none');
+                elements.lookupStatus.textContent = '';
+            }
 
-                            slotButtonsDiv.appendChild(btn);
+            function fillPatientForm(patient) {
+                if (!patient || typeof patient !== 'object') return;
+                Object.keys(patient).forEach(function (key) {
+                    if (fields[key] && fields[key] instanceof HTMLInputElement) {
+                        fields[key].value = String(patient[key] || '');
+                    }
+                });
+                setLookupMessage('Patient trouvé et informations préremplies.', 'success');
+            }
+
+            function abortAllRequests() {
+                // Nettoyer les requêtes précédentes
+                if (state.lookupController) {
+                    state.lookupController.abort();
+                }
+                if (state.scheduleController) {
+                    state.scheduleController.abort();
+                }
+
+                // Nettoyer les timeouts
+                if (state.lookupTimeoutId) {
+                    clearTimeout(state.lookupTimeoutId);
+                    state.lookupTimeoutId = null;
+                }
+                if (state.scheduleTimeoutId) {
+                    clearTimeout(state.scheduleTimeoutId);
+                    state.scheduleTimeoutId = null;
+                }
+            }
+
+            // Nettoyage des écouteurs d'événements des slots
+            function cleanupSlotListeners() {
+                state.slotEventListeners.forEach((listener, button) => {
+                    button.removeEventListener('click', listener);
+                });
+                state.slotEventListeners.clear();
+            }
+
+            function clearSchedule() {
+                cleanupSlotListeners();
+                if (elements.doctorSummary) elements.doctorSummary.classList.add('d-none');
+                if (elements.scheduleContainer) elements.scheduleContainer.classList.add('d-none');
+                if (elements.slotsContainer) elements.slotsContainer.classList.add('d-none');
+                if (elements.scheduleGrid) elements.scheduleGrid.textContent = '';
+                if (elements.slotButtons) elements.slotButtons.textContent = '';
+                if (elements.selectedSlotDisplay) elements.selectedSlotDisplay.classList.add('d-none');
+                if (elements.selectedSlotText) elements.selectedSlotText.textContent = '';
+                if (elements.scheduleError) elements.scheduleError.classList.add('d-none');
+            }
+
+            function setLoading(loading) {
+                if (!elements.scheduleLoading || !elements.scheduleGrid || !elements.slotButtons) return;
+                if (loading) {
+                    elements.scheduleLoading.classList.remove('d-none');
+                    elements.scheduleGrid.classList.add('d-none');
+                    if (elements.slotButtons.parentElement) {
+                        elements.slotButtons.parentElement.classList.add('d-none');
+                    }
+                } else {
+                    elements.scheduleLoading.classList.add('d-none');
+                    elements.scheduleGrid.classList.remove('d-none');
+                }
+            }
+
+            function validateScheduleData(schedule) {
+                if (!Array.isArray(schedule)) return [];
+                return schedule.slice(0, MAX_SCHEDULE_DAYS).map(day => ({
+                    ...day,
+                    slots: Array.isArray(day.slots) ? day.slots.slice(0, MAX_SLOTS_PER_DAY) : [],
+                    services: Array.isArray(day.services) ? day.services : [],
+                }));
+            }
+
+            function renderSchedule(schedule) {
+                if (!elements.scheduleGrid) return;
+                
+                const validSchedule = validateScheduleData(schedule);
+                elements.scheduleGrid.textContent = '';
+
+                if (validSchedule.length === 0) {
+                    const emptyMsg = document.createElement('p');
+                    emptyMsg.className = 'text-muted text-center';
+                    emptyMsg.textContent = 'Aucun planning disponible.';
+                    elements.scheduleGrid.appendChild(emptyMsg);
+                    return;
+                }
+
+                const fragment = document.createDocumentFragment();
+
+                validSchedule.forEach(function (day) {
+                    const card = document.createElement('div');
+                    card.className = 'schedule-day-card';
+
+                    // Construire le contenu avec DocumentFragment
+                    const header = document.createElement('div');
+                    header.className = 'schedule-day-header';
+
+                    const titleDiv = document.createElement('div');
+                    const title = document.createElement('h3');
+                    title.className = 'schedule-day-title';
+                    title.textContent = day.day || 'Jour inconnu';
+                    titleDiv.appendChild(title);
+
+                    const dateMeta = document.createElement('p');
+                    dateMeta.className = 'schedule-day-meta';
+                    try {
+                        dateMeta.textContent = new Date(day.date).toLocaleDateString('fr-FR', {
+                            weekday: 'long',
+                            day: '2-digit',
+                            month: '2-digit'
+                        });
+                    } catch (e) {
+                        dateMeta.textContent = 'Date invalide';
+                    }
+                    titleDiv.appendChild(dateMeta);
+                    header.appendChild(titleDiv);
+
+                    const timeMeta = document.createElement('p');
+                    timeMeta.className = 'schedule-day-meta mb-3';
+                    if (day.has_service && Array.isArray(day.services) && day.services.length > 0) {
+                        const times = day.services.map(service =>
+                            (service.open_time || 'N/A') + ' - ' + (service.close_time || 'N/A')
+                        ).join(', ');
+                        timeMeta.textContent = 'Horaires: ' + times;
+                    } else {
+                        timeMeta.textContent = 'Aucun service prévu';
+                    }
+                    header.appendChild(timeMeta);
+                    card.appendChild(header);
+
+                    const slotsDiv = document.createElement('div');
+                    slotsDiv.className = 'schedule-slots';
+
+                    if (day.slots && day.slots.length > 0) {
+                        day.slots.forEach(slot => {
+                            const span = document.createElement('span');
+                            span.className = 'schedule-slot ' + (slot.available ? 'schedule-slot--free' : 'schedule-slot--busy');
+                            span.textContent = slot.time || 'N/A';
+                            slotsDiv.appendChild(span);
                         });
                     } else {
-                        slotButtonsDiv.innerHTML = '<p class="slot-empty-message">Aucun créneau libre pour ce médecin sur les 7 prochains jours.</p>';
+                        const emptySlot = document.createElement('p');
+                        emptySlot.className = 'schedule-day-empty';
+                        emptySlot.textContent = 'Aucun créneau disponible pour ce jour.';
+                        slotsDiv.appendChild(emptySlot);
+                    }
+                    card.appendChild(slotsDiv);
+
+                    if (!day.has_service) {
+                        card.classList.add('schedule-day-card--empty');
                     }
 
-                    slotsContainer.classList.remove('d-none');
-                    if (!data.schedule || !data.schedule.length) {
-                        doctorScheduleContainer.classList.add('d-none');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    renderDoctorSummary(null);
-                    if (scheduleGrid) {
-                        scheduleGrid.innerHTML = '<p class="schedule-day-empty">Erreur lors du chargement de l’emploi du temps.</p>';
-                    }
-                    doctorScheduleContainer.classList.remove('d-none');
-                    slotButtonsDiv.innerHTML = '<p class="slot-empty-message text-danger">Erreur lors du chargement des disponibilités.</p>';
-                    slotsContainer.classList.remove('d-none');
+                    fragment.appendChild(card);
                 });
-        });
 
-        appointmentForm.addEventListener('submit', function(e) {
-            if (!dateInput.value || !timeInput.value) {
-                e.preventDefault();
-                alert('Veuillez sélectionner un créneau horaire.');
+                elements.scheduleGrid.appendChild(fragment);
             }
-        });
+
+            function renderSlots(slots) {
+                if (!elements.slotButtons) return;
+
+                cleanupSlotListeners();
+                elements.slotButtons.textContent = '';
+
+                if (!Array.isArray(slots) || slots.length === 0) {
+                    const emptyMsg = document.createElement('p');
+                    emptyMsg.className = 'slot-empty-message';
+                    emptyMsg.textContent = 'Aucun créneau libre trouvé pour ce médecin.';
+                    elements.slotButtons.appendChild(emptyMsg);
+                    if (elements.slotsContainer) {
+                        elements.slotsContainer.classList.remove('d-none');
+                    }
+                    return;
+                }
+
+                const fragment = document.createDocumentFragment();
+
+                slots.slice(0, MAX_SLOTS_PER_DAY * 2).forEach(function (slot) {
+                    if (!slot.date || !slot.time) return;
+
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'slot-btn';
+                    button.dataset.date = String(slot.date);
+                    button.dataset.time = String(slot.time);
+                    button.textContent = slot.date + ' ' + slot.time;
+
+                    const clickHandler = function (e) {
+                        e.preventDefault();
+                        if (elements.appointmentDate) elements.appointmentDate.value = String(slot.date);
+                        if (elements.appointmentTime) elements.appointmentTime.value = String(slot.time);
+                        if (elements.selectedSlotText) {
+                            elements.selectedSlotText.textContent = slot.date + ' à ' + slot.time;
+                        }
+                        if (elements.selectedSlotDisplay) {
+                            elements.selectedSlotDisplay.classList.remove('d-none');
+                        }
+
+                        // Déselectionner les autres boutons
+                        document.querySelectorAll('.slot-btn.selected').forEach(function (btn) {
+                            btn.classList.remove('selected');
+                        });
+                        button.classList.add('selected');
+                    };
+
+                    button.addEventListener('click', clickHandler);
+                    state.slotEventListeners.set(button, clickHandler);
+                    fragment.appendChild(button);
+                });
+
+                elements.slotButtons.appendChild(fragment);
+                if (elements.slotsContainer) {
+                    elements.slotsContainer.classList.remove('d-none');
+                }
+            }
+
+            function updateDoctorSummary(doctor) {
+                if (!elements.doctorSummary || !doctor) return;
+
+                const fragment = document.createDocumentFragment();
+
+                const nameP = document.createElement('p');
+                nameP.className = 'mb-2';
+                nameP.innerHTML = '<strong>Médecin :</strong> ' + (doctor.name || 'N/A');
+
+                const specialtyP = document.createElement('p');
+                specialtyP.className = 'mb-0';
+                specialtyP.innerHTML = '<strong>Spécialité :</strong> ' + (doctor.specialty || 'N/A');
+
+                fragment.appendChild(nameP);
+                fragment.appendChild(specialtyP);
+
+                elements.doctorSummary.textContent = '';
+                elements.doctorSummary.appendChild(fragment);
+                elements.doctorSummary.classList.remove('d-none');
+            }
+
+            async function fetchPatientLookup() {
+                abortAllRequests();
+                state.lookupController = new AbortController();
+
+                const payload = new FormData();
+                let hasValue = false;
+
+                ['contact', 'email', 'first_name', 'last_name'].forEach(function (key) {
+                    const input = fields[key];
+                    if (!input) return;
+                    const value = input.value.trim();
+                    if (value) {
+                        payload.append(key, value);
+                        hasValue = true;
+                    }
+                });
+
+                if (!hasValue) {
+                    clearLookupMessage();
+                    return;
+                }
+
+                setLookupMessage('Recherche du dossier patient...', 'info');
+
+                state.lookupTimeoutId = setTimeout(() => {
+                    if (state.lookupController) {
+                        state.lookupController.abort();
+                    }
+                }, LOOKUP_TIMEOUT);
+
+                try {
+                    const response = await fetch(urls.lookupUrl, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': elements.csrfToken,
+                        },
+                        body: payload,
+                        signal: state.lookupController.signal,
+                    });
+
+                    if (state.lookupTimeoutId) {
+                        clearTimeout(state.lookupTimeoutId);
+                        state.lookupTimeoutId = null;
+                    }
+
+                    if (!response.ok) {
+                        throw new Error('Erreur serveur: ' + response.status);
+                    }
+
+                    const data = await response.json();
+                    if (data.found && data.patient) {
+                        fillPatientForm(data.patient);
+                    } else {
+                        setLookupMessage('Aucun dossier trouvé pour ces informations.', 'info');
+                    }
+                } catch (error) {
+                    if (state.lookupTimeoutId) {
+                        clearTimeout(state.lookupTimeoutId);
+                        state.lookupTimeoutId = null;
+                    }
+
+                    if (error.name === 'AbortError') {
+                        return;
+                    }
+
+                    console.error('Patient lookup error:', error);
+                    setLookupMessage('Une erreur est survenue lors de la recherche.', 'danger');
+                }
+            }
+
+            async function fetchStaffSchedule() {
+                abortAllRequests();
+                state.scheduleController = new AbortController();
+
+                const staffId = elements.doctorSelect?.value;
+                if (!staffId) {
+                    clearSchedule();
+                    return;
+                }
+
+                clearSchedule();
+                if (elements.scheduleContainer) {
+                    elements.scheduleContainer.classList.remove('d-none');
+                }
+                setLoading(true);
+
+                state.scheduleTimeoutId = setTimeout(() => {
+                    if (state.scheduleController) {
+                        state.scheduleController.abort();
+                    }
+                }, SCHEDULE_TIMEOUT);
+
+                try {
+                    const response = await fetch(urls.slotsUrl + '?staff_id=' + encodeURIComponent(staffId), {
+                        signal: state.scheduleController.signal,
+                    });
+
+                    if (state.scheduleTimeoutId) {
+                        clearTimeout(state.scheduleTimeoutId);
+                        state.scheduleTimeoutId = null;
+                    }
+
+                    setLoading(false);
+
+                    if (!response.ok) {
+                        throw new Error('Erreur serveur: ' + response.status);
+                    }
+
+                    const data = await response.json();
+                    if (data.doctor) {
+                        updateDoctorSummary(data.doctor);
+                    }
+                    renderSchedule(data.schedule || []);
+                    renderSlots(data.slots || []);
+                } catch (error) {
+                    if (state.scheduleTimeoutId) {
+                        clearTimeout(state.scheduleTimeoutId);
+                        state.scheduleTimeoutId = null;
+                    }
+
+                    if (error.name === 'AbortError') {
+                        return;
+                    }
+
+                    console.error('Schedule fetch error:', error);
+                    if (elements.scheduleError) {
+                        elements.scheduleError.textContent = error.message || 'Erreur de chargement des disponibilités.';
+                        elements.scheduleError.classList.remove('d-none');
+                    }
+                    if (elements.scheduleContainer) {
+                        elements.scheduleContainer.classList.remove('d-none');
+                    }
+                }
+            }
+
+            // Initialisation
+            function init() {
+                const debouncedLookup = debounce(fetchPatientLookup, DEBOUNCE_DELAY);
+                ['contact', 'email', 'first_name', 'last_name'].forEach(function (key) {
+                    if (fields[key]) {
+                        fields[key].addEventListener('input', debouncedLookup);
+                    }
+                });
+
+                if (elements.doctorSelect) {
+                    elements.doctorSelect.addEventListener('change', fetchStaffSchedule);
+                }
+            }
+
+            // Cleanup au déchargement de la page
+            window.addEventListener('beforeunload', () => {
+                abortAllRequests();
+                cleanupSlotListeners();
+            });
+
+            // Démarrer l'application
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
     </script>
 {% endblock %}

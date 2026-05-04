@@ -1,7 +1,117 @@
-ck{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}{{ page_title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .doctor-schedule__legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        align-items: center;
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+
+    .doctor-schedule__legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    .doctor-schedule__legend-swatch {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 999px;
+        display: inline-block;
+    }
+
+    .doctor-schedule__legend-swatch--free {
+        background-color: #198754;
+    }
+
+    .doctor-schedule__legend-swatch--busy {
+        background-color: #dc3545;
+    }
+
+    .schedule-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.85rem;
+    }
+
+    .schedule-day-card {
+        border: 1px solid rgba(13, 110, 253, 0.12);
+        border-radius: 0.85rem;
+        background-color: #f8fbff;
+        padding: 0.85rem;
+    }
+
+    .schedule-day-card--empty {
+        background-color: #f8f9fa;
+    }
+
+    .schedule-day-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .schedule-day-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .schedule-day-meta {
+        margin: 0.2rem 0 0;
+        font-size: 0.8rem;
+        color: #6c757d;
+    }
+
+    .schedule-slots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+    }
+
+    .schedule-slot {
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+    }
+
+    .schedule-slot--free {
+        background-color: #d1e7dd;
+        color: #146c43;
+        border-color: rgba(25, 135, 84, 0.2);
+    }
+
+    .schedule-slot--busy {
+        background-color: #f8d7da;
+        color: #b02a37;
+        border-color: rgba(220, 53, 69, 0.2);
+        opacity: 0.9;
+    }
+
+    .schedule-day-empty {
+        margin-bottom: 0;
+        color: #6c757d;
+        font-size: 0.875rem;
+    }
+
+    .schedule-empty-message {
+        color: #6c757d;
+        font-size: 0.875rem;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 <!-- ── STAFF PROFILE DETAIL SECTION ─────────────────── -->
@@ -173,32 +283,35 @@ ck{% extends 'base.html' %}
                     {% endif %}
                 </div>
                 
-                <!-- Time Service -->
-                {% if staff.time_service %}
+<!-- Time Service - Auto-fetched Schedule -->
                 <div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
                     <h5 class="mb-3">Horaire de Consultation</h5>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Jour</th>
-                                    <th>Heure d'ouverture</th>
-                                    <th>Heure de clôture</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for ts in staff.time_service.all %}
-                                <tr>
-                                    <td>{{ ts.get_service_day_display }}</td>
-                                    <td>{{ ts.open_time }}</td>
-                                    <td>{{ ts.close_time }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                    <div id="schedule-loader" class="text-center py-3">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Chargement...</span>
+                        </div>
+                        <p class="text-muted mt-2">Chargement des disponibilités...</p>
+                    </div>
+                    <div id="schedule-error" class="alert alert-warning d-none"></div>
+                    <div id="schedule-content" class="d-none">
+                        <div class="doctor-schedule__legend mb-3">
+                            <span class="doctor-schedule__legend-item me-3">
+                                <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--free"></span>
+                                Libre
+                            </span>
+                            <span class="doctor-schedule__legend-item">
+                                <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--busy"></span>
+                                Occupé
+                            </span>
+                        </div>
+                        <div id="schedule-grid" class="schedule-grid"></div>
+                        <div class="mt-3">
+                            <a href="{% url 'patients:appointment' %}" class="btn btn-teal-solid">
+                                <i class="bi bi-calendar-check me-2"></i>Prendre RDV
+                            </a>
+                        </div>
                     </div>
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>
@@ -234,4 +347,115 @@ ck{% extends 'base.html' %}
 </section>
 {% endif %}
 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    'use strict';
+    
+    const staffId = {{ staff.pk }};
+    const availableSlotsUrl = "{{ available_slots_url }}";
+    const scheduleLoader = document.getElementById('schedule-loader');
+    const scheduleError = document.getElementById('schedule-error');
+    const scheduleContent = document.getElementById('schedule-content');
+    const scheduleGrid = document.getElementById('schedule-grid');
+    
+    function formatScheduleDate(dateValue) {
+        try {
+            return new Date(dateValue + 'T00:00:00').toLocaleDateString('fr-FR', {
+                weekday: 'long',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+            });
+        } catch (error) {
+            return dateValue;
+        }
+    }
+    
+    function renderSchedule(scheduleDays) {
+        scheduleGrid.innerHTML = '';
+        
+        if (!scheduleDays || !scheduleDays.length) {
+            scheduleGrid.innerHTML = '<p class="schedule-empty-message">Aucun créneau défini pour les 7 prochains jours.</p>';
+            return;
+        }
+        
+        scheduleDays.forEach((day) => {
+            const card = document.createElement('div');
+            card.className = 'schedule-day-card' + (day.has_service ? '' : ' schedule-day-card--empty');
+            
+            const slotsMarkup = day.slots && day.slots.length
+                ? day.slots.map((slot) => `
+                    <span class="schedule-slot ${slot.available ? 'schedule-slot--free' : 'schedule-slot--busy'}">
+                        ${slot.time}
+                    </span>
+                `).join('')
+                : '<p class="schedule-day-empty">Aucun créneau ce jour.</p>';
+            
+            const serviceInfo = day.services && day.services.length
+                ? day.services.map((service) => `${service.open_time} - ${service.close_time}`).join(' • ')
+                : 'Pas de service';
+            
+            card.innerHTML = `
+                <div class="schedule-day-header">
+                    <div>
+                        <h4 class="schedule-day-title">${day.day}</h4>
+                        <p class="schedule-day-meta">${formatScheduleDate(day.date)}</p>
+                    </div>
+                    <span class="badge ${day.has_service ? 'text-bg-primary' : 'text-bg-secondary'}">
+                        ${day.has_service ? 'Service' : 'Repos'}
+                    </span>
+                </div>
+                <p class="schedule-day-meta mb-2">${serviceInfo}</p>
+                <div class="schedule-slots">
+                    ${slotsMarkup}
+                </div>
+            `;
+            
+            scheduleGrid.appendChild(card);
+        });
+    }
+    
+    function fetchSchedule() {
+        const today = new Date();
+        const startDate = today.toISOString().split('T')[0];
+        const end = new Date(today);
+        end.setDate(today.getDate() + 7);
+        const endDate = end.toISOString().split('T')[0];
+        
+        fetch(`${availableSlotsUrl}?staff_id=${staffId}&start_date=${startDate}&end_date=${endDate}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur réseau');
+                }
+                return response.json();
+            })
+            .then(data => {
+                scheduleLoader.classList.add('d-none');
+                
+                if (data.error) {
+                    scheduleError.textContent = data.error;
+                    scheduleError.classList.remove('d-none');
+                    return;
+                }
+                
+                renderSchedule(data.schedule || []);
+                scheduleContent.classList.remove('d-none');
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                scheduleLoader.classList.add('d-none');
+                scheduleError.textContent = 'Erreur lors du chargement des disponibilités.';
+                scheduleError.classList.remove('d-none');
+            });
+    }
+    
+    // Auto-fetch schedule on page load
+    if (staffId && availableSlotsUrl) {
+        fetchSchedule();
+    }
+})();
+</script>
 {% endblock %}
