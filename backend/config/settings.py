@@ -6,7 +6,7 @@ Utilise python-decouple pour gérer les variables d'environnement
 from pathlib import Path
 from decouple import config, Csv
 
-import dj_database_url
+# import dj_database_url  # Disabled for SQLite
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -108,22 +108,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # ✅ DATABASE: PostgreSQL with connection pooling
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL', default='postgresql://localhost/while_health'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
-if 'postgresql' in DATABASES['default'].get('ENGINE', ''):
-    DATABASES['default'].update({
-        'ATOMIC_REQUESTS': False,
-        'CONN_MAX_AGE': 600,
-        'OPTIONS': {
-            'connect_timeout': 10,
-            'options': '-c default_transaction_isolation=read_committed'
-        }
-    })
 
 # ✅ CACHE: Redis (can fallback to in-memory for dev)
 CACHES = {
