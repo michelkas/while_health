@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Confirmer Suppression - While Health{% endblock %}
+
+{% block extra_css %}
+<style>
+    .delete-container {
+        min-height: 100vh;
+        background: #f8f9fa;
+        padding: 40px 0;
+    }
+    
+    .delete-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .delete-icon {
+        font-size: 64px;
+        color: #dc3545;
+        margin-bottom: 20px;
+    }
+    
+    .delete-header h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    
+    .delete-header p {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    
+    .appointment-details-box {
+        background: #f8f9fa;
+        border-left: 4px solid #dc3545;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+        text-align: left;
+    }
+    
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+    
+    .detail-row strong {
+        color: #333;
+    }
+    
+    .detail-row span {
+        color: #666;
+    }
+    
+    .warning-message {
+        background: #fff3cd;
+        border: 1px solid #ffc107;
+        color: #856404;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .warning-message i {
+        font-size: 20px;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+        padding-top: 25px;
+        border-top: 1px solid #eee;
+    }
+    
+    .btn-confirm, .btn-cancel {
+        flex: 1;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .btn-confirm {
+        background: #dc3545;
+        color: white;
+    }
+    
+    .btn-confirm:hover {
+        background: #c82333;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3);
+    }
+    
+    .btn-cancel {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .btn-cancel:hover {
+        background: #5a6268;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="delete-container">
+    <div class="container">
+        <div class="delete-card">
+            <div class="delete-icon">
+                <i class="bi bi-exclamation-circle"></i>
+            </div>
+            
+            <div class="delete-header">
+                <h1>Confirmer l'Annulation</h1>
+                <p>Êtes-vous sûr de vouloir annuler ce rendez-vous ?</p>
+            </div>
+            
+            <div class="appointment-details-box">
+                <h3 style="margin-bottom: 15px; color: #333; font-weight: 600;">Détails du Rendez-vous</h3>
+                
+                <div class="detail-row">
+                    <strong>Date</strong>
+                    <span>{{ appointment.date|date:"j M Y" }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <strong>Heure</strong>
+                    <span>{{ appointment.time|time:"H:i" }}</span>
+                </div>
+                
+                {% if appointment.staff %}
+                <div class="detail-row">
+                    <strong>Docteur</strong>
+                    <span>Dr. {{ appointment.staff.user.get_full_name }}</span>
+                </div>
+                {% endif %}
+                
+                {% if appointment.staff.specialty %}
+                <div class="detail-row">
+                    <strong>Spécialité</strong>
+                    <span>{{ appointment.staff.specialty|title }}</span>
+                </div>
+                {% endif %}
+                
+                {% if appointment.raison %}
+                <div class="detail-row">
+                    <strong>Motif</strong>
+                    <span>{{ appointment.raison }}</span>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="warning-message">
+                <i class="bi bi-info-circle"></i>
+                <div>
+                    <strong>Attention :</strong> Cette action est permanente. Le rendez-vous sera définitivement annulé.
+                </div>
+            </div>
+            
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-confirm" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');">
+                        <i class="bi bi-trash"></i>
+                        Oui, Annuler le rendez-vous
+                    </button>
+                    <a href="{% url 'patients:patient_appointments_list' %}" class="btn-cancel">
+                        <i class="bi bi-x-circle"></i>
+                        Non, Revenir
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

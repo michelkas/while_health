@@ -85,3 +85,111 @@ class StaffForm(forms.ModelForm):
             'specialty': 'Spécialité',
             'role': 'Rôle',
         }
+
+
+# ✅ STAFF APPOINTMENT MANAGEMENT - Forms for dashboard
+
+
+from appointment.models import Appointment
+
+
+class StaffAppointmentValidationForm(forms.ModelForm):
+    """
+    Form for staff to validate/confirm appointments.
+    Can modify date, time, reason and set accept status.
+    """
+    class Meta:
+        model = Appointment
+        fields = ['date', 'time', 'raison', 'accept']
+        widgets = {
+            'date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+            }),
+            'time': forms.TimeInput(attrs={
+                'type': 'time',
+                'class': 'form-control',
+            }),
+            'raison': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Motif du rendez-vous',
+            }),
+            'accept': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+            }),
+        }
+        labels = {
+            'date': 'Date du rendez-vous',
+            'time': 'Heure du rendez-vous',
+            'raison': 'Motif du rendez-vous',
+            'accept': 'Accepter et confirmer ce rendez-vous',
+        }
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        date_val = cleaned_data.get('date')
+        time_val = cleaned_data.get('time')
+        
+        if date_val and time_val and self.instance:
+            # Check if the new time slot is available
+            existing = Appointment.objects.filter(
+                staff=self.instance.staff,
+                date=date_val,
+                time=time_val,
+            ).exclude(pk=self.instance.pk)
+            
+            if existing.exists():
+                raise ValidationError(
+                    "Ce créneau horaire n'est pas disponible. Veuillez choisir un autre."
+                )
+        
+        return cleaned_data
+
+
+class StaffAppointmentEditForm(forms.ModelForm):
+    """
+    Form for staff to edit appointment details.
+    """
+    class Meta:
+        model = Appointment
+        fields = ['date', 'time', 'raison']
+        widgets = {
+            'date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+            }),
+            'time': forms.TimeInput(attrs={
+                'type': 'time',
+                'class': 'form-control',
+            }),
+            'raison': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Motif du rendez-vous',
+            }),
+        }
+        labels = {
+            'date': 'Date du rendez-vous',
+            'time': 'Heure du rendez-vous',
+            'raison': 'Motif du rendez-vous',
+        }
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        date_val = cleaned_data.get('date')
+        time_val = cleaned_data.get('time')
+        
+        if date_val and time_val and self.instance:
+            existing = Appointment.objects.filter(
+                staff=self.instance.staff,
+                date=date_val,
+                time=time_val,
+            ).exclude(pk=self.instance.pk)
+            
+            if existing.exists():
+                raise ValidationError(
+                    "Ce créneau horaire n'est pas disponible."
+                )
+        
+        return cleaned_data

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Rendez-vous - While Health</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .greeting {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .greeting strong {
+            color: #667eea;
+        }
+        
+        .appointment-details {
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+            min-width: 120px;
+        }
+        
+        .detail-value {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .doctor-info {
+            background-color: #f0f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .doctor-info h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .doctor-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 10px 0 5px 0;
+        }
+        
+        .doctor-details {
+            font-size: 13px;
+            color: #666;
+            margin: 3px 0;
+        }
+        
+        .important-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        .important-note strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .logo {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 18px;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>✓ Confirmation de Rendez-vous</h1>
+            <p>While Health - Plateforme Médicale</p>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="greeting">
+                Bonjour <strong>{{ patient_name }}</strong>,
+            </div>
+            
+            <p>
+                Votre rendez-vous a été confirmé par le docteur. Nous vous remercions de votre confiance et attendons votre visite.
+            </p>
+            
+            <!-- Appointment Details -->
+            <div class="appointment-details">
+                <div class="detail-item">
+                    <span class="detail-label">📅 Date</span>
+                    <span class="detail-value">{{ appointment_date }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">⏰ Heure</span>
+                    <span class="detail-value">{{ appointment_time }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">📍 Département</span>
+                    <span class="detail-value">{{ department }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">💊 Motif</span>
+                    <span class="detail-value">{{ reason }}</span>
+                </div>
+            </div>
+            
+            <!-- Doctor Information -->
+            <div class="doctor-info">
+                <h3>👨‍⚕️ VOTRE DOCTEUR</h3>
+                <div class="doctor-name">Dr. {{ doctor_name }}</div>
+                <div class="doctor-details">
+                    Spécialité : <strong>{{ doctor_specialty }}</strong>
+                </div>
+            </div>
+            
+            <!-- Important Note -->
+            <div class="important-note">
+                <strong>ℹ️ Important</strong>
+                Veuillez arriver 10 minutes avant votre rendez-vous. N'oubliez pas de vous munir de vos documents d'identification et de votre carte d'assurance maladie si applicable.
+            </div>
+            
+            <!-- Contact Information -->
+            <p style="margin-top: 30px; color: #666; font-size: 13px;">
+                Si vous avez des questions ou si vous devez annuler/reporter votre rendez-vous, veuillez contacter la réception de While Health.
+            </p>
+            
+            <div class="divider"></div>
+            
+            <p style="text-align: center; color: #999; font-size: 12px;">
+                Cet email a été envoyé automatiquement. Veuillez ne pas répondre à cet email.
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p><span class="logo">While Health</span></p>
+            <p>Plateforme de Gestion Médicale</p>
+            <p>© 2026 While Health. Tous droits réservés.</p>
+            <p>
+                📧 contact@whilehealth.cd | 🌐 www.whilehealth.cd
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -204,3 +204,89 @@ HystoryFormset = forms.inlineformset_factory(
     can_delete=False,
     max_num=1
 )
+
+
+# ✅ PATIENT PHONE ACCESS - Forms for appointment management without authentication
+
+
+class PatientPhoneVerificationForm(forms.Form):
+    """
+    Form for patient phone number verification.
+    Used to access appointments without authentication.
+    """
+    contact = forms.CharField(
+        label="Numéro de téléphone",
+        max_length=20,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'type': 'tel',
+            'placeholder': '+243 123 456 789',
+            'autocomplete': 'tel',
+        })
+    )
+    
+    def clean_contact(self):
+        """Normalize phone number"""
+        contact = self.cleaned_data.get('contact', '').strip()
+        if not contact:
+            raise forms.ValidationError("Veuillez entrer un numéro de téléphone.")
+        return contact
+
+
+class PatientAppointmentEditForm(forms.ModelForm):
+    """
+    Form for patient to edit their appointment (date, time, reason).
+    """
+    class Meta:
+        model = Appointment
+        fields = ['date', 'time', 'raison']
+        widgets = {
+            'date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+            }),
+            'time': forms.TimeInput(attrs={
+                'type': 'time',
+                'class': 'form-control',
+            }),
+            'raison': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Motif du rendez-vous',
+            }),
+        }
+        labels = {
+            'date': 'Date du rendez-vous',
+            'time': 'Heure du rendez-vous',
+            'raison': 'Motif du rendez-vous',
+        }
+    
+    def __init__(self, *args, appointment=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.appointment = appointment
+        
+        # Make date/time minimum date as today
+        from datetime import date
+        self.fields['date'].widget.attrs['min'] = str(date.today())
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        date_val = cleaned_data.get('date')
+        time_val = cleaned_data.get('time')
+        
+        if date_val and time_val and self.appointment:
+            # Check if the new time slot is available
+            from datetime import datetime, date as date_class
+            existing = Appointment.objects.filter(
+                staff=self.appointment.staff,
+                date=date_val,
+                time=time_val,
+            ).exclude(pk=self.appointment.pk)
+            
+            if existing.exists():
+                raise forms.ValidationError(
+                    "Ce créneau horaire n'est pas disponible. Veuillez choisir un autre."
+                )
+        
+        return cleaned_data

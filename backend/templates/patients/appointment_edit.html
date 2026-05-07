@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Modifier Rendez-vous - While Health{% endblock %}
+
+{% block extra_css %}
+<style>
+    .edit-container {
+        min-height: 100vh;
+        background: #f8f9fa;
+        padding: 40px 0;
+    }
+    
+    .edit-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .edit-header {
+        margin-bottom: 30px;
+    }
+    
+    .edit-header h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    
+    .edit-header p {
+        color: #666;
+        font-size: 16px;
+    }
+    
+    .appointment-info-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .appointment-info-box h3 {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        opacity: 0.95;
+    }
+    
+    .info-row strong {
+        display: block;
+        opacity: 0.8;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 16px;
+        transition: all 0.3s;
+        width: 100%;
+    }
+    
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    .error-list {
+        list-style: none;
+        padding: 0;
+        margin: 5px 0 0 0;
+    }
+    
+    .error-list li {
+        color: #dc3545;
+        font-size: 14px;
+        padding: 5px 0;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #eee;
+    }
+    
+    .btn-submit, .btn-cancel {
+        flex: 1;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .btn-submit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-cancel {
+        background: #6c757d;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .btn-cancel:hover {
+        background: #5a6268;
+        color: white;
+    }
+    
+    .help-text {
+        color: #999;
+        font-size: 14px;
+        margin-top: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="edit-container">
+    <div class="container">
+        <div class="edit-card">
+            <div class="edit-header">
+                <h1>
+                    <i class="bi bi-pencil-square"></i>
+                    Modifier Rendez-vous
+                </h1>
+                <p>Mettez à jour les informations de votre rendez-vous</p>
+            </div>
+            
+            {% if appointment.staff %}
+            <div class="appointment-info-box">
+                <h3>Détails Actuels</h3>
+                <div class="info-row">
+                    <div>
+                        <strong>Docteur</strong>
+                        {{ appointment.staff.user.get_full_name }}
+                    </div>
+                    <div>
+                        <strong>Date</strong>
+                        {{ appointment.date|date:"j M Y" }}
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div>
+                        <strong>Heure</strong>
+                        {{ appointment.time|time:"H:i" }}
+                    </div>
+                    {% if appointment.staff.departement %}
+                    <div>
+                        <strong>Département</strong>
+                        {{ appointment.staff.departement.name }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Erreur :</strong>
+                    {% for error in form.non_field_errors %}
+                    <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="form-group">
+                    <label for="id_date">Date du rendez-vous</label>
+                    <input 
+                        type="date" 
+                        name="date" 
+                        id="id_date" 
+                        class="form-control {% if form.date.errors %}is-invalid{% endif %}" 
+                        value="{{ form.date.value|date:'Y-m-d' }}"
+                        required
+                    >
+                    {% if form.date.errors %}
+                    <ul class="error-list">
+                        {% for error in form.date.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="help-text">
+                        <i class="bi bi-info-circle"></i>
+                        Sélectionnez une date à venir
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_time">Heure du rendez-vous</label>
+                    <input 
+                        type="time" 
+                        name="time" 
+                        id="id_time" 
+                        class="form-control {% if form.time.errors %}is-invalid{% endif %}" 
+                        value="{{ form.time.value|time:'H:i' }}"
+                        required
+                    >
+                    {% if form.time.errors %}
+                    <ul class="error-list">
+                        {% for error in form.time.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_raison">Motif du rendez-vous</label>
+                    <textarea 
+                        name="raison" 
+                        id="id_raison" 
+                        class="form-control" 
+                        rows="4" 
+                        placeholder="Décrivez le motif de votre visite"
+                    >{{ form.raison.value|default:'' }}</textarea>
+                    <div class="help-text">
+                        <i class="bi bi-info-circle"></i>
+                        Décrivez brièvement les raisons de votre visite
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-check-circle"></i>
+                        Enregistrer les modifications
+                    </button>
+                    <a href="{% url 'patients:patient_appointments_list' %}" class="btn-cancel">
+                        <i class="bi bi-x-circle"></i>
+                        Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

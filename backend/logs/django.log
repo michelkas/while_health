@@ -42,3 +42,1155 @@ WARNING 2026-05-04 17:34:27,613 log 35794 134233834124992 "GET /media/avatar/doc
 WARNING 2026-05-04 17:34:27,615 log 35794 134233792161472 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
 INFO 2026-05-04 17:34:31,723 log 35794 134233792161472 "GET /appointment/ HTTP/1.1" 200 54099
 INFO 2026-05-04 17:34:37,135 log 35794 134233792161472 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 13701
+INFO 2026-05-07 08:54:46,505 autoreload 32112 135818358409024 Watching for file changes with StatReloader
+INFO 2026-05-07 08:54:51,607 log 32112 135818165352128 "GET / HTTP/1.1" 200 23486
+INFO 2026-05-07 08:54:51,660 log 32112 135818165352128 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-07 08:54:51,697 log 32112 135818165352128 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,699 log 32112 135818156959424 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,739 log 32112 135818156959424 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,759 log 32112 135818064684736 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,769 log 32112 135818165352128 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,770 log 32112 135818064684736 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,771 log 32112 135818047899328 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,775 log 32112 135818056292032 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+INFO 2026-05-07 08:54:51,776 log 32112 135818039506624 "GET /static/js/main.js HTTP/1.1" 200 1177
+WARNING 2026-05-07 08:54:51,786 log 32112 135818047899328 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:51,818 log 32112 135818064684736 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:52,103 log 32112 135818064684736 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2026-05-07 08:54:57,716 log 32112 135818064684736 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-07 08:54:57,761 log 32112 135818064684736 "GET /css/adminlte.css HTTP/1.1" 404 179
+WARNING 2026-05-07 08:54:57,780 log 32112 135818064684736 "GET /css/adminlte.css HTTP/1.1" 404 179
+INFO 2026-05-07 08:55:02,621 log 32112 135818064684736 "GET /appointment/ HTTP/1.1" 200 54099
+INFO 2026-05-07 08:55:50,237 log 32112 135818064684736 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-07 08:55:50,289 log 32112 135818064684736 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,295 log 32112 135818047899328 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,305 log 32112 135818156959424 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,307 log 32112 135818047899328 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,308 log 32112 135818165352128 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,316 log 32112 135818156959424 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,317 log 32112 135818039506624 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,326 log 32112 135818056292032 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,326 log 32112 135818165352128 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:55:50,335 log 32112 135818056292032 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+ERROR 2026-05-07 08:55:59,701 log 32112 135818056292032 Internal Server Error: /staff/2/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/staff/views.py", line 57, in staff_profile_detail
+    "available_slots_url": reverse("patients:get_available_slots"),
+                           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'get_available_slots' not found. 'get_available_slots' is not a valid view function or pattern name.
+ERROR 2026-05-07 08:55:59,707 log 32112 135818056292032 "GET /staff/2/ HTTP/1.1" 500 145
+INFO 2026-05-07 08:56:05,417 log 32112 135818056292032 "GET /appointment/ HTTP/1.1" 200 54099
+INFO 2026-05-07 08:56:05,452 log 32112 135818056292032 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 08:56:05,453 log 32112 135818165352128 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 08:56:44,498 log 32112 135818056292032 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-07 08:56:44,542 log 32112 135818056292032 "GET /css/adminlte.css HTTP/1.1" 404 179
+INFO 2026-05-07 08:56:53,213 log 32112 135818056292032 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-05-07 08:56:53,282 log 32112 135818056292032 "GET /admin/ HTTP/1.1" 200 47398
+WARNING 2026-05-07 08:56:53,392 log 32112 135818039506624 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 179
+INFO 2026-05-07 08:56:53,395 log 32112 135818064684736 "GET /static/logo.jpg HTTP/1.1" 200 36022
+INFO 2026-05-07 08:56:53,395 log 32112 135818047899328 "GET /static/jazzmin/css/main.css HTTP/1.1" 200 14372
+INFO 2026-05-07 08:56:53,401 log 32112 135818056292032 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103010
+INFO 2026-05-07 08:56:53,403 log 32112 135818165352128 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 298755
+INFO 2026-05-07 08:56:53,412 log 32112 135818156959424 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 200 232244
+INFO 2026-05-07 08:56:53,413 log 32112 135818056292032 "GET /static/jazzmin/js/main.js HTTP/1.1" 200 4542
+INFO 2026-05-07 08:56:53,416 log 32112 135818039506624 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 80721
+INFO 2026-05-07 08:56:53,416 log 32112 135818047899328 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 18270
+INFO 2026-05-07 08:56:53,937 log 32112 135818039506624 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+INFO 2026-05-07 08:56:53,940 log 32112 135818056292032 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+INFO 2026-05-07 08:57:13,431 log 32112 135818056292032 "GET / HTTP/1.1" 200 23672
+WARNING 2026-05-07 08:57:13,496 log 32112 135818056292032 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,505 log 32112 135818064684736 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,506 log 32112 135818047899328 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,506 log 32112 135818039506624 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,507 log 32112 135818156959424 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+INFO 2026-05-07 08:57:13,507 log 32112 135818165352128 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 08:57:13,509 log 32112 135818056292032 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-05-07 08:57:13,519 log 32112 135818039506624 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,523 log 32112 135818165352128 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,530 log 32112 135818156959424 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,530 log 32112 135818064684736 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 08:57:13,531 log 32112 135818047899328 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:00:46,801 log 32112 135818047899328 "GET /appointment/ HTTP/1.1" 200 54285
+INFO 2026-05-07 09:00:46,842 log 32112 135818047899328 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:00:46,850 log 32112 135818064684736 "GET /static/js/main.js HTTP/1.1" 304 0
+ERROR 2026-05-07 09:02:25,784 log 32112 135818047899328 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'patient_appointment_list' not found. 'patient_appointment_list' is not a valid view function or pattern name.
+ERROR 2026-05-07 09:02:25,798 log 32112 135818047899328 "GET /appointment/ HTTP/1.1" 500 145
+INFO 2026-05-07 09:02:35,945 log 32112 135818047899328 "GET / HTTP/1.1" 200 23672
+INFO 2026-05-07 09:02:35,991 log 32112 135818047899328 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-07 09:02:36,019 log 32112 135818047899328 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,020 log 32112 135818039506624 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,026 log 32112 135818156959424 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,038 log 32112 135818064684736 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,047 log 32112 135818156959424 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:02:36,048 log 32112 135818056292032 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-05-07 09:02:36,055 log 32112 135818039506624 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,055 log 32112 135818165352128 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,057 log 32112 135818064684736 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,071 log 32112 135818047899328 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:02:36,072 log 32112 135818165352128 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+ERROR 2026-05-07 09:02:38,305 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'patient_appointment_list' not found. 'patient_appointment_list' is not a valid view function or pattern name.
+ERROR 2026-05-07 09:02:38,314 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:35,542 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:35,550 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:36,340 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:36,346 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:36,538 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:36,544 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:36,735 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:36,742 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:36,899 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:36,905 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:37,070 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:37,074 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:03:37,222 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:37,227 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+INFO 2026-05-07 09:03:39,185 log 32112 135818165352128 "GET / HTTP/1.1" 200 23672
+INFO 2026-05-07 09:03:39,233 log 32112 135818064684736 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-07 09:03:39,247 log 32112 135818047899328 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,249 log 32112 135818165352128 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,258 log 32112 135818056292032 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,259 log 32112 135818047899328 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,261 log 32112 135818039506624 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,261 log 32112 135818156959424 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:03:39,262 log 32112 135818064684736 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-05-07 09:03:39,267 log 32112 135818056292032 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,273 log 32112 135818156959424 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,278 log 32112 135818039506624 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:03:39,299 log 32112 135818165352128 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+ERROR 2026-05-07 09:03:41,313 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:03:41,321 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+INFO 2026-05-07 09:04:41,541 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 200 54605
+INFO 2026-05-07 09:04:41,587 log 32112 135818165352128 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:04:41,588 log 32112 135818039506624 "GET /static/js/main.js HTTP/1.1" 304 0
+ERROR 2026-05-07 09:06:09,396 log 32112 135818165352128 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:06:09,404 log 32112 135818165352128 "GET /appointment/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:06:13,917 log 32112 135818165352128 Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 135, in logout
+    return redirect("index")
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+ERROR 2026-05-07 09:06:13,922 log 32112 135818165352128 "GET /logout/ HTTP/1.1" 500 145
+ERROR 2026-05-07 09:06:23,135 log 32112 135818165352128 Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/core/views.py", line 135, in logout
+    return redirect("index")
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+ERROR 2026-05-07 09:06:23,139 log 32112 135818165352128 "GET /logout/ HTTP/1.1" 500 145
+INFO 2026-05-07 09:06:30,193 log 32112 135818165352128 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-07 09:06:30,250 log 32112 135818156959424 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:06:30,250 log 32112 135818064684736 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-07 09:06:30,253 log 32112 135818039506624 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,253 log 32112 135818056292032 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,254 log 32112 135818047899328 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,255 log 32112 135818165352128 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,273 log 32112 135818064684736 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:06:30,274 log 32112 135818056292032 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-05-07 09:06:30,280 log 32112 135818039506624 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,281 log 32112 135818156959424 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,285 log 32112 135818165352128 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:06:30,287 log 32112 135818047899328 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+ERROR 2026-05-07 09:06:32,406 log 32112 135818039506624 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:06:32,411 log 32112 135818039506624 "GET /appointment/ HTTP/1.1" 500 145
+INFO 2026-05-07 09:07:23,414 log 32112 135818039506624 "GET / HTTP/1.1" 200 23486
+WARNING 2026-05-07 09:07:23,502 log 32112 135818039506624 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,502 log 32112 135818156959424 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,515 log 32112 135818156959424 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,518 log 32112 135818165352128 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,519 log 32112 135818039506624 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,533 log 32112 135818165352128 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,592 log 32112 135818165352128 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,592 log 32112 135818156959424 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,599 log 32112 135818039506624 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:07:23,665 log 32112 135818156959424 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+ERROR 2026-05-07 09:07:25,872 log 32112 135818156959424 Internal Server Error: /appointment/
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py", line 87, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/code/projets/while_health/backend/patients/views.py", line 160, in appointment
+    return render(request, "patients/appointment.html", context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/utils.py", line 1900, in runner
+    return sentry_patched_function(*args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py", line 106, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/code/projets/while_health/.env/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'patient' is not a registered namespace
+ERROR 2026-05-07 09:07:25,879 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 500 145
+INFO 2026-05-07 09:09:33,072 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54630
+INFO 2026-05-07 09:09:33,125 log 32112 135818165352128 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 09:09:33,126 log 32112 135818156959424 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:09:39,088 log 32112 135818156959424 "GET /verify-phone/ HTTP/1.1" 200 9842
+INFO 2026-05-07 09:09:48,229 log 32112 135818156959424 "POST /verify-phone/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:09:48,261 log 32112 135818156959424 "GET /my-appointments/ HTTP/1.1" 200 10848
+INFO 2026-05-07 09:11:34,844 log 32112 135818047899328 "GET /appointment/ HTTP/1.1" 200 54634
+INFO 2026-05-07 09:11:34,892 log 32112 135818047899328 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:11:34,892 log 32112 135818156959424 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 09:17:45,166 log 32112 135818047899328 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:17:45,214 log 32112 135818047899328 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:17:45,215 log 32112 135818156959424 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 09:18:08,416 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:10,109 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:11,097 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:11,352 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:11,602 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:11,819 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:12,074 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:12,279 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:12,970 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:29,363 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54689
+INFO 2026-05-07 09:18:29,420 log 32112 135818047899328 "GET /static/js/main.js HTTP/1.1" 200 1177
+INFO 2026-05-07 09:18:29,420 log 32112 135818156959424 "GET /static/css/style.css HTTP/1.1" 200 20187
+INFO 2026-05-07 09:18:41,105 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54686
+INFO 2026-05-07 09:18:53,764 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54686
+INFO 2026-05-07 09:19:18,023 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54826
+INFO 2026-05-07 09:19:47,532 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54629
+INFO 2026-05-07 09:19:47,570 log 32112 135818156959424 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:19:47,574 log 32112 135818047899328 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 09:19:57,560 log 32112 135818156959424 "GET /verify-phone/ HTTP/1.1" 200 9842
+INFO 2026-05-07 09:20:05,042 log 32112 135818156959424 "POST /verify-phone/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:20:05,068 log 32112 135818156959424 "GET /my-appointments/ HTTP/1.1" 200 10848
+INFO 2026-05-07 09:20:12,741 log 32112 135818156959424 "GET /appointment/ HTTP/1.1" 200 54629
+INFO 2026-05-07 09:20:15,362 log 32112 135818156959424 "POST /patient-lookup/ HTTP/1.1" 200 270
+INFO 2026-05-07 09:20:27,032 log 32112 135818156959424 "GET /available-slots/?staff_id=1 HTTP/1.1" 200 10615
+INFO 2026-05-07 09:21:04,240 log 32112 135818156959424 "POST /appointment/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:21:04,268 log 32112 135818156959424 "GET /patient-message/7/ HTTP/1.1" 200 13840
+INFO 2026-05-07 09:21:04,355 log 32112 135818156959424 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:21:04,360 log 32112 135818047899328 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 09:21:26,957 log 32112 135818047899328 "GET /appointment/ HTTP/1.1" 200 54629
+INFO 2026-05-07 09:21:28,443 log 32112 135818047899328 "GET /verify-phone/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:21:28,472 log 32112 135818047899328 "GET /my-appointments/ HTTP/1.1" 200 14415
+INFO 2026-05-07 09:21:36,804 log 32112 135818047899328 "GET /appointment/6/edit/ HTTP/1.1" 200 12497
+INFO 2026-05-07 09:22:08,551 log 32112 135818047899328 "GET /my-appointments/ HTTP/1.1" 200 14415
+INFO 2026-05-07 09:22:08,596 log 32112 135818047899328 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-05-07 09:22:08,602 log 32112 135818156959424 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-05-07 09:22:10,484 log 32112 135818156959424 "GET /appointment/6/delete/ HTTP/1.1" 200 10782
+INFO 2026-05-07 09:22:27,894 log 32112 135818156959424 "GET /my-appointments/ HTTP/1.1" 200 14415
+INFO 2026-05-07 09:22:45,404 log 32112 135818156959424 "GET /login/ HTTP/1.1" 200 4923
+WARNING 2026-05-07 09:22:45,453 log 32112 135818156959424 "GET /css/adminlte.css HTTP/1.1" 404 179
+WARNING 2026-05-07 09:22:45,478 log 32112 135818156959424 "GET /css/adminlte.css HTTP/1.1" 404 179
+INFO 2026-05-07 09:22:53,444 log 32112 135818156959424 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:22:53,503 log 32112 135818156959424 "GET /admin/ HTTP/1.1" 200 47386
+WARNING 2026-05-07 09:22:53,614 log 32112 135818064684736 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 179
+INFO 2026-05-07 09:22:53,618 log 32112 135818039506624 "GET /static/jazzmin/css/main.css HTTP/1.1" 200 14372
+INFO 2026-05-07 09:22:53,627 log 32112 135818156959424 "GET /static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 103010
+INFO 2026-05-07 09:22:53,633 log 32112 135818064684736 "GET /static/logo.jpg HTTP/1.1" 200 36022
+INFO 2026-05-07 09:22:53,635 log 32112 135818039506624 "GET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 80721
+INFO 2026-05-07 09:22:53,637 log 32112 135818047899328 "GET /static/vendor/adminlte/css/adminlte.min.css HTTP/1.1" 200 298755
+INFO 2026-05-07 09:22:53,638 log 32112 135818056292032 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-05-07 09:22:53,642 log 32112 135818165352128 "GET /static/vendor/bootswatch/darkly/bootstrap.min.css HTTP/1.1" 200 232244
+INFO 2026-05-07 09:22:53,643 log 32112 135818056292032 "GET /static/vendor/adminlte/js/adminlte.min.js HTTP/1.1" 200 18270
+INFO 2026-05-07 09:22:53,675 log 32112 135818156959424 "GET /static/jazzmin/js/main.js HTTP/1.1" 200 4542
+INFO 2026-05-07 09:22:54,083 log 32112 135818056292032 "GET /static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 200 25392
+INFO 2026-05-07 09:22:54,086 log 32112 135818156959424 "GET /static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 156400
+INFO 2026-05-07 09:23:02,037 log 32112 135818156959424 "GET /admin/appointment/appointment/ HTTP/1.1" 200 39778
+WARNING 2026-05-07 09:23:02,070 log 32112 135818156959424 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:02,085 log 32112 135818056292032 "GET /static/vendor/select2/css/select2.min.css HTTP/1.1" 200 16264
+INFO 2026-05-07 09:23:02,102 log 32112 135818165352128 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-07 09:23:02,107 log 32112 135818064684736 "GET /static/jazzmin/js/change_list.js HTTP/1.1" 200 2205
+INFO 2026-05-07 09:23:02,109 log 32112 135818047899328 "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 200 87533
+INFO 2026-05-07 09:23:02,109 log 32112 135818056292032 "GET /static/vendor/select2/js/select2.min.js HTTP/1.1" 200 73170
+INFO 2026-05-07 09:23:02,110 log 32112 135818039506624 "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 200 163184
+INFO 2026-05-07 09:23:12,445 log 32112 135818156959424 "GET /admin/appointment/appointment/?o=3.-4 HTTP/1.1" 200 40123
+WARNING 2026-05-07 09:23:12,482 log 32112 135818156959424 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:12,493 log 32112 135818039506624 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-07 09:23:13,398 log 32112 135818156959424 "GET /admin/appointment/appointment/?o=-3.-4 HTTP/1.1" 200 40134
+WARNING 2026-05-07 09:23:13,450 log 32112 135818156959424 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:13,456 log 32112 135818039506624 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-07 09:23:18,867 log 32112 135818156959424 "POST /admin/appointment/appointment/?o=-3.-4 HTTP/1.1" 302 0
+INFO 2026-05-07 09:23:18,967 log 32112 135818156959424 "GET /admin/appointment/appointment/?o=-3.-4 HTTP/1.1" 200 40620
+WARNING 2026-05-07 09:23:19,056 log 32112 135818156959424 "GET /static/%0A%20%20%20%20%20%20%20%20/*%20Logo%20sur%20la%20page%20de%20connexion%20*/%0A%20%20%20%20%20%20%20%20.login-box%20.login-logo%20img%2C%0A%20%20%20%20%20%20%20%20.login-logo%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2080px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20la%20sidebar%20*/%0A%20%20%20%20%20%20%20%20.main-sidebar%20.brand-image%2C%0A%20%20%20%20%20%20%20%20.brand-image%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20/*%20Logo%20dans%20le%20header%20*/%0A%20%20%20%20%20%20%20%20.main-header%20.logo%20img%2C%0A%20%20%20%20%20%20%20%20.navbar-brand%20img%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2040px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2050%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20 HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:19,062 log 32112 135818039506624 "GET /admin/jsi18n/ HTTP/1.1" 200 8634
+INFO 2026-05-07 09:23:32,340 log 32112 135818039506624 "GET / HTTP/1.1" 200 23672
+WARNING 2026-05-07 09:23:32,398 log 32112 135818064684736 "GET /media/departements/radiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,398 log 32112 135818056292032 "GET /media/departements/pediatrie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,398 log 32112 135818156959424 "GET /media/departements/cardiologie.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,399 log 32112 135818039506624 "GET /media/about/about-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,400 log 32112 135818047899328 "GET /media/departements/chirurgie.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:32,401 log 32112 135818165352128 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-05-07 09:23:32,424 log 32112 135818039506624 "GET /media/avatar/doctor-brenda.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,434 log 32112 135818047899328 "GET /media/avatar/doctor-alain.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,434 log 32112 135818056292032 "GET /media/avatar/doctor-diane.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:32,440 log 32112 135818156959424 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-05-07 09:23:32,443 log 32112 135818064684736 "GET /media/hero/hero-test.svg HTTP/1.1" 404 179
+WARNING 2026-05-07 09:23:32,445 log 32112 135818165352128 "GET /media/avatar/doctor-charles.svg HTTP/1.1" 404 179
+INFO 2026-05-07 09:23:34,107 log 32112 135818064684736 "GET /appointment/ HTTP/1.1" 200 54815
+INFO 2026-05-07 09:23:35,793 log 32112 135818064684736 "GET /verify-phone/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:23:35,828 log 32112 135818064684736 "GET /my-appointments/ HTTP/1.1" 200 14607
+INFO 2026-05-07 09:24:02,591 log 32112 135818064684736 "GET /verify-phone/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:24:02,615 log 32112 135818064684736 "GET /my-appointments/ HTTP/1.1" 200 14607
+INFO 2026-05-07 09:24:07,128 log 32112 135818064684736 "GET /verify-phone/ HTTP/1.1" 302 0
+INFO 2026-05-07 09:24:07,156 log 32112 135818064684736 "GET /my-appointments/ HTTP/1.1" 200 14607

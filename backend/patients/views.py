@@ -188,3 +188,196 @@ def patient_message(request, pk):
         "patient": patient,
     }
     return render(request, "patients/patient_message.html", context)
+
+
+# ✅ PATIENT PHONE ACCESS FEATURES - No authentication required, token-based access
+
+
+def patient_phone_verification(request):
+    """
+    ✅ SECURITY: Phone verification without authentication.
+    Allows patient to access their appointments by phone number.
+    Uses session token for temporary access.
+    
+    GET: Displays phone verification form
+    POST: Validates phone number and creates session token
+    """
+    # If patient already has verified token in session, redirect to appointments
+    if request.session.get('patient_phone_token'):
+        return redirect('patients:patient_appointments_list')
+    
+    form = None
+    error_message = None
+    
+    if request.method == 'POST':
+        from .forms import PatientPhoneVerificationForm
+        form = PatientPhoneVerificationForm(request.POST)
+        
+        if form.is_valid():
+            contact = form.cleaned_data['contact']
+            
+            # Find patient by phone number
+            try:
+                patient = Patients.objects.get(contact=contact)
+                
+                # ✅ SECURITY: Generate temporary token and store in session
+                import secrets
+                token = secrets.token_urlsafe(32)
+                request.session['patient_phone_token'] = token
+                request.session['patient_id'] = patient.pk
+                request.session['patient_contact'] = str(contact)
+                request.session.set_expiry(3600)  # 1 hour expiration
+                
+                return redirect('patients:patient_appointments_list')
+                
+            except Patients.DoesNotExist:
+                error_message = "Aucun patient trouvé avec ce numéro de téléphone."
+        else:
+            error_message = "Numéro de téléphone invalide."
+    else:
+        from .forms import PatientPhoneVerificationForm
+        form = PatientPhoneVerificationForm()
+    
+    context = {
+        'form': form,
+        'error_message': error_message,
+        'page_title': 'Accéder à mes rendez-vous - While Health',
+    }
+    return render(request, 'patients/phone_verification.html', context)
+
+
+def _verify_patient_session(request):
+    """
+    ✅ SECURITY: Helper to verify patient session token.
+    Returns patient object or raises PermissionDenied.
+    """
+    token = request.session.get('patient_phone_token')
+    patient_id = request.session.get('patient_id')
+    
+    if not token or not patient_id:
+        raise PermissionDenied("Session expiée. Veuillez vous identifier à nouveau.")
+    
+    try:
+        patient = Patients.objects.get(pk=patient_id)
+        return patient
+    except Patients.DoesNotExist:
+        request.session.flush()
+        raise PermissionDenied("Patient introuvable.")
+
+
+def patient_appointments_list(request):
+    """
+    ✅ SECURITY: Display valid (future) appointments for patient.
+    Requires phone verification token in session.
+    
+    Shows:
+    - List of valid appointments (not cancelled, future dates)
+    - Edit and Delete buttons for each appointment
+    """
+    try:
+        patient = _verify_patient_session(request)
+    except PermissionDenied:
+        return redirect('patients:patient_phone_verification')
+    
+    from datetime import date, datetime, timedelta
+    
+    # Get valid appointments: future dates only
+    today = date.today()
+    now = datetime.now()
+    
+    # ✅ PERFORMANCE: Select related to avoid N+1 queries
+    appointments = Appointment.objects.filter(
+        patient=patient,
+        date__gte=today,  # Future appointments only
+    ).select_related('staff__user', 'staff__departement', 'time_service').order_by('date', 'time')
+    
+    # Check if patient has any valid appointments
+    has_appointments = appointments.exists()
+    
+    context = {
+        'patient': patient,
+        'appointments': appointments,
+        'has_appointments': has_appointments,
+        'page_title': f"Mes rendez-vous - {patient.full_name}",
+    }
+    
+    return render(request, 'patients/appointments_list.html', context)
+
+
+def patient_appointment_edit(request, appointment_id):
+    """
+    ✅ SECURITY: Allow patient to edit their own appointment.
+    Can modify: date, time, reason.
+    Requires phone verification token in session.
+    """
+    try:
+        patient = _verify_patient_session(request)
+    except PermissionDenied:
+        return redirect('patients:patient_phone_verification')
+    
+    # ✅ SECURITY: Ensure patient owns this appointment
+    appointment = get_object_or_404(Appointment, pk=appointment_id, patient=patient)
+    
+    from .forms import PatientAppointmentEditForm
+    
+    if request.method == 'POST':
+        form = PatientAppointmentEditForm(request.POST, instance=appointment, appointment=appointment)
+        
+        if form.is_valid():
+            try:
+                form.save()
+                # ✅ Clear cache for staff slots if using cache
+                if appointment.staff:
+                    cache.delete(f"available_slots_{appointment.staff.pk}")
+                
+                from django.contrib import messages
+                messages.success(request, "Rendez-vous modifié avec succès.")
+                return redirect('patients:patient_appointments_list')
+            except ValidationError as e:
+                form.add_error(None, str(e))
+    else:
+        form = PatientAppointmentEditForm(instance=appointment, appointment=appointment)
+    
+    context = {
+        'form': form,
+        'appointment': appointment,
+        'patient': patient,
+        'page_title': f"Modifier rendez-vous - {patient.full_name}",
+    }
+    
+    return render(request, 'patients/appointment_edit.html', context)
+
+
+def patient_appointment_delete(request, appointment_id):
+    """
+    ✅ SECURITY: Allow patient to delete their own appointment.
+    Shows confirmation page before deletion.
+    """
+    try:
+        patient = _verify_patient_session(request)
+    except PermissionDenied:
+        return redirect('patients:patient_phone_verification')
+    
+    # ✅ SECURITY: Ensure patient owns this appointment
+    appointment = get_object_or_404(Appointment, pk=appointment_id, patient=patient)
+    
+    if request.method == 'POST':
+        # Confirm deletion
+        staff_id = appointment.staff.pk if appointment.staff else None
+        appointment.delete()
+        
+        # ✅ Clear cache for staff slots if using cache
+        if staff_id:
+            cache.delete(f"available_slots_{staff_id}")
+        
+        from django.contrib import messages
+        messages.success(request, "Rendez-vous annulé avec succès.")
+        return redirect('patients:patient_appointments_list')
+    
+    context = {
+        'appointment': appointment,
+        'patient': patient,
+        'page_title': f"Confirmer suppression - {patient.full_name}",
+    }
+    
+    return render(request, 'patients/appointment_delete.html', context)

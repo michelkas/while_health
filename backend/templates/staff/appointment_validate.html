@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Valider Rendez-vous - While Health{% endblock %}
+
+{% block extra_css %}
+<style>
+    .validate-container {
+        background: #f8f9fa;
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+    
+    .validate-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .validate-header {
+        margin-bottom: 30px;
+    }
+    
+    .validate-header h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    
+    .validate-header p {
+        color: #666;
+        font-size: 16px;
+    }
+    
+    .patient-info-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .patient-info-box h3 {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        opacity: 0.95;
+    }
+    
+    .info-row strong {
+        display: block;
+        opacity: 0.8;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 16px;
+        transition: all 0.3s;
+        width: 100%;
+    }
+    
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    .checkbox-group {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+    }
+    
+    .checkbox-group label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    
+    .help-text {
+        color: #999;
+        font-size: 14px;
+        margin-top: 8px;
+    }
+    
+    .error-list {
+        list-style: none;
+        padding: 0;
+        margin: 5px 0 0 0;
+    }
+    
+    .error-list li {
+        color: #dc3545;
+        font-size: 14px;
+        padding: 5px 0;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #eee;
+    }
+    
+    .btn-submit, .btn-cancel {
+        flex: 1;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .btn-submit {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+    }
+    
+    .btn-cancel {
+        background: #6c757d;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .btn-cancel:hover {
+        background: #5a6268;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="validate-container">
+    <div class="container">
+        <div class="validate-card">
+            <div class="validate-header">
+                <h1>
+                    <i class="bi bi-check-circle"></i>
+                    Valider Rendez-vous
+                </h1>
+                <p>Confirmer et adapter les détails du rendez-vous</p>
+            </div>
+            
+            {% if appointment.patient %}
+            <div class="patient-info-box">
+                <h3>Informations du Patient</h3>
+                <div class="info-row">
+                    <div>
+                        <strong>Nom</strong>
+                        {{ appointment.patient.full_name }}
+                    </div>
+                    <div>
+                        <strong>Téléphone</strong>
+                        {{ appointment.patient.contact }}
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div>
+                        <strong>Email</strong>
+                        {{ appointment.patient.email }}
+                    </div>
+                    <div>
+                        <strong>Sexe</strong>
+                        {{ appointment.patient.get_sexe_display }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Erreur :</strong>
+                    {% for error in form.non_field_errors %}
+                    <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="form-group">
+                    <label for="id_date">Date du rendez-vous</label>
+                    <input 
+                        type="date" 
+                        name="date" 
+                        id="id_date" 
+                        class="form-control {% if form.date.errors %}is-invalid{% endif %}" 
+                        value="{{ form.date.value|date:'Y-m-d' }}"
+                        required
+                    >
+                    {% if form.date.errors %}
+                    <ul class="error-list">
+                        {% for error in form.date.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_time">Heure du rendez-vous</label>
+                    <input 
+                        type="time" 
+                        name="time" 
+                        id="id_time" 
+                        class="form-control {% if form.time.errors %}is-invalid{% endif %}" 
+                        value="{{ form.time.value|time:'H:i' }}"
+                        required
+                    >
+                    {% if form.time.errors %}
+                    <ul class="error-list">
+                        {% for error in form.time.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="form-group">
+                    <label for="id_raison">Motif du rendez-vous</label>
+                    <textarea 
+                        name="raison" 
+                        id="id_raison" 
+                        class="form-control" 
+                        rows="4" 
+                        placeholder="Motif de la consultation"
+                    >{{ form.raison.value|default:'' }}</textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label for="id_accept">
+                        <input 
+                            type="checkbox" 
+                            name="accept" 
+                            id="id_accept" 
+                            {% if form.accept.value %}checked{% endif %}
+                        >
+                        <span>
+                            <i class="bi bi-check-circle"></i>
+                            Accepter et confirmer ce rendez-vous
+                        </span>
+                    </label>
+                    <div class="help-text" style="margin-left: 30px; margin-top: 8px;">
+                        Cocher cette case pour confirmer le rendez-vous et envoyer un email de confirmation au patient.
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-check-circle"></i>
+                        Enregistrer & Confirmer
+                    </button>
+                    <a href="{% url 'staff:staff_dashboard' %}" class="btn-cancel">
+                        <i class="bi bi-x-circle"></i>
+                        Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

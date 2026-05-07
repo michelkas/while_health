@@ -1,0 +1,39 @@
+CONFIRMATION DE RENDEZ-VOUS
+While Health - Plateforme Médicale
+
+Bonjour {{ patient_name }},
+
+Votre rendez-vous a été confirmé par le docteur. Nous vous remercions de votre confiance et attendons votre visite.
+
+═══════════════════════════════════════════════════════════════
+
+DÉTAILS DU RENDEZ-VOUS
+
+Date        : {{ appointment_date }}
+Heure       : {{ appointment_time }}
+Département : {{ department }}
+Motif       : {{ reason }}
+
+═══════════════════════════════════════════════════════════════
+
+VOTRE DOCTEUR
+
+Nom         : Dr. {{ doctor_name }}
+Spécialité  : {{ doctor_specialty }}
+
+═══════════════════════════════════════════════════════════════
+
+IMPORTANT
+
+Veuillez arriver 10 minutes avant votre rendez-vous. N'oubliez pas de vous munir de vos documents d'identification et de votre carte d'assurance maladie si applicable.
+
+═══════════════════════════════════════════════════════════════
+
+Si vous avez des questions ou si vous devez annuler/reporter votre rendez-vous, veuillez contacter la réception de While Health.
+
+📧 contact@whilehealth.cd
+🌐 www.whilehealth.cd
+
+Cet email a été envoyé automatiquement. Veuillez ne pas répondre à cet email.
+
+© While Health. Tous droits réservés.

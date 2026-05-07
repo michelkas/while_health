@@ -175,6 +175,23 @@ SESSION_COOKIE_SAMESITE = 'Strict'
 # ✅ CSRF
 CSRF_COOKIE_SAMESITE = 'Strict'
 
+# ✅ EMAIL CONFIGURATION
+# Development: Console backend (prints emails to console)
+# Production: Use environment variables for SMTP
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = config('EMAIL_HOST', default='smtp.gmail.com')
+    EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+
+# ✅ Default email address for sending
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@whilehealth.cd')
+SERVER_EMAIL = config('SERVER_EMAIL', default='server@whilehealth.cd')
+
 # ✅ MONITORING: Sentry configuration
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration

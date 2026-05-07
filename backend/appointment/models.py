@@ -52,6 +52,12 @@ class Appointment(models.Model):
     )
     date = models.DateField()
     time = models.TimeField()
+    raison = models.TextField(
+        verbose_name="Motif du rendez-vous",
+        blank=True,
+        null=True,
+        help_text="Raison ou motif de la consultation"
+    )
     accept = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
