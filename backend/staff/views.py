@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.core.exceptions import ValidationError, PermissionDenied
@@ -62,59 +64,60 @@ def staff_profile_detail(request, staff_id):
 # ✅ STAFF DASHBOARD - Authenticated staff only
 
 
-@login_required
-def staff_dashboard(request):
-    """
-    ✅ SECURITY: Staff dashboard - authenticated users only.
+# @login_required
+# def staff_dashboard(request):
+#     """
+#     ✅ SECURITY: Staff dashboard - authenticated users only.
     
-    Displays:
-    - Staff member's schedule (upcoming appointments)
-    - Pending confirmations
-    - List of appointments to manage
-    """
+#     Displays:
+#     - Staff member's schedule (upcoming appointments)
+#     - Pending confirmations
+#     - List of appointments to manage
+#     """
     
-    # ✅ SECURITY: Ensure user has staff profile
-    try:
-        staff = request.user.staff_profile
-    except Staff.DoesNotExist:
-        messages.error(request, "Vous n'avez pas un profil staff.")
-        return redirect('/')
+#     # ✅ SECURITY: Ensure user has staff profile
+#     try:
+#         staff = request.user.staff_profile
+#     except Staff.DoesNotExist:
+#         messages.error(request, "Vous n'avez pas un profil staff.")
+#         return redirect('/')
     
-    if not staff.is_active:
-        messages.warning(request, "Votre profil staff n'est pas actif.")
+#     if not staff.is_active:
+#         messages.warning(request, "Votre profil staff n'est pas actif.")
     
-    today = date.today()
-    now = datetime.now()
+#     today = date.today()
+#     now = datetime.now()
     
-    # ✅ PERFORMANCE: select_related and prefetch_related to avoid N+1 queries
-    appointments = Appointment.objects.filter(
-        staff=staff,
-        date__gte=today,
-    ).select_related(
-        'patient',
-        'staff__user',
-        'staff__departement'
-    ).order_by('date', 'time')
+#     # ✅ PERFORMANCE: select_related and prefetch_related to avoid N+1 queries
+#     appointments = Appointment.objects.filter(
+#         staff=staff,
+#         date__gte=today,
+#     ).select_related(
+#         'patient',
+#         'staff__user',
+#         'staff__departement'
+#     ).order_by('date', 'time')
     
-    # Split appointments by status
-    pending_appointments = appointments.filter(accept=False)
-    confirmed_appointments = appointments.filter(accept=True)
+#     # Split appointments by status
+#     pending_appointments = appointments.filter(accept=False)
+#     confirmed_appointments = appointments.filter(accept=True)
     
-    context = {
-        'staff': staff,
-        'pending_appointments': pending_appointments,
-        'confirmed_appointments': confirmed_appointments,
-        'all_appointments': appointments,
-        'pending_count': pending_appointments.count(),
-        'confirmed_count': confirmed_appointments.count(),
-        'page_title': f"Dashboard - Dr. {staff.user.get_full_name()}",
-    }
+#     context = {
+#         'staff': staff,
+#         'pending_appointments': pending_appointments,
+#         'confirmed_appointments': confirmed_appointments,
+#         'all_appointments': appointments,
+#         'pending_count': pending_appointments.count(),
+#         'confirmed_count': confirmed_appointments.count(),
+#         'page_title': f"Dashboard - Dr. {staff.user.get_full_name()}",
+#     }
     
-    return render(request, 'staff/dashboard.html', context)
+#     return render(request, 'staff/profile.html', context)
 
 
 @login_required
 def staff_appointment_validate(request, appointment_id):
+
     """
     ✅ SECURITY: Staff validates/confirms appointment.
     Can modify date, time, reason and set accept=True.
@@ -128,44 +131,6 @@ def staff_appointment_validate(request, appointment_id):
     except Staff.DoesNotExist:
         raise PermissionDenied("Vous n'avez pas un profil staff.")
     
-    # ✅ SECURITY: Only assigned staff can modify
-    appointment = get_object_or_404(
-        Appointment,
-        pk=appointment_id,
-        staff=staff
-    )
-    
-    from staff.forms import StaffAppointmentValidationForm
-    
-    if request.method == 'POST':
-        form = StaffAppointmentValidationForm(request.POST, instance=appointment)
-        
-        if form.is_valid():
-            try:
-                old_accept = appointment.accept
-                appointment = form.save()
-                
-                # ✅ Send confirmation email if accepting
-                if appointment.accept and not old_accept:
-                    _send_appointment_confirmation_email(appointment)
-                    messages.success(request, "Rendez-vous confirmé et email envoyé au patient.")
-                else:
-                    messages.success(request, "Rendez-vous mis à jour.")
-                
-                return redirect('staff:staff_dashboard')
-            except ValidationError as e:
-                form.add_error(None, str(e))
-    else:
-        form = StaffAppointmentValidationForm(instance=appointment)
-    
-    context = {
-        'form': form,
-        'appointment': appointment,
-        'staff': staff,
-        'page_title': f"Valider Rendez-vous",
-    }
-    
-    return render(request, 'staff/appointment_validate.html', context)
 
 
 @login_required
@@ -196,7 +161,7 @@ def staff_appointment_edit(request, appointment_id):
             try:
                 form.save()
                 messages.success(request, "Rendez-vous modifié avec succès.")
-                return redirect('staff:staff_dashboard')
+                return redirect('staff:profile', staff_id=staff.id)
             except ValidationError as e:
                 form.add_error(None, str(e))
     else:
@@ -235,7 +200,7 @@ def staff_appointment_delete(request, appointment_id):
     if request.method == 'POST':
         appointment.delete()
         messages.success(request, "Rendez-vous supprimé avec succès.")
-        return redirect('staff:staff_dashboard')
+        return redirect('staff:profile', staff_id=staff.id)
     
     context = {
         'appointment': appointment,

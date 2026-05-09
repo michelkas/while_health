@@ -6,13 +6,12 @@
 {% block extra_css %}
 <style>
     .dashboard-container {
-        background: #f8f9fa;
         min-height: 100vh;
         padding: 30px 0;
     }
-    
+
     .dashboard-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #000000 0%, #0a1a4e 100%);
         color: white;
         padding: 30px 0;
         margin-bottom: 30px;
@@ -230,15 +229,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-    <div class="container">
+<div class="dashboard-container mt-5">
+    <div class="container mt-5 ">
         <!-- Header -->
-        <div class="dashboard-header">
+        <div class="dashboard-header p-5">
             <h1>
                 <i class="bi bi-stethoscope"></i>
                 Mon Tableau de Bord
             </h1>
             <p>Bienvenue, Dr. {{ staff.user.get_full_name }}</p>
+            
+            
         </div>
         
         <!-- Statistics -->
@@ -295,10 +296,6 @@
                 {% endif %}
                 
                 <div class="appointment-actions">
-                    <a href="{% url 'staff:staff_appointment_validate' appointment.id %}" class="btn-action btn-validate">
-                        <i class="bi bi-check-circle"></i>
-                        Valider & Confirmer
-                    </a>
                     <a href="{% url 'staff:staff_appointment_edit' appointment.id %}" class="btn-action btn-edit">
                         <i class="bi bi-pencil"></i>
                         Modifier
@@ -308,6 +305,7 @@
                         Supprimer
                     </a>
                 </div>
+
             </div>
             {% endfor %}
         </div>

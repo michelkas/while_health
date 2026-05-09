@@ -125,11 +125,7 @@ class EmergencyInfoAdmin(admin.ModelAdmin):
     icon = 'fas fa-ambulance'
     
     # Additional methods
-    def has_add_permission(self, request):
-        # Only allow one emergency info
-        if EmergencyInfo.objects.exists():
-            return False
-        return super().has_add_permission(request)
+  
 
 
 @admin.register(Emergency)

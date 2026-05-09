@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Modifier Rendez-vous - While Health{% endblock %}
+{% block title %}Modifier Rendez-vous{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -180,7 +180,7 @@
             </div>
             {% endif %}
             
-            <form method="post" novalidate>
+            <form method="post">
                 {% csrf_token %}
                 
                 {% if form.non_field_errors %}
@@ -247,7 +247,7 @@
                         <i class="bi bi-check-circle"></i>
                         Enregistrer les modifications
                     </button>
-                    <a href="{% url 'staff:staff_dashboard' %}" class="btn-cancel">
+                    <a href="{% url 'staff:profile' staff.id %}" class="btn-cancel">
                         <i class="bi bi-x-circle"></i>
                         Annuler
                     </a>

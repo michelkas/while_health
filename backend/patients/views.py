@@ -94,7 +94,7 @@ def _invalidate_staff_cache(staff_id):
 
 
 def appointment(request):
-    # ✅ PERFORMANCE: select_related to avoid N+1
+    # PERFORMANCE: select_related to avoid N+1
     doctors = (
         Staff.objects.select_related("user")
         .filter(role__in=[Staff.Role.DOCTOR, Staff.Role.MEDECIN], is_active=True)

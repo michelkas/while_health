@@ -3,6 +3,7 @@ from .forms import TimeServiceForm
 from .models import Departement, Staff, TimeService
 
 
+
 @admin.register(Departement)
 class DepartementAdmin(admin.ModelAdmin):
     # Display settings
@@ -41,6 +42,7 @@ class TimeServiceInline(admin.TabularInline):
 
 @admin.register(Staff)
 class StaffAdmin(admin.ModelAdmin):
+   
     # Display settings
     list_display = ('first_name', 'last_name', 'role', 'specialty', 'departement', 'is_active', 'is_verified')
     list_display_links = ('first_name',)
@@ -55,7 +57,7 @@ class StaffAdmin(admin.ModelAdmin):
     # Fields and organization
     fieldsets = (
         ('User Information', {
-            'fields': ('user', 'name', 'first_name', 'last_name')
+            'fields': ('user', 'name', 'first_name', 'last_name', 'slug')
         }),
         ('Professional Information', {
             'fields': ('role', 'specialty', 'departement', 'experience_years')
@@ -69,9 +71,9 @@ class StaffAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
-    readonly_fields = ('created_at', 'slug')
+   
     prepopulated_fields = {'slug': ('first_name', 'last_name')}
-    
+    readonly_fields = ['created_at',]
     # Inlines
     inlines = [TimeServiceInline]
     

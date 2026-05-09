@@ -1,164 +1,164 @@
-{% extends "base.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification - Rendez-vous</title>
 
-{% block title %}Accéder à mes rendez-vous - While Health{% endblock %}
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-{% block extra_css %}
-<style>
-    .verification-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
-    .verification-card {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        padding: 40px;
-        max-width: 500px;
-        width: 100%;
-    }
-    
-    .verification-header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-    
-    .verification-header h1 {
-        font-size: 28px;
-        color: #333;
-        margin-bottom: 10px;
-        font-weight: 700;
-    }
-    
-    .verification-header p {
-        color: #666;
-        font-size: 16px;
-    }
-    
-    .verification-icon {
-        font-size: 48px;
-        color: #667eea;
-        margin-bottom: 20px;
-    }
-    
-    .form-group label {
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    
-    .form-control {
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 12px 16px;
-        font-size: 16px;
-        transition: all 0.3s;
-    }
-    
-    .form-control:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-    
-    .btn-verify {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border: none;
-        color: white;
-        font-weight: 600;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-size: 16px;
-        transition: all 0.3s;
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    .btn-verify:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        color: white;
-    }
-    
-    .error-message {
-        background: #fee;
-        border: 1px solid #fcc;
-        color: #c33;
-        padding: 12px 16px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .error-message i {
-        font-size: 20px;
-    }
-    
-    .help-text {
-        color: #999;
-        font-size: 14px;
-        margin-top: 8px;
-    }
-</style>
-{% endblock %}
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        .form-floating > label {
+            color: #666;
+        }
+        .btn-login {
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-container">
+                    <div class="login-header">
+                        <i class="bi bi-telephone fa-3x text-primary mb-3"></i>
+                    <h2>Vérification de <br> Rendez-vous</h2>
+                    <p>Entrez votre numéro de téléphone pour accéder à vos rendez-vous</p>
+               
+                    </div>
 
-{% block content %}
-<div class="verification-container">
-    <div class="verification-card">
-        <div class="verification-header">
-            <div class="verification-icon">
-                <i class="bi bi-telephone"></i>
-            </div>
-            <h1>Vérification Téléphonique</h1>
-            <p>Entrez votre numéro de téléphone pour accéder à vos rendez-vous</p>
-        </div>
-        
-        {% if error_message %}
-        <div class="error-message">
-            <i class="bi bi-exclamation-circle"></i>
-            <span>{{ error_message }}</span>
-        </div>
-        {% endif %}
-        
-        <form method="post" novalidate>
-            {% csrf_token %}
+                    {% if error_message %}
+                    <div class="error-message" style="text-align: left; color: #cf0606; font-size: 10px;">
+                        <i class="bi bi-exclamation-circle"></i>
+                        <span>{{ error_message }}</span>
+                    </div>
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="id_contact" style="text-align: left; color: #000000; font-size: 15px; font-weight: 600;">Numéro de téléphone</label>
+                            <input 
+                                type="tel" 
+                                name="contact" 
+                                id="id_contact" 
+                                class="form-control" 
+                                placeholder="+243 123 456 789"
+                                autocomplete="tel"
+                                required
+                                value="{{ form.contact.value|default:'' }}"
+                            >
+                            <div class="help-text" style="text-align: left; color: #999; font-size: 12px;">
+                                <i class="bi bi-info-circle"></i>
+                                Entrez le numéro de téléphone sous lequel vous êtes enregistré
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-login w-100 mt-5">
+                            <i class="bi bi-check-circle"></i>
+                            Vérifier
+                        </button>
+                        
+                    </form>
+                    <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
             
-            <div class="form-group">
-                <label for="id_contact">Numéro de téléphone</label>
-                <input 
-                    type="tel" 
-                    name="contact" 
-                    id="id_contact" 
-                    class="form-control" 
-                    placeholder="+243 123 456 789"
-                    autocomplete="tel"
-                    required
-                    value="{{ form.contact.value|default:'' }}"
-                >
-                <div class="help-text">
-                    <i class="bi bi-info-circle"></i>
-                    Entrez le numéro de téléphone sous lequel vous êtes enregistré
+                    <div style="text-align: center; color: #999; font-size: 14px;">
+                        <p>
+                            <i class="bi bi-lock"></i>
+                            Vos données sont sécurisées et chiffrées
+                        </p>
+                    </div>
+                  
                 </div>
             </div>
-            
-            <button type="submit" class="btn-verify">
-                <i class="bi bi-check-circle"></i>
-                Vérifier & Accéder à mes rendez-vous
-            </button>
-        </form>
-        
-        <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
-        
-        <div style="text-align: center; color: #999; font-size: 14px;">
-            <p>
-                <i class="bi bi-lock"></i>
-                Vos données sont sécurisées et chiffrées
-            </p>
         </div>
     </div>
-</div>
-{% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+    <!--end::Third Party Plugin(OverlayScrollbars)-->
+
+    <!--begin::Third Party Plugin(Bootstrap Icons)-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      crossorigin="anonymous"
+    />
+    <!--end::Third Party Plugin(Bootstrap Icons)-->
+
+    <!--begin::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="../css/adminlte.css" />
+    <!--end::Required Plugin(AdminLTE)-->
+  </head>
+  <!--end::Head-->
+</html>
+

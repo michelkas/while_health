@@ -75,6 +75,8 @@ class Appointment(models.Model):
             models.Index(fields=['staff', 'date', 'time'], name='appointment_slot_idx'),
         ]
 
+    def __str__(self):
+        return f"{self.patient.first_name}"
     def clean(self):
         if self.time_service and self.staff and self.time_service.staff != self.staff:
             raise ValidationError("Le personnel ne correspond pas au temps de service")

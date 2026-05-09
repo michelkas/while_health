@@ -28,8 +28,8 @@ class Patients(models.Model):
 
     class Meta:
         managed = True
-        verbose_name = 'Patient'
-        verbose_name_plural = 'Patients'
+        verbose_name = 'Dossier Medical'
+        verbose_name_plural = 'Dossiers Medicaux'
         # ✅ DATABASE INDEXES for searchable fields
         indexes = [
             models.Index(fields=['email']),
@@ -75,6 +75,9 @@ class Patients(models.Model):
     def full_name(self):
         """Return full name for compatibility."""
         return f"{self.first_name} {self.last_name}"
+    
+    def __str__(self):
+        return f"{self.full_name}"
     
 
 class VitalSign(models.Model):

@@ -5,6 +5,7 @@ Utilise python-decouple pour gérer les variables d'environnement
 
 from pathlib import Path
 from decouple import config, Csv
+import os
 
 # import dj_database_url  # Disabled for SQLite
 

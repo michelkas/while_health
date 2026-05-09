@@ -23,7 +23,7 @@
 
 {% if hero or emergency or contact or departemens3%}
 
-  <section class="hero p-0 m-0" style="  background: linear-gradient(to right, rgba(5,30,35,.78) 45%, rgba(5,30,35,.30) 100%), url('{{hero.image.url}}') center/cover no-repeat;">
+  <section class="hero p-0 m-0" id="home" style=" background: linear-gradient(to right, rgba(5,30,35,.78) 45%, rgba(5,30,35,.30) 100%), url('{{hero.image.url}}') center/cover no-repeat;">
     <!-- MAIN CONTENT -->
     <div class="container  hero-content padding-tp" >
       <div class="row">
@@ -75,14 +75,13 @@
 
           
           {% if departemens3 %}
-
-            
+ 
             {% for departement in departemens3 %}
               <div class="col-md-auto d-none d-md-block">
                 <div class="depart-divider" style="height:60px;"></div>
               </div>
 
-<!-- Diagnostics -->
+              <!-- Diagnostics -->
               <div class="col-md-3">
                 <a href="{% url 'staff:departement_detail' departement.id %}" class="text-decoration-none">
                   <div class="depart-card">
@@ -95,8 +94,7 @@
                 </a>
               </div>
             {% endfor %}
-              
-        
+ 
           {% endif %}
         </div>
       </div>
@@ -156,7 +154,7 @@
               
               </div>
             </div>
-<div class="d-flex gap-3 flex-wrap">
+           <div class="d-flex gap-3 flex-wrap">
               <a href="#doctors" class="doct-f"><button class="btn btn-outline-dark-custom">Rencontrez un Medecin</button></a>
             </div>
           </div>
@@ -194,7 +192,7 @@
             <div class="img-wrap">
               <img src="{{depart.image.url}}" alt="{{depart.image}}"/>
             </div>
-<div class="body">
+            <div class="body">
               <h5>{{depart.name|capfirst}}</h5>
               <p>{{depart.description|truncatewords:15}}</p>
               <a href="{% url 'staff:departement_detail' depart.id %}" class="link-teal">Lire plus <i class="bi bi-arrow-right"></i></a>
@@ -237,7 +235,7 @@
               <div class="svc-icon"><i class="bi bi-{{serv.icon}}"></i></div>
               <h5>{{serv.title|capfirst}}</h5>
               <p>{{serv.description|truncatewords:15}}</p>
-<ul class="svc-list">
+              <ul class="svc-list">
                 
                 {% if serv.short_description %}
                   {% for short in get_short_description %}
@@ -257,7 +255,7 @@
   
 <!-- ══ FIND A DOCTOR ══════════════════════════════════════════════════ -->
 
-{% if doctors %}
+
 
 <section class="find-doctor" id="doctors">
   <div class="container">
@@ -274,10 +272,13 @@
         <div class="col-md-4">
           <div class="doctor-card">
             <div class="img-wrap">
-              <img src="{{doctor.user.avatar.url}}" alt="{{doctor.user.get_full_name}}"/>
+             
+             {% if doctor.user.avatar %}
+                 <img src="{{ doctor.user.avatar.url }}" alt="{{doctor.name}}"/>
+             {% endif %}
               <span class="status-badge {{ doctor.status_badge_class }}">{{ doctor.status_label }}</span>
             </div>
-<div class="body">
+            <div class="body">
               <h6>Dr. {{doctor.name|capfirst}} {{doctor.first_name|capfirst}}</h6>
               <div class="spec"> {{doctor.speciality|capfirst}} </div>
               <div class="exp">{{doctor.get_experience_years}}+ ans d'experience</div>
@@ -295,74 +296,58 @@
     </div>
   </div>
 </section>
-  
-{% endif %}
+
 
 <!-- ══ EMERGENCY INFO ═════════════════════════════════════════════════ -->
-<section class="emergency" id="emergency">
-  <div class="container">
-    <div class="sec-header">
-      <h2>Emergency Info</h2>
-      <div class="divider"></div>
-      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-    </div>
-    <!-- Red banner -->
-    <div class="emerg-banner">
-      <div class="info">
-        <i class="bi bi-exclamation-triangle-fill icon911"></i>
-        <div>
-          <h5>Medical Emergency?</h5>
-          <p>If you are experiencing a life-threatening emergency, call 911 immediately or go to your nearest emergency room.</p>
-        </div>
-      </div>
-      <a href="tel:911" class="btn btn-911"><i class="bi bi-telephone-fill me-2"></i>Call 911</a>
-    </div>
-    <!-- Cards -->
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-3">
-        <div class="emerg-card">
-          <div class="eicon"><i class="bi bi-hospital-fill"></i></div>
-          <h6>Emergency Room</h6>
-          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>+1 (555) 123-4567</div>
-          <div class="addr"><i class="bi bi-geo-alt-fill me-1"></i>1245 Healthcare Blvd, Medical City, CA 90210</div>
-          <div class="avail mt-2">Open 24/7</div>
-          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="emerg-card">
-          <div class="eicon"><i class="bi bi-clock-fill"></i></div>
-          <h6>Urgent Care</h6>
-          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>+1 (555) 987-6543</div>
-          <div class="addr"><i class="bi bi-geo-alt-fill me-1"></i>892 Wellness Ave, Health District, CA 90211</div>
-          <div class="avail mt-2">Mon–Sun: 7:00 AM – 10:00 PM</div>
-          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="emerg-card">
-          <div class="eicon"><i class="bi bi-headset"></i></div>
-          <h6>Nurse Helpline</h6>
-          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>+1 (555) 456-7890</div>
-          <div class="addr">24/7 medical advice and guidance</div>
-          <div class="avail mt-2">Available 24/7</div>
-          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="emerg-card">
-          <div class="eicon"><i class="bi bi-activity"></i></div>
-          <h6>Poison Control</h6>
-          <div class="phone"><i class="bi bi-telephone-fill me-1"></i>1-800-222-1222</div>
-          <div class="addr">National poison control hotline</div>
-          <div class="avail mt-2">Available 24/7</div>
-          <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Call Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
+{% if emergency_info or emergency %}
+  <section class="emergency" id="emergency">
+    <div class="container">
+
+      <div class="sec-header">
+        <h2>Urgences Info</h2>
+        <div class="divider"></div>
+        <p>Nos services d'urgence sont disponibles 24 heures sur 24, 7 jours sur 7 pour répondre à vos besoins médicaux d'urgence.</p>
+      </div>
+
+      <!-- Red banner -->
+
+        <div class="emerg-banner">
+          <div class="info">
+            <i class="bi bi-exclamation-triangle-fill icon911"></i>
+            <div>
+              <h5>{{emergency.title|capfirst}}</h5>
+              <p>{{emergency.description|capfirst}}</p>
+            </div>
+          </div>
+          <a href="tel:{{emergency.phone}}" class="btn btn-911"><i class="bi bi-telephone-fill me-2"></i>Appeler {{emergency.phone}}</a>
+        </a>
+        </div>
+        
+
+      <!-- Cards -->
+      <div class="row g-4">
+        
+        {% if emergency_info %}
+          {% for info in emergency_info %}
+            <div class="col-md-6 col-lg-3">
+              <div class="emerg-card">
+                {% comment %} <div class="eicon fs-1"><i class="{{icon_emergence}}"></i></div> {% endcomment %}
+                <h6> {{info.title|capfirst}} </h6>
+                <div class="phone"><i class="bi bi-telephone-fill me-1"></i>{{info.phone}}</div>
+                <div class="addr"><i class="bi bi-geo-alt-fill me-1"></i>{{info.address}}</div>
+                <div class="avail mt-2">{{info.operation_time}}</div>
+                <button class="btn btn-call"><i class="bi bi-telephone-fill me-1"></i>Appeler </button>
+              </div>
+            </div>
+          {% endfor %}  
+        {% endif %}
+          
+      </div>
+
+    </div>
+  </section>
+{% endif %}
 
 {% endblock %}
 

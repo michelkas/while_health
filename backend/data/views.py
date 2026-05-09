@@ -5,6 +5,7 @@ from staff.models import Departement, Staff
 from appointment.models import Appointment
 from django.db.models import Q
 from django.utils import timezone
+import random
 
 def index(request):
     now = timezone.localtime()
@@ -41,6 +42,7 @@ def index(request):
         )
         doctor.status_badge_class = 'badge-busy' if is_busy else 'badge-available'
 
+    icon_emergence = random.choice(["bi bi-hospital", "bi bi-headset","bi bi-heart-pulse", "bi bi-shield-plus","bi bi-activity",]) 
     context = {
         "hero":Hero.objects.only('title', 'subtitle', 'description', 'image').first(),
         "about":About.objects.only('title', 'subtitle', 'year', 'goal', 'location', 'description', 'image', 'compassionate_care', 'care_quality').first(),
@@ -50,7 +52,8 @@ def index(request):
         "departements":Departement.objects.all()[:10],
         "emergency":Emergency.objects.only('title', 'description', 'phone').first(),
         "emergency_info": EmergencyInfo.objects.only('title', 'phone', 'address', 'operation_time'), 
-        'doctors': doctors
+        'doctors': doctors,
+        'icon_emergence': icon_emergence,
     }
     return render(request, 'index.html',context)
 

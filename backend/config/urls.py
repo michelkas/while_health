@@ -25,8 +25,13 @@ urlpatterns = [
 ]
 
 # ===========================================
-# FICHIERS STATIQUES ET MÉDIAS (Développement uniquement)
+# FICHIERS STATIQUES ET MÉDIAS
 # ===========================================
+# En production, le serveur (nginx/apache) doit servir /media depuis MEDIA_ROOT.
+# En local/dev, Django peut aussi le servir.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+

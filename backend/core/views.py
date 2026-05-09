@@ -19,8 +19,9 @@ from appointment.models import Appointment, get_french_weekday
 from patients.forms import HystoryFormset, PatientsForm
 from patients.models import Patients
 from staff.models import Staff, TimeService
+from datetime import date, datetime
 
-from .forms import LoginForm, ProfileForm, RegistrationForm
+from .forms import LoginForm, ProfileForm, RegistrationForm, ChangePasswordForm
 from .models import User
 
 
@@ -115,13 +116,18 @@ def login(request):
     if request.user.is_authenticated:
         return redirect("profile")
 
+
     if request.method == "POST":
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
             messages.success(request, f"Bon retour {user.username} !")
-            return redirect("admin:index")
+            
+            if hasattr(request.user, 'staff_profile') and request.user.staff_profile.id:
+                 return redirect("profile")
+            else:
+                return redirect("data:index")
         messages.error(request, "Nom d'utilisateur ou mot de passe incorrect.")
     else:
         form = LoginForm()
@@ -132,7 +138,9 @@ def login(request):
 def logout(request):
     auth_logout(request)
     messages.info(request, "Vous avez été déconnecté avec succès.")
-    return redirect("index")
+    return redirect("data:index")
+
+
 
 
 @login_required(login_url="login")
@@ -148,182 +156,53 @@ def profile(request):
 
     staff = Staff.objects.filter(user=request.user)
     time_services = TimeService.objects.filter(staff__user=request.user)
-
+    try:
+        staff = request.user.staff_profile
+    except Staff.DoesNotExist:
+        messages.error(request, "Vous n'avez pas un profil staff.")
+        return redirect('/')
+    
+    if not staff.is_active:
+        messages.warning(request, "Votre profil staff n'est pas actif.")
+    
+    today = date.today()
+    now = datetime.now()
+    
+    # ✅ PERFORMANCE: select_related and prefetch_related to avoid N+1 queries
+    appointments = Appointment.objects.filter(
+        staff=staff,
+        date__gte=today,
+    ).select_related(
+        'patient',
+        'staff__user',
+        'staff__departement'
+    ).order_by('date', 'time')
+    
+    # Split appointments by status
+    pending_appointments = appointments.filter(accept=False)
+    confirmed_appointments = appointments.filter(accept=True)
+    
     context = {
-        "form": form,
+        'staff': staff,
+        'pending_appointments': pending_appointments,
+        'confirmed_appointments': confirmed_appointments,
+        'all_appointments': appointments,
+        'pending_count': pending_appointments.count(),
+        'confirmed_count': confirmed_appointments.count(),
+        'page_title': f"Dashboard - Dr. {staff.user.get_full_name()}",
+          "form": form,
         "time_services": time_services,
         "staff": staff,
     }
+    
 
-    return render(request, "core/profile.html", context)
-
-
-# ==========================================================
-#                    ADMINISTRATION
-# ==========================================================
-
-@login_required(login_url="login")
-@user_passes_test(_superuser_required, login_url="login")
-def dashboard(request):
-    """✅ PERFORMANCE: Cached with aggregated queries"""
-    # ✅ PERFORMANCE: Try cache first
-    stats_cache = cache.get(CACHE_KEYS['dashboard_stats'])
-    if stats_cache is not None:
-        context = stats_cache
-    else:
-        today = timezone.localdate()
-        patients_qs = Patients.objects.all()
-        
-        # Single aggregation query instead of 6+ separate count()
-        stats = patients_qs.aggregate(
-            total=Count('id'),
-            today_count=Count('id', filter=Q(registered_at__date=today)),
-            transferred=Count('id', filter=Q(transfered=True))
-        )
-        
-        appointments_qs = Appointment.objects.select_related("patient", "staff").order_by("-id")
-        appointments_stats = appointments_qs.aggregate(
-            total=Count('id'),
-            accepted=Count('id', filter=Q(accept=True)),
-            pending=Count('id', filter=Q(accept=False))
-        )
-        
-        active_staff_count = Staff.objects.filter(is_active=True).count()
-        
-        context = {
-            "patients_count": stats['total'] or 0,
-            "patients_today_count": stats['today_count'] or 0,
-            "active_staff_count": active_staff_count,
-            "appointments_count": appointments_stats['total'] or 0,
-            "appointments_accepted_count": appointments_stats['accepted'] or 0,
-            "appointments_pending_count": appointments_stats['pending'] or 0,
-            "transferred_patients_count": stats['transferred'] or 0,
-            "recent_patients": patients_qs.order_by("-registered_at")[:6],
-            "recent_appointments": appointments_qs[:5],
-        }
-        
-        # ✅ PERFORMANCE: Cache for 5 minutes
-        cache.set(CACHE_KEYS['dashboard_stats'], context, 300)
-
-    return render(request, "admin/index.html", context)
-
-
-@login_required(login_url="login")
-@user_passes_test(_superuser_required, login_url="login")
-def patient_list(request):
-    query = request.GET.get("q", "").strip()
-    patients = Patients.objects.all().order_by("-registered_at")
-
-    if query:
-        patients = patients.filter(
-            Q(name__icontains=query)
-            | Q(first_name__icontains=query)
-            | Q(last_name__icontains=query)
-            | Q(email__icontains=query)
-            | Q(contact__icontains=query)
-        )
-
-    paginator = Paginator(patients, 10)
-    page_obj = paginator.get_page(request.GET.get("page"))
-
-    # ✅ PERFORMANCE: Single aggregation query instead of 3 separate count()
-    stats_cache_key = f"patient_stats_{query or 'all'}"
-    stats = cache.get(stats_cache_key)
-    if stats is None:
-        base_qs = Patients.objects.all()
-        if query:
-            base_qs = base_qs.filter(
-                Q(name__icontains=query)
-                | Q(first_name__icontains=query)
-                | Q(last_name__icontains=query)
-                | Q(email__icontains=query)
-                | Q(contact__icontains=query)
-            )
-        
-        stats = base_qs.aggregate(
-            total=Count('id'),
-            transferred=Count('id', filter=Q(transfered=True)),
-            active=Count('id', filter=Q(transfered=False))
-        )
-        # Cache for 2 minutes
-        cache.set(stats_cache_key, stats, 120)
-
-    context = {
-        "patients": page_obj,
-        "page_obj": page_obj,
-        "query": query,
-        "total_patients": stats['total'] or 0,
-        "transferred_count": stats['transferred'] or 0,
-        "active_count": stats['active'] or 0,
-    }
-
-    return render(request, "admin/patients/list.html", context)
-
-
-@login_required(login_url="login")
-@user_passes_test(_superuser_required, login_url="login")
-def patient_create(request):
-    if request.method == "POST":
-        form = PatientsForm(request.POST)
-        if form.is_valid():
-            patient = form.save()
-            messages.success(request, f"Le patient {patient} a été créé avec succès.")
-            return redirect("dashboard_patients")
-    else:
-        form = PatientsForm()
-
-    context = {
-        "form": form,
-        "patient": None,
-        "page_mode": "create",
-    }
-    return render(request, "admin/patients/form.html", context)
-
-
-@login_required(login_url="login")
-@user_passes_test(_superuser_required, login_url="login")
-def patient_update(request, pk):
-    patient = get_object_or_404(Patients, pk=pk)
-
-    if request.method == "POST":
-        form = PatientsForm(request.POST, instance=patient)
-        if form.is_valid():
-            updated_patient = form.save()
-            messages.success(request, f"Le patient {updated_patient} a été modifié avec succès.")
-            return redirect("dashboard_patients")
-    else:
-        form = PatientsForm(instance=patient)
-
-    context = {
-        "form": form,
-        "patient": patient,
-        "page_mode": "update",
-    }
-    return render(request, "admin/patients/form.html", context)
-
-
-@login_required(login_url="login")
-@user_passes_test(_superuser_required, login_url="login")
-def patient_delete(request, pk):
-    patient = get_object_or_404(Patients, pk=pk)
-
-    if request.method == "POST":
-        label = str(patient)
-        patient.delete()
-        messages.success(request, f"Le patient {label} a été supprimé avec succès.")
-        return redirect("dashboard_patients")
-
-    context = {
-        "patient": patient,
-    }
-    return render(request, "admin/patients/confirm_delete.html", context)
-
+    return render(request, "staff/profile.html", context)
 
 # ==========================================================
 #                    PATIENTS / APPOINTMENTS
 # ==========================================================
 
-# ✅ SECURED: Functions removed - use patients.views instead
+# SECURED: Functions removed - use patients.views instead
 # All patient-related views are now in patients/views.py with proper security
 # This avoids code duplication (DRY) and ensures consistent security
 
@@ -341,8 +220,8 @@ def _serialize_patient_minimal(patient):
 
 
 def appointment(request):
-    """✅ SECURED: login required. PERFORMANCE: select_related to avoid N+1"""
-    # ✅ PERFORMANCE: select_related to avoid N+1
+    """SECURED: login required. PERFORMANCE: select_related to avoid N+1"""
+    # PERFORMANCE: select_related to avoid N+1
     doctors = (
         Staff.objects.select_related("user")
         .filter(role__in=[Staff.Role.DOCTOR, Staff.Role.MEDECIN], is_active=True)
