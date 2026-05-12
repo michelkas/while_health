@@ -111,17 +111,17 @@
 {% if about %}
   <section class="about" id="about">
     <div class="container">
-      <div class="row align-items-center g-5">
+      <div class="row align-items-center g-4 g-xl-5">
         <div class="col-lg-6">
           <div class="about-img-wrap">
     
             {% if about.image %}
-                <img src="{{about.image.url}}" alt="{{about.image}}"/>
+                <img src="{{ about.image.url }}" alt="{{ about.title|default:'A propos de MediTrust' }}"/>
             {% endif %}
 
             {% if  about.year %}
               <div class="about-badge">
-                <div class="num">{{about.year}}+</div>
+                <div class="num">{{ about.year|date:"Y" }}</div>
                 <div class="lbl">Ans d'Excellence</div>
               </div>  
             {% endif %}
@@ -131,31 +131,35 @@
         <div class="col-lg-6">
           <div class="about-content">
 
-            <h2> {{about.title|capfirst}} </h2>
-            <p class="about-lead"> {{about.subtitle|capfirst}} </p>
-            <p class="about-body"> {{about.description|truncatewords:35}} </p>
-              <div class="col-6 about-feat-item">
-                  
+            <span class="about-kicker">A propos</span>
+            <h2>{{ about.title|capfirst }}</h2>
+            <p class="about-lead">{{ about.subtitle|capfirst }}</p>
+            <p class="about-body">{{ about.description|truncatewords:35 }}</p>
+
+            <div class="about-features">
                 {% if about.compassionate_care %}
+                <div class="about-feat-item">
                   <div class="feat-icon"><i class="bi bi-heart-pulse"></i></div>
-                  <h6>Soins Compassionnel</h6>
-                  <p> {{about.compassionate_care|truncatewords:10}} </p>
+                  <div>
+                    <h6>Soins compassionnels</h6>
+                    <p>{{ about.compassionate_care|truncatewords:12 }}</p>
+                  </div>
+                </div>
                 {% endif %}
-              
-              </div>
-              <div class="col-6 about-feat-item">
                 
-                {% if about.quality_care %}
+                {% if about.care_quality %}
+                <div class="about-feat-item">
                   <div class="feat-icon"><i class="bi bi-star"></i></div>
-                  <h6>Qualité de soins</h6>
-                  <p>{{about.quality_care|truncatewords:10}}</p>
+                  <div>
+                    <h6>Qualité des soins</h6>
+                    <p>{{ about.care_quality|truncatewords:12 }}</p>
+                  </div>
+                </div>
                 {% endif %}
-                  
-              
-              </div>
             </div>
-           <div class="d-flex gap-3 flex-wrap">
-              <a href="#doctors" class="doct-f"><button class="btn btn-outline-dark-custom">Rencontrez un Medecin</button></a>
+
+            <div class="about-actions">
+              <a href="#doctors" class="btn btn-outline-dark-custom">Rencontrez un médecin</a>
             </div>
           </div>
         </div>

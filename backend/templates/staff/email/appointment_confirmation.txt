@@ -3,7 +3,7 @@ While Health - Plateforme Médicale
 
 Bonjour {{ patient_name }},
 
-Votre rendez-vous a été confirmé par le docteur. Nous vous remercions de votre confiance et attendons votre visite.
+Votre rendez-vous a été confirmé. Nous vous remercions de votre confiance et attendons votre visite.
 
 ═══════════════════════════════════════════════════════════════
 
@@ -16,9 +16,9 @@ Motif       : {{ reason }}
 
 ═══════════════════════════════════════════════════════════════
 
-VOTRE DOCTEUR
+VOTRE SOIGNANT
 
-Nom         : Dr. {{ doctor_name }}
+Nom         : {{ staff_title }} {{ doctor_name }}
 Spécialité  : {{ doctor_specialty }}
 
 ═══════════════════════════════════════════════════════════════

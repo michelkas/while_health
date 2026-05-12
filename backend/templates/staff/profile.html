@@ -296,6 +296,10 @@
                 {% endif %}
                 
                 <div class="appointment-actions">
+                    <a href="{% url 'staff:staff_appointment_validate' appointment.id %}" class="btn-action btn-validate">
+                        <i class="bi bi-check-circle"></i>
+                        Valider
+                    </a>
                     <a href="{% url 'staff:staff_appointment_edit' appointment.id %}" class="btn-action btn-edit">
                         <i class="bi bi-pencil"></i>
                         Modifier

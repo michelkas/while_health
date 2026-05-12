@@ -5,6 +5,367 @@
 
 {% block extra_css %}
 <style>
+    :root {
+        --profile-blue: #1d9bf0;
+        --profile-dark: #0f1419;
+        --profile-gray: #536471;
+        --profile-border: #eff3f4;
+        --profile-hover: #f7f9f9;
+        --profile-green: #198754;
+        --profile-red: #dc3545;
+    }
+
+    body {
+        background-color: #f5f8fa;
+    }
+
+    .profile-container {
+        max-width: 680px;
+        margin: calc(2vh + 60px) auto 0;
+        background: #fff;
+        border-left: 1px solid var(--profile-border);
+        border-right: 1px solid var(--profile-border);
+        min-height: 100vh;
+        z-index: 0;
+    }
+
+    .cover-image {
+        width: 100%;
+        height: 290px;
+        background:
+            linear-gradient(135deg, rgba(29, 155, 240, 0.92), rgba(25, 135, 84, 0.78)),
+            linear-gradient(45deg, #eaf7ff, #eaf8ef);
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .cover-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.25) 0 2px, transparent 3px),
+            radial-gradient(circle at 75% 65%, rgba(255, 255, 255, 0.22) 0 2px, transparent 3px);
+        background-size: 48px 48px, 64px 64px;
+    }
+
+    .cover-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    .avatar-section {
+        position: relative;
+        padding: 0 16px;
+        margin-top: -62px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 16px;
+        margin-bottom: 12px;
+    }
+
+    .avatar-wrapper {
+        position: relative;
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .avatar-img,
+    .avatar-placeholder {
+        width: 132px;
+        height: 132px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        background: #fff;
+        object-fit: cover;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+    }
+
+    .avatar-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--profile-gray);
+        background: #eef6fb;
+        font-size: 4.5rem;
+    }
+
+    .profile-action-btn {
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 9px 18px;
+        border: 1px solid var(--profile-blue);
+        background: var(--profile-blue);
+        color: #fff;
+        transition: background 0.2s, transform 0.2s;
+        white-space: nowrap;
+        margin-bottom: 8px;
+        text-decoration: none;
+    }
+
+    .profile-action-btn:hover {
+        background: #0b83d7;
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    .profile-info {
+        padding: 0 16px 16px;
+    }
+
+    .profile-name {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--profile-dark);
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .verified-badge {
+        color: var(--profile-blue);
+        font-size: 1.15rem;
+    }
+
+    .profile-bio {
+        font-size: 0.98rem;
+        color: var(--profile-dark);
+        margin-bottom: 12px;
+        line-height: 1.55;
+        word-wrap: break-word;
+    }
+
+    .profile-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+    .profile-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: #eef7ff;
+        color: #0b5f9e;
+        font-size: 0.82rem;
+        font-weight: 700;
+    }
+
+    .profile-tag--success {
+        background: #e8f7ef;
+        color: #146c43;
+    }
+
+    .profile-tag--muted {
+        background: #f1f3f5;
+        color: #495057;
+    }
+
+    .profile-metadata {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        color: var(--profile-gray);
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+
+    .profile-metadata span,
+    .profile-metadata a {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .profile-metadata a:hover {
+        color: var(--profile-blue);
+        text-decoration: underline;
+    }
+
+    .profile-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        font-size: 0.9rem;
+        color: var(--profile-gray);
+    }
+
+    .profile-stats strong {
+        color: var(--profile-dark);
+        font-weight: 800;
+    }
+
+    .profile-tabs {
+        border-top: 1px solid var(--profile-border);
+        border-bottom: 1px solid var(--profile-border);
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .profile-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-item {
+        flex: 1;
+        text-align: center;
+        padding: 15px 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--profile-gray);
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+        text-decoration: none;
+        white-space: nowrap;
+        min-width: fit-content;
+    }
+
+    .tab-item:hover {
+        background: var(--profile-hover);
+        color: var(--profile-dark);
+    }
+
+    .tab-item.active {
+        color: var(--profile-dark);
+        font-weight: 800;
+        border-bottom-color: var(--profile-blue);
+    }
+
+    .tweet {
+        padding: 16px;
+        border-bottom: 1px solid var(--profile-border);
+        transition: background 0.2s;
+        display: flex;
+        gap: 12px;
+        scroll-margin-top: calc(2vh + 88px);
+    }
+
+    .tweet:hover {
+        background: var(--profile-hover);
+    }
+
+    .tweet-avatar,
+    .tweet-avatar-placeholder {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: #eef6fb;
+        object-fit: cover;
+    }
+
+    .tweet-avatar-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--profile-gray);
+        font-size: 1.6rem;
+    }
+
+    .tweet-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .tweet-header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+
+    .tweet-name {
+        font-weight: 800;
+        color: var(--profile-dark);
+    }
+
+    .tweet-time {
+        color: var(--profile-gray);
+    }
+
+    .tweet-label {
+        color: var(--profile-gray);
+        font-size: 0.82rem;
+        margin-bottom: 8px;
+    }
+
+    .tweet-text {
+        font-size: 0.95rem;
+        color: var(--profile-dark);
+        line-height: 1.55;
+        word-wrap: break-word;
+        margin-bottom: 12px;
+    }
+
+    .medical-info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .medical-info-item {
+        border: 1px solid var(--profile-border);
+        border-radius: 8px;
+        padding: 10px;
+        background: #fff;
+        min-width: 0;
+    }
+
+    .medical-info-item span {
+        display: block;
+        color: var(--profile-gray);
+        font-size: 0.78rem;
+        margin-bottom: 2px;
+    }
+
+    .medical-info-item strong {
+        color: var(--profile-dark);
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .tweet-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        color: var(--profile-gray);
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    .tweet-actions a,
+    .tweet-actions span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .tweet-actions a:hover {
+        color: var(--profile-blue);
+        text-decoration: underline;
+    }
+
     .doctor-schedule__legend {
         display: flex;
         flex-wrap: wrap;
@@ -28,22 +389,23 @@
     }
 
     .doctor-schedule__legend-swatch--free {
-        background-color: #198754;
+        background-color: var(--profile-green);
     }
 
     .doctor-schedule__legend-swatch--busy {
-        background-color: #dc3545;
+        background-color: var(--profile-red);
     }
 
     .schedule-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0.85rem;
+        grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+        gap: 0.75rem;
+        margin-top: 0.75rem;
     }
 
     .schedule-day-card {
         border: 1px solid rgba(13, 110, 253, 0.12);
-        border-radius: 0.85rem;
+        border-radius: 8px;
         background-color: #f8fbff;
         padding: 0.85rem;
     }
@@ -63,7 +425,7 @@
     .schedule-day-title {
         margin: 0;
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 800;
         color: #212529;
     }
 
@@ -83,7 +445,7 @@
         padding: 0.35rem 0.6rem;
         border-radius: 999px;
         font-size: 0.8rem;
-        font-weight: 600;
+        font-weight: 700;
         border: 1px solid transparent;
     }
 
@@ -97,270 +459,399 @@
         background-color: #f8d7da;
         color: #b02a37;
         border-color: rgba(220, 53, 69, 0.2);
-        opacity: 0.9;
+        opacity: 0.92;
     }
 
-    .schedule-day-empty {
+    .schedule-day-empty,
+    .schedule-empty-message {
         margin-bottom: 0;
         color: #6c757d;
         font-size: 0.875rem;
     }
 
-    .schedule-empty-message {
-        color: #6c757d;
-        font-size: 0.875rem;
+    .related-service-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .related-service-item {
+        border: 1px solid var(--profile-border);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fff;
+    }
+
+    .related-service-item h3 {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+        color: var(--profile-dark);
+        font-weight: 800;
+    }
+
+    .related-service-item p {
+        margin-bottom: 8px;
+        color: var(--profile-gray);
+        font-size: 0.88rem;
+    }
+
+    @media (max-width: 576px) {
+        .profile-container {
+            border-left: 0;
+            border-right: 0;
+            margin-top: calc(2vh + 68px);
+        }
+
+        .cover-image {
+            height: 150px;
+        }
+
+        .avatar-img,
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            border-width: 3px;
+        }
+
+        .avatar-placeholder {
+            font-size: 3.2rem;
+        }
+
+        .avatar-section {
+            margin-top: -50px;
+            padding: 0 12px;
+        }
+
+        .profile-name {
+            font-size: 1.12rem;
+        }
+
+        .profile-metadata {
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .profile-stats {
+            gap: 12px;
+        }
+
+        .tweet {
+            padding: 14px 12px;
+        }
+
+        .medical-info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .avatar-img,
+        .avatar-placeholder {
+            width: 82px;
+            height: 82px;
+        }
+
+        .avatar-placeholder {
+            font-size: 2.6rem;
+        }
+
+        .avatar-section {
+            margin-top: -40px;
+        }
+
+        .profile-action-btn {
+            font-size: 0.8rem;
+            padding: 7px 12px;
+        }
+
+        .tab-item {
+            padding: 12px 6px;
+            font-size: 0.8rem;
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- ── STAFF PROFILE DETAIL SECTION ─────────────────── -->
-<section class="staff-profile py-5">
-    <div class="container">
-        <!-- Breadcrumb -->
-        <div class="row mb-4">
-            <div class="col-12">
-<nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'data:index' %}">Accueil</a></li>
-                        {% if staff.departement %}
-                        <li class="breadcrumb-item"><a href="{% url 'staff:departement_detail' staff.departement.id %}">{{ staff.departement.name }}</a></li>
-                        {% endif %}
-                        <li class="breadcrumb-item active">{{ staff.user.get_full_name }}</li>
-                    </ol>
-                </nav>
+{% with display_name=staff.user.get_full_name|default:staff.name %}
+<section class="profile-container" aria-label="Profil du personnel médical">
+    <div class="cover-image">
+        {% if staff.departement and staff.departement.image %}
+        <img src="{{ staff.departement.image.url }}" alt="{{ staff.departement.name }}">
+        {% endif %}
+    </div>
+
+    <div class="avatar-section">
+        <div class="avatar-wrapper">
+            {% if staff.user.avatar %}
+            <img src="{{ staff.user.avatar.url }}" alt="{{ display_name }}" class="avatar-img">
+            {% else %}
+            <div class="avatar-placeholder" aria-hidden="true">
+                <i class="bi bi-person-circle"></i>
             </div>
+            {% endif %}
         </div>
-        
-        <!-- Profile Header -->
-        <div class="row g-5">
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
-                    <!-- Avatar -->
-                    <div class="avatar-wrapper mb-4">
-                        {% if staff.user.avatar %}
-                        <img src="{{ staff.user.avatar.url }}" alt="{{ staff.user.get_full_name }}" 
-                             class="rounded-circle img-fluid" style="width: 180px; height: 180px; object-fit: cover;">
-                        {% else %}
-                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" 
-                             style="width: 180px; height: 180px;">
-                            <i class="bi bi-person-circle text-muted" style="font-size: 5rem;"></i>
-                        </div>
-                        {% endif %}
+        {% comment %} <a href="{% url 'patients:appointment' %}?staff={{ staff.pk }}" class="profile-action-btn">
+            <i class="bi bi-calendar-check me-1"></i>Prendre RDV
+        </a> {% endcomment %}
+    </div>
+
+    <div class="profile-info">
+        <h1 class="profile-name">
+            {% if staff.role == "DOCTOR" or staff.role == "MEDECIN" %}Dr. {% endif %}{{ display_name|default:"Personnel médical" }}
+            {% if staff.is_verified %}
+            <i class="bi bi-patch-check-fill verified-badge" title="Profil vérifié"></i>
+            {% endif %}
+        </h1>
+        <p class="profile-bio">
+            {% if staff.user.bio %}
+            {{ staff.user.bio }}
+            {% else %}
+            {{ staff.get_role_display }}{% if staff.specialty %} en {{ staff.get_specialty_display|lower }}{% endif %}{% if staff.departement %}, rattaché au département {{ staff.departement.name }}{% endif %}. Disponible pour l'accompagnement, le suivi et les consultations selon le planning de service.
+            {% endif %}
+        </p>
+
+        <div class="profile-tags">
+            {% if staff.specialty %}
+            <span class="profile-tag"><i class="bi bi-stethoscope"></i>{{ staff.get_specialty_display }}</span>
+            {% endif %}
+            <span class="profile-tag profile-tag--muted"><i class="bi bi-person-badge"></i>{{ staff.get_role_display }}</span>
+            <span class="profile-tag {% if staff.is_active %}profile-tag--success{% else %}profile-tag--muted{% endif %}">
+                <i class="bi {% if staff.is_active %}bi-check-circle{% else %}bi-pause-circle{% endif %}"></i>
+                {% if staff.is_active %}Disponible{% else %}Indisponible{% endif %}
+            </span>
+        </div>
+
+        <div class="profile-metadata">
+            {% if staff.departement %}
+            <span><i class="bi bi-hospital"></i>{{ staff.departement.name }}</span>
+            {% endif %}
+            {% if staff.user.email %}
+            <a href="mailto:{{ staff.user.email }}"><i class="bi bi-envelope"></i>{{ staff.user.email }}</a>
+            {% endif %}
+            {% if staff.user.phone %}
+            <a href="tel:{{ staff.user.phone }}"><i class="bi bi-telephone"></i>{{ staff.user.phone }}</a>
+            {% endif %}
+            <span><i class="bi bi-calendar3"></i>Membre depuis {{ staff.created_at|date:"d/m/Y" }}</span>
+        </div>
+
+        <div class="profile-stats">
+            <span><strong>{{ staff.get_experiencie_years|default:staff.experience_years }}</strong> ans d'expérience</span>
+            {% if staff.departement %}
+            <span><strong>{{ staff.departement.name }}</strong> département</span>
+            {% endif %}
+            <span><strong>{{ staff.get_role_display }}</strong> fonction</span>
+        </div>
+    </div>
+
+    <nav class="profile-tabs" aria-label="Navigation du profil">
+        <a href="#presentation" class="tab-item active">Aperçu</a>
+        <a href="#horaire" class="tab-item">Horaires</a>
+        <a href="#services" class="tab-item">Services</a>
+        <a href="#contact" class="tab-item">Contact</a>
+    </nav>
+
+    <div class="tweets-list">
+        <article class="tweet" id="presentation">
+            {% if staff.user.avatar %}
+            <img src="{{ staff.user.avatar.url }}" alt="{{ display_name }}" class="tweet-avatar">
+            {% else %}
+            <div class="tweet-avatar-placeholder" aria-hidden="true"><i class="bi bi-person"></i></div>
+            {% endif %}
+            <div class="tweet-content">
+                <div class="tweet-header">
+                    <span class="tweet-name">{% if staff.role == "DOCTOR" or staff.role == "MEDECIN" %}Dr. {% endif %}{{ display_name|default:"Personnel médical" }}</span>
+                    <span class="tweet-time">· Profil médical</span>
+                </div>
+                <div class="tweet-label"><i class="bi bi-pin-angle-fill"></i> Information principale</div>
+                <div class="tweet-text">
+                    Ce profil présente les informations professionnelles du soignant : fonction, spécialité, département, expérience et disponibilité pour les rendez-vous.
+                </div>
+                <div class="medical-info-grid">
+                    <div class="medical-info-item">
+                        <span>Nom complet</span>
+                        <strong>{% if staff.role == "DOCTOR" or staff.role == "MEDECIN" %}Dr. {% endif %}{{ display_name|default:"Non renseigné" }}</strong>
                     </div>
-                    
-                    <!-- Name & Title -->
-                    <h4>{{ staff.user.get_full_name }}</h4>
-                    
-                    {% if staff.specialty %}
-                    <p class="text-teal fw-bold">{{ staff.get_specialty_display }}</p>
-                    {% else %}
-                    <p class="text-muted">{{ staff.get_role_display }}</p>
+                    <div class="medical-info-item">
+                        <span>Fonction</span>
+                        <strong>{{ staff.get_role_display }}</strong>
+                    </div>
+                    <div class="medical-info-item">
+                        <span>Spécialité</span>
+                        <strong>{{ staff.get_specialty_display|default:"Non renseignée" }}</strong>
+                    </div>
+                    <div class="medical-info-item">
+                        <span>Expérience</span>
+                        <strong>{{ staff.get_experiencie_years|default:staff.experience_years }} ans</strong>
+                    </div>
+                    <div class="medical-info-item">
+                        <span>Département</span>
+                        <strong>{% if staff.departement %}{{ staff.departement.name }}{% else %}Non renseigné{% endif %}</strong>
+                    </div>
+                    <div class="medical-info-item">
+                        <span>Statut</span>
+                        <strong>{% if staff.is_active %}Disponible{% else %}Indisponible{% endif %}</strong>
+                    </div>
+                </div>
+                <div class="tweet-actions">
+                    <a href="{% url 'patients:appointment' %}?staff={{ staff.pk }}"><i class="bi bi-calendar-check"></i>Rendez-vous</a>
+                    {% if staff.user.email %}
+                    <a href="mailto:{{ staff.user.email }}"><i class="bi bi-envelope"></i>Email</a>
                     {% endif %}
-                    
-                    <!-- Status -->
-                    <div class="mb-3">
-                        <span class="badge {% if staff.is_active %}bg-success{% else %}bg-secondary{% endif %} py-2 px-3">
-                            {% if staff.is_active %}Disponible{% else %}Indisponible{% endif %}
+                    {% if staff.user.phone %}
+                    <a href="tel:{{ staff.user.phone }}"><i class="bi bi-telephone"></i>Appeler</a>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+
+        <article class="tweet" id="horaire">
+            {% if staff.user.avatar %}
+            <img src="{{ staff.user.avatar.url }}" alt="{{ display_name }}" class="tweet-avatar">
+            {% else %}
+            <div class="tweet-avatar-placeholder" aria-hidden="true"><i class="bi bi-person"></i></div>
+            {% endif %}
+            <div class="tweet-content">
+                <div class="tweet-header">
+                    <span class="tweet-name">{% if staff.role == "DOCTOR" or staff.role == "MEDECIN" %}Dr. {% endif %}{{ display_name|default:"Personnel médical" }}</span>
+                    <span class="tweet-time">· Horaires</span>
+                </div>
+                <div class="tweet-text">
+                    Disponibilités de consultation sur les prochains jours.
+                </div>
+                <div id="schedule-loader" class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Chargement...</span>
+                    </div>
+                    <p class="text-muted mt-2 mb-0">Chargement des disponibilités...</p>
+                </div>
+                <div id="schedule-error" class="alert alert-warning d-none"></div>
+                <div id="schedule-content" class="d-none">
+                    <div class="doctor-schedule__legend">
+                        <span class="doctor-schedule__legend-item">
+                            <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--free"></span>
+                            Libre
+                        </span>
+                        <span class="doctor-schedule__legend-item">
+                            <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--busy"></span>
+                            Occupé
                         </span>
                     </div>
-                    
-                    <!-- Experience -->
-                    <div class="text-muted mb-4">
-                        <i class="bi bi-briefcase me-2"></i>{{ staff.get_experiencie_years|default:staff.experience_years }} ans d'expérience
-                    </div>
-                    
-                    <!-- Actions -->
-                    <div class="d-grid gap-2">
-                        <a href="{% url 'patients:appointment' %}" class="btn btn-teal-solid">
-                            <i class="bi bi-calendar-check me-2"></i>Prendre RDV
-                        </a>
+                    <div id="schedule-grid" class="schedule-grid"></div>
+                    <div class="tweet-actions">
+                        <a href="{% url 'patients:appointment' %}?staff={{ staff.pk }}"><i class="bi bi-calendar-plus"></i>Choisir un créneau</a>
                     </div>
                 </div>
-                
-                <!-- Social Links -->
-                {% if staff.twitter or staff.facebook or staff.instagram or staff.linkedin %}
-                <div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
-                    <h6 class="mb-3">Suivez-nous</h6>
-                    <div class="d-flex gap-3 justify-content-center">
-                        {% if staff.twitter %}
-                        <a href="{{ staff.twitter }}" target="_blank" class="social-icon">
-                            <i class="bi bi-twitter-x"></i>
-                        </a>
-                        {% endif %}
-                        {% if staff.facebook %}
-                        <a href="{{ staff.facebook }}" target="_blank" class="social-icon">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        {% endif %}
-                        {% if staff.instagram %}
-                        <a href="{{ staff.instagram }}" target="_blank" class="social-icon">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        {% endif %}
-                        {% if staff.linkedin %}
-                        <a href="{{ staff.linkedin }}" target="_blank" class="social-icon">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        {% endif %}
-                    </div>
+            </div>
+        </article>
+
+        <article class="tweet" id="services">
+            {% if staff.user.avatar %}
+            <img src="{{ staff.user.avatar.url }}" alt="{{ display_name }}" class="tweet-avatar">
+            {% else %}
+            <div class="tweet-avatar-placeholder" aria-hidden="true"><i class="bi bi-person"></i></div>
+            {% endif %}
+            <div class="tweet-content">
+                <div class="tweet-header">
+                    <span class="tweet-name">{% if staff.role == "DOCTOR" or staff.role == "MEDECIN" %}Dr. {% endif %}{{ display_name|default:"Personnel médical" }}</span>
+                    <span class="tweet-time">· Services</span>
                 </div>
+                <div class="tweet-text">
+                    {% if staff.departement %}
+                    Services associés au département {{ staff.departement.name }}.
+                    {% else %}
+                    Services associés au profil médical.
+                    {% endif %}
+                </div>
+                {% if related_services %}
+                <div class="related-service-list">
+                    {% for service in related_services %}
+                    <div class="related-service-item">
+                        <h3>
+                            {% if service.icon %}<i class="{{ service.icon }} me-1"></i>{% endif %}
+                            {{ service.title }}
+                        </h3>
+                        <p>{{ service.short_description|default:service.description|truncatechars:95 }}</p>
+                        <a href="{% url 'data:service_detail' service.id %}" class="link-teal">
+                            En savoir plus <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="tweet-label">Aucun service associé n'est renseigné pour le moment.</div>
                 {% endif %}
             </div>
-            
-            <!-- Profile Details -->
-            <div class="col-lg-8">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
-                    <!-- Info Grid -->
-                    <div class="row g-4 mb-4">
-                        {% if staff.departement %}
-                        <div class="col-md-6">
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-building"></i>
-                                </div>
-                                <div>
-                                    <span class="text-muted small d-block">Département</span>
-                                    <strong>{{ staff.departement.name }}</strong>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                        
-                        <div class="col-md-6">
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-person-badge"></i>
-                                </div>
-                                <div>
-                                    <span class="text-muted small d-block">Fonction</span>
-                                    <strong>{{ staff.get_role_display }}</strong>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-envelope"></i>
-                                </div>
-                                <div>
-                                    <span class="text-muted small d-block">Email</span>
-                                    <strong>{{ staff.user.email|default:"Non disponible" }}</strong>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-telephone"></i>
-                                </div>
-                                <div>
-                                    <span class="text-muted small d-block">Téléphone</span>
-                                    <strong>{{ staff.user.phone|default:"Non disponible" }}</strong>
-                                </div>
-                            </div>
-                        </div>
+        </article>
+
+        <article class="tweet" id="contact">
+            {% if staff.user.avatar %}
+            <img src="{{ staff.user.avatar.url }}" alt="{{ display_name }}" class="tweet-avatar">
+            {% else %}
+            <div class="tweet-avatar-placeholder" aria-hidden="true"><i class="bi bi-person"></i></div>
+            {% endif %}
+            <div class="tweet-content">
+                <div class="tweet-header">
+                    <span class="tweet-name">{% if staff.role == "DOCTOR" or staff.role == "MEDECIN" %}Dr. {% endif %}{{ display_name|default:"Personnel médical" }}</span>
+                    <span class="tweet-time">· Contact</span>
+                </div>
+                <div class="tweet-text">
+                    Coordonnées professionnelles disponibles pour l'orientation et la prise de contact.
+                </div>
+                <div class="medical-info-grid">
+                    <div class="medical-info-item">
+                        <span>Email</span>
+                        <strong>{{ staff.user.email|default:"Non disponible" }}</strong>
                     </div>
-                    
-                    <!-- Bio -->
-                    {% if staff.user.bio %}
-                    <div class="mb-4">
-                        <h5 class="mb-3">À propos</h5>
-                        <p>{{ staff.user.bio }}</p>
+                    <div class="medical-info-item">
+                        <span>Téléphone</span>
+                        <strong>{{ staff.user.phone|default:"Non disponible" }}</strong>
                     </div>
+                    <div class="medical-info-item">
+                        <span>Vérification</span>
+                        <strong>{% if staff.is_verified %}Profil vérifié{% else %}En attente{% endif %}</strong>
+                    </div>
+                </div>
+                <div class="tweet-actions">
+                    {% if staff.twitter %}
+                    <a href="{{ staff.twitter }}" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i>Twitter/X</a>
                     {% endif %}
-                    
-                    <!-- Specialties -->
-                    {% if staff.specialty %}
-                    <div class="mb-4">
-                        <h5 class="mb-3">Spécialité</h5>
-                        <span class="badge bg-teal-light text-teal py-2 px-3">
-                            {{ staff.get_specialty_display }}
-                        </span>
-                    </div>
+                    {% if staff.facebook %}
+                    <a href="{{ staff.facebook }}" target="_blank" rel="noopener"><i class="bi bi-facebook"></i>Facebook</a>
+                    {% endif %}
+                    {% if staff.instagram %}
+                    <a href="{{ staff.instagram }}" target="_blank" rel="noopener"><i class="bi bi-instagram"></i>Instagram</a>
+                    {% endif %}
+                    {% if staff.linkedin %}
+                    <a href="{{ staff.linkedin }}" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i>LinkedIn</a>
+                    {% endif %}
+                    {% if not staff.twitter and not staff.facebook and not staff.instagram and not staff.linkedin %}
+                    <span><i class="bi bi-info-circle"></i>Aucun réseau social renseigné</span>
                     {% endif %}
                 </div>
-                
-<!-- Time Service - Auto-fetched Schedule -->
-                <div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
-                    <h5 class="mb-3">Horaire de Consultation</h5>
-                    <div id="schedule-loader" class="text-center py-3">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Chargement...</span>
-                        </div>
-                        <p class="text-muted mt-2">Chargement des disponibilités...</p>
-                    </div>
-                    <div id="schedule-error" class="alert alert-warning d-none"></div>
-                    <div id="schedule-content" class="d-none">
-                        <div class="doctor-schedule__legend mb-3">
-                            <span class="doctor-schedule__legend-item me-3">
-                                <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--free"></span>
-                                Libre
-                            </span>
-                            <span class="doctor-schedule__legend-item">
-                                <span class="doctor-schedule__legend-swatch doctor-schedule__legend-swatch--busy"></span>
-                                Occupé
-                            </span>
-                        </div>
-                        <div id="schedule-grid" class="schedule-grid"></div>
-                        <div class="mt-3">
-                            <a href="{% url 'patients:appointment' %}" class="btn btn-teal-solid">
-                                <i class="bi bi-calendar-check me-2"></i>Prendre RDV
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
+        </article>
     </div>
 </section>
-
-<!-- ── RELATED SERVICES ───────────────────────── -->
-{% if related_services %}
-<section class="related-services py-5 bg-light">
-    <div class="container">
-        <div class="sec-header">
-            <h2>Services Associés</h2>
-            <div class="divider"></div>
-            <p>Services liés à ce département</p>
-        </div>
-        
-        <div class="row g-4">
-            {% for service in related_services %}
-            <div class="col-md-6 col-lg-3">
-                <div class="svc-card">
-                    <div class="svc-icon">
-                        <i class="{{ service.icon }}"></i>
-                    </div>
-                    <h5>{{ service.title }}</h5>
-                    <p>{{ service.short_description|truncatechars:60 }}</p>
-                    <a href="{% url 'data:service_detail' service.id %}" class="link-teal">
-                        En savoir plus <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-
+{% endwith %}
 {% endblock %}
 
 {% block extra_js %}
 <script>
 (function() {
     'use strict';
-    
-    const staffId = {{ staff.pk }};
-    const availableSlotsUrl = "{{ available_slots_url }}";
+
+    const staffId = "{{ staff.pk|default:'' }}";
+    const availableSlotsUrl = "{{ available_slots_url|escapejs }}";
     const scheduleLoader = document.getElementById('schedule-loader');
     const scheduleError = document.getElementById('schedule-error');
     const scheduleContent = document.getElementById('schedule-content');
     const scheduleGrid = document.getElementById('schedule-grid');
-    
+
+    if (!staffId || !availableSlotsUrl || !scheduleLoader || !scheduleError || !scheduleContent || !scheduleGrid) {
+        return;
+    }
+
     function formatScheduleDate(dateValue) {
         try {
             return new Date(dateValue + 'T00:00:00').toLocaleDateString('fr-FR', {
@@ -373,19 +864,19 @@
             return dateValue;
         }
     }
-    
+
     function renderSchedule(scheduleDays) {
         scheduleGrid.innerHTML = '';
-        
+
         if (!scheduleDays || !scheduleDays.length) {
             scheduleGrid.innerHTML = '<p class="schedule-empty-message">Aucun créneau défini pour les 7 prochains jours.</p>';
             return;
         }
-        
+
         scheduleDays.forEach((day) => {
             const card = document.createElement('div');
             card.className = 'schedule-day-card' + (day.has_service ? '' : ' schedule-day-card--empty');
-            
+
             const slotsMarkup = day.slots && day.slots.length
                 ? day.slots.map((slot) => `
                     <span class="schedule-slot ${slot.available ? 'schedule-slot--free' : 'schedule-slot--busy'}">
@@ -393,11 +884,11 @@
                     </span>
                 `).join('')
                 : '<p class="schedule-day-empty">Aucun créneau ce jour.</p>';
-            
+
             const serviceInfo = day.services && day.services.length
-                ? day.services.map((service) => `${service.open_time} - ${service.close_time}`).join(' • ')
+                ? day.services.map((service) => `${service.open_time} - ${service.close_time}`).join(' - ')
                 : 'Pas de service';
-            
+
             card.innerHTML = `
                 <div class="schedule-day-header">
                     <div>
@@ -413,19 +904,19 @@
                     ${slotsMarkup}
                 </div>
             `;
-            
+
             scheduleGrid.appendChild(card);
         });
     }
-    
+
     function fetchSchedule() {
         const today = new Date();
         const startDate = today.toISOString().split('T')[0];
         const end = new Date(today);
         end.setDate(today.getDate() + 7);
         const endDate = end.toISOString().split('T')[0];
-        
-        fetch(`${availableSlotsUrl}?staff_id=${staffId}&start_date=${startDate}&end_date=${endDate}`)
+
+        fetch(`${availableSlotsUrl}?staff_id=${encodeURIComponent(staffId)}&start_date=${startDate}&end_date=${endDate}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erreur réseau');
@@ -434,13 +925,13 @@
             })
             .then(data => {
                 scheduleLoader.classList.add('d-none');
-                
+
                 if (data.error) {
                     scheduleError.textContent = data.error;
                     scheduleError.classList.remove('d-none');
                     return;
                 }
-                
+
                 renderSchedule(data.schedule || []);
                 scheduleContent.classList.remove('d-none');
             })
@@ -451,11 +942,8 @@
                 scheduleError.classList.remove('d-none');
             });
     }
-    
-    // Auto-fetch schedule on page load
-    if (staffId && availableSlotsUrl) {
-        fetchSchedule();
-    }
+
+    fetchSchedule();
 })();
 </script>
 {% endblock %}
